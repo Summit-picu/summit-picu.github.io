@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   picu &middot; Summit Linux
+  </title>
+  <link href="css/style.css" rel="stylesheet"/>
+ </head>
+ <body>
+  <div aria-hidden="true" class="snow-overlay">
+  </div>
+  <div class="mountains">
+   <div class="mountain back">
+   </div>
+   <div class="mountain front">
+   </div>
+  </div>
+  <header class="header">
+   <nav class="navbar">
+    <a class="brand" href="index.html">
+     <img alt="" src="assets/summit.svg"/>
+     Summit Linux
+    </a>
+    <div class="nav">
+     <a href="index.html">
+      Home
+     </a>
+     <a href="about-eng.html">
+      About
+     </a>
+     <a href="download-eng.html">
+      Download
+     </a>
+     <a href="picu-eng.html">
+      picu
+     </a>
+     <a href="news-eng.html">
+      News
+     </a>
+     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
+      GitHub
+     </a>
+    </div>
+    <button aria-expanded="false" aria-label="Open menu" class="nav-toggle" type="button">
+     <span>
+     </span>
+    </button>
+   </nav>
+  </header>
+  <main class="content">
+   <div class="page">
+    <div class="article">
+     <img alt="picu" class="picu-logo" src="assets/picu.svg"/>
+     <h1>
+      picu
+     </h1>
+     <p>
+      picu is the package manager at the core of Summit Linux. It handles source builds, binary packages, repositories, signatures and package metadata.
+     </p>
+     <div class="actions" style="justify-content:flex-start;margin-top:18px">
+      <a class="button button-primary" href="https://github.com/Summit-picu/Picu">
+       Source code
+      </a>
+      <a class="button button-secondary" href="https://play.google.com/store/apps/details?id=com.github.android">
+       GitHub
+      </a>
+     </div>
+     <h2>
+      Core commands
+     </h2>
+     <pre>picu add &lt;pkg&gt;
+picu cook &lt;pkg&gt;
+picu cut &lt;pkg&gt;
+picu find &lt;query&gt;
+picu sync
+picu rebase
+picu list
+picu info &lt;pkg&gt;
+picu update
+picu trust
+picu help</pre>
+     <h2>
+      Source builds
+     </h2>
+     <p>
+      Packages are described using declarative recipes
+      <code>
+       .picu
+      </code>
+      .
+     </p>
+     <h2>
+      Binary packages
+     </h2>
+     <p>
+      picu can install signed binary archives after checking their hashes and signatures.
+     </p>
+     <h2>
+      Trust
+     </h2>
+     <div class="callout">
+      <strong>
+       Unsafe repositories are blocked by default.
+      </strong>
+      <br/>
+      <span>
+       Installing from an unsafe mirror requires an explicit flag
+       <code>
+        --allow-unsafe
+       </code>
+       .
+      </span>
+     </div>
+     <h2>
+      Example
+     </h2>
+     <div class="terminal">
+      <div class="terminal-bar">
+       <span>
+       </span>
+       <span>
+       </span>
+       <span>
+       </span>
+      </div>
+      <pre>$ picu find Vim Vim
+Comment: Vi improved code editor
+Mirror: Summit Official
+Versions: 0.1 1.0 13.12 23.12
+Type: Src &amp; Bin $ picu add Vim  finding in mirror
+ checking version
+ update available 23.12
+󱞪 install? [Y/n] Y
+⣾ installing Vim
+ installation completed</pre>
+     </div>
+    </div>
+   </div>
+  </main>
+  <footer class="footer">
+   <div class="footer-inner">
+    <a class="footer-brand" href="index.html">
+     <img alt="" src="assets/summit.svg"/>
+     Summit Linux
+    </a>
+    <div class="footer-links">
+     <a href="about-eng.html">
+      About
+     </a>
+     <a href="download-eng.html">
+      Download
+     </a>
+     <a href="picu-eng.html">
+      picu
+     </a>
+     <a href="news-eng.html">
+      News
+     </a>
+     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
+      GitHub
+     </a>
+    </div>
+   </div>
+   <div class="copyright">
+    Summit Linux &amp; picu &middot; Independent open-source project
+   </div>
+  </footer>
+  <script src="js/main.js">
+  </script>
+ </body>
+</html>
+
