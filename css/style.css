@@ -1887,3 +1887,462 @@ footer, .footer { background: #102a3b !important; color: #b7cbd6 !important; bor
         white-space: nowrap;
     }
 }
+
+/* Responsive hardening — v11 */
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    min-width: 0;
+    overflow-x: hidden;
+}
+
+img,
+svg,
+video,
+canvas {
+    max-width: 100%;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+    -webkit-tap-highlight-color: transparent;
+}
+
+pre,
+code,
+table {
+    max-width: 100%;
+}
+
+pre {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.nav-toggle {
+    touch-action: manipulation;
+}
+
+@media (max-width: 980px) {
+    .page,
+    .content .page,
+    .section .page {
+        width: min(100% - 32px, 900px);
+    }
+
+    .navbar {
+        min-width: 0;
+    }
+
+    .brand {
+        min-width: 0;
+    }
+
+    .brand span {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .content-layout {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .sidebar {
+        position: static;
+        width: 100%;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+}
+
+@media (max-width: 760px) {
+    .header {
+        padding: 8px;
+    }
+
+    .navbar {
+        min-height: 56px;
+        height: auto;
+        padding: 0 8px;
+        gap: 8px;
+    }
+
+    .brand {
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+    .brand img,
+    .brand svg {
+        flex: 0 0 auto;
+    }
+
+    .language-switcher {
+        flex: 0 0 auto;
+        margin-left: auto;
+        margin-right: 0;
+        padding: 3px;
+        font-size: .7rem;
+    }
+
+    .language-switcher a,
+    .language-current {
+        padding: 6px 7px;
+    }
+
+    .nav {
+        left: 8px;
+        right: 8px;
+        top: calc(100% + 8px);
+        max-height: calc(100svh - 84px);
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .nav a {
+        min-height: 44px;
+        height: auto;
+        padding: 10px 12px;
+        display: flex;
+        align-items: center;
+    }
+
+    .hero {
+        min-height: 100svh;
+        min-height: 650px;
+        padding: 112px 0 72px;
+    }
+
+    .hero-content {
+        width: min(100% - 32px, 760px);
+        padding-top: 30px;
+    }
+
+    .hero-logo {
+        width: 68px;
+        height: 68px;
+        margin-bottom: 18px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.5rem, 15vw, 4.5rem);
+        line-height: .98;
+        overflow-wrap: anywhere;
+    }
+
+    .hero p {
+        max-width: 34rem;
+        font-size: .98rem;
+    }
+
+    .actions {
+        width: 100%;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .actions a,
+    .actions button {
+        flex: 1 1 180px;
+        min-height: 46px;
+    }
+
+    .section {
+        padding: 68px 0;
+    }
+
+    .heading h2 {
+        font-size: clamp(1.8rem, 8vw, 2.5rem);
+    }
+
+    .grid {
+        width: 100%;
+        gap: 16px;
+    }
+
+    .card {
+        min-width: 0;
+    }
+
+    .news-card-button {
+        min-height: 0;
+        padding: 20px;
+    }
+
+    .content {
+        padding: 108px 0 64px;
+    }
+
+    .article {
+        min-width: 0;
+    }
+
+    .article pre,
+    .viewer-body pre,
+    .markdown-preview pre {
+        max-width: 100%;
+        overflow-x: auto;
+    }
+
+    .markdown-body table,
+    .viewer-body table,
+    .article table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .content-modal {
+        align-items: flex-end;
+        padding: 10px;
+    }
+
+    .content-dialog,
+    .news-dialog {
+        width: 100%;
+        max-width: none;
+        max-height: calc(100svh - 20px);
+        margin: 0;
+        border-radius: 20px 20px 14px 14px;
+        padding: 20px;
+    }
+
+    .dialog-actions {
+        flex-direction: column-reverse;
+    }
+
+    .dialog-actions > * {
+        width: 100%;
+        min-height: 44px;
+    }
+
+    .footer,
+    footer {
+        overflow: hidden;
+    }
+}
+
+@media (max-width: 430px) {
+    .page,
+    .content .page,
+    .section .page,
+    .hero-content {
+        width: min(100% - 24px, 760px);
+    }
+
+    .navbar {
+        padding: 0 4px;
+    }
+
+    .brand {
+        gap: 6px;
+    }
+
+    .brand span {
+        font-size: .92rem;
+    }
+
+    .language-switcher {
+        font-size: .64rem;
+    }
+
+    .language-switcher a,
+    .language-current {
+        padding: 5px 6px;
+    }
+
+    .hero {
+        min-height: 620px;
+        padding-top: 104px;
+    }
+
+    .hero-logo {
+        width: 60px;
+        height: 60px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.25rem, 16vw, 3.8rem);
+    }
+
+    .actions a,
+    .actions button {
+        flex-basis: 100%;
+        width: 100%;
+    }
+
+    .section {
+        padding: 56px 0;
+    }
+
+    .card {
+        padding: 20px;
+    }
+
+    .news-card-button {
+        padding: 18px;
+    }
+
+    .news-dialog,
+    .content-dialog {
+        padding: 18px;
+    }
+}
+
+@media (max-width: 340px) {
+    .brand span {
+        display: none;
+    }
+
+    .language-switcher {
+        transform: scale(.94);
+        transform-origin: right center;
+    }
+
+    .hero h1 {
+        font-size: 2.15rem;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .card:hover,
+    .nav a:hover,
+    .news-card-button:hover h3,
+    .create-button:hover {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* Final v11 hero + desktop navigation refinement */
+.hero {
+    text-align: center;
+}
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.hero h1,
+.hero p {
+    margin-left: auto;
+    margin-right: auto;
+}
+.actions {
+    justify-content: center;
+    width: 100%;
+}
+
+@media (min-width: 981px) {
+    .navbar {
+        grid-template-columns: auto 1fr auto;
+    }
+    .nav {
+        justify-self: end;
+        margin-left: auto;
+        margin-right: 10px;
+    }
+    .language-switcher {
+        justify-self: end;
+        margin-left: 0;
+        margin-right: 8px;
+    }
+    .nav a {
+        position: relative;
+    }
+    /* Compact focus frame: keeps equal breathing room above and below. */
+    .nav a:focus {
+        outline: 1px solid var(--blue);
+        outline-offset: -6px;
+        border-radius: 6px;
+    }
+}
+
+/* v11 desktop alignment fix: section descriptions stay centered under their headings. */
+@media (min-width: 981px) {
+    .heading {
+        text-align: center;
+    }
+    .heading p {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 650px;
+    }
+    .hero p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+/* v11 final: keep all section descriptions geometrically centered on desktop. */
+@media (min-width: 981px) {
+    .section .heading {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center !important;
+    }
+
+    .section .heading > p {
+        width: min(650px, 100%);
+        max-width: 650px;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+    }
+}
+
+/* v12: section headings and their descriptions are centered on the page at EVERY screen width.
+   Before, the fix only applied from 981px up; on tablets / narrow windows (<=980px) the older
+   ".heading p { margin-left: 0 }" rule pinned the description box to the left edge, so the
+   heading was centered on the page but the text under it was not. */
+.section .heading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center !important;
+}
+
+.section .heading > small,
+.section .heading > h2 {
+    width: 100%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
+
+.section .heading > p {
+    width: min(650px, 100%);
+    max-width: 650px;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center !important;
+}
