@@ -1,76 +1,118 @@
 <!DOCTYPE html>
 <html lang="ru">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>
-   picu &middot; Summit Linux
-  </title>
-  <link href="css/style.css" rel="stylesheet"/>
- </head>
- <body>
-  <div aria-hidden="true" class="snow-overlay">
-  </div>
-  <div class="mountains">
-   <div class="mountain back">
-   </div>
-   <div class="mountain front">
-   </div>
-  </div>
-  <header class="header">
-   <nav class="navbar">
-    <a class="brand" href="index-ru.html">
-     <img alt="" src="assets/summit.svg"/>
-     Summit Linux
-    </a>
-    <div class="nav">
-     <a href="index-ru.html">
-      &Gcy;&lcy;&acy;&vcy;&ncy;&acy;&yacy;
-     </a>
-     <a href="about-ru.html">
-      &Ocy; &pcy;&rcy;&ocy;&iecy;&kcy;&tcy;&iecy;
-     </a>
-     <a href="download-ru.html">
-      &Scy;&kcy;&acy;&chcy;&acy;&tcy;&softcy;
-     </a>
-     <a href="picu-ru.html">
-      picu
-     </a>
-     <a href="news-ru.html">
-      &Ncy;&ocy;&vcy;&ocy;&scy;&tcy;&icy;
-     </a>
-     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
-      GitHub
-     </a>
-    </div>
-    <button aria-expanded="false" aria-label="&Ocy;&tcy;&kcy;&rcy;&ycy;&tcy;&softcy; &mcy;&iecy;&ncy;&yucy;" class="nav-toggle" type="button">
-     <span>
-     </span>
-    </button>
-   </nav>
-  </header>
-  <main class="content">
-   <div class="page">
-    <div class="article">
-     <img alt="picu" class="picu-logo" src="assets/picu.svg"/>
-     <h1>
-      picu
-     </h1>
-     <p>
-      picu &mdash; &pcy;&acy;&kcy;&iecy;&tcy;&ncy;&ycy;&jcy; &mcy;&iecy;&ncy;&iecy;&dcy;&zhcy;&iecy;&rcy;, &lcy;&iecy;&zhcy;&acy;&shchcy;&icy;&jcy; &vcy; &ocy;&scy;&ncy;&ocy;&vcy;&iecy; Summit Linux. &Ocy;&ncy; &ocy;&tcy;&vcy;&iecy;&chcy;&acy;&iecy;&tcy; &zcy;&acy; &scy;&bcy;&ocy;&rcy;&kcy;&ucy; &icy;&zcy; &icy;&scy;&khcy;&ocy;&dcy;&ncy;&icy;&kcy;&ocy;&vcy;, &bcy;&icy;&ncy;&acy;&rcy;&ncy;&ycy;&iecy; &pcy;&acy;&kcy;&iecy;&tcy;&ycy;, &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&icy;, &pcy;&ocy;&dcy;&pcy;&icy;&scy;&icy; &icy; &mcy;&iecy;&tcy;&acy;&dcy;&acy;&ncy;&ncy;&ycy;&iecy; &pcy;&acy;&kcy;&iecy;&tcy;&ocy;&vcy;.
-     </p>
-     <div class="actions" style="justify-content:flex-start;margin-top:18px">
-      <a class="button button-primary" href="https://github.com/Summit-picu/Picu">
-       Source code
-      </a>
-      <a class="button button-secondary" href="https://play.google.com/store/apps/details?id=com.github.android">
-       GitHub mobile
-      </a>
-     </div>
-     <h2>
-      &Ocy;&scy;&ncy;&ocy;&vcy;&ncy;&ycy;&iecy; &kcy;&ocy;&mcy;&acy;&ncy;&dcy;&ycy;
-     </h2>
-     <pre>picu add &lt;pkg&gt;
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Пакетный менеджер picu: рецепты из исходников, бинарные пакеты, подписанные зеркала и модель доверия."/>
+<meta property="og:title" content="picu · Summit Linux"/>
+<meta property="og:description" content="Пакетный менеджер picu: рецепты из исходников, бинарные пакеты, подписанные зеркала и модель доверия."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="assets/summit.svg"/>
+<title>picu · Summit Linux</title>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="manifest" href="site.webmanifest"/>
+<meta name="theme-color" content="#0d1f31"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+</head><body>
+<div aria-hidden="true" class="snow-overlay"></div>
+<div class="mountains mtn-1">
+<div class="mountain back"></div>
+<div class="mountain mid"></div>
+<div class="mountain front"></div>
+</div>
+<header class="header">
+<nav class="navbar">
+<a class="brand" href="index-ru.html"><img alt="Summit Linux" src="assets/summit.svg"/>Summit Linux</a>
+<div class="nav">
+<a data-i18n="nav.home" href="index-ru.html">Главная</a>
+<a data-i18n="nav.about" href="about-ru.html">О проекте</a>
+<a data-i18n="nav.download" href="download-ru.html">Скачать</a>
+<a href="picu-ru.html" class="active">picu</a>
+<a data-i18n="nav.news" href="news-ru.html">Новости</a>
+<a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
+<a data-i18n="nav.status" href="status-ru.html">Статус</a>
+<a href="changelog-ru.html">Изменения</a>
+<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
+</div>
+<div class="lang-dropdown">
+<button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="assets/flags/ru.svg" alt=""/><span>RU</span></button>
+<ul class="lang-list" role="menu">
+<li><a class="lang-item" href="picu-eng.html"><img class="lang-flag" src="assets/flags/en.svg" alt=""/><span>English</span></a></li>
+<li><a class="lang-item is-active" href="picu-ru.html" aria-current="true"><img class="lang-flag" src="assets/flags/ru.svg" alt=""/><span>Русский</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="uk"><img class="lang-flag" src="assets/flags/uk.svg" alt=""/><span>Українська</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="zh"><img class="lang-flag" src="assets/flags/zh.svg" alt=""/><span>中文</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="ja"><img class="lang-flag" src="assets/flags/ja.svg" alt=""/><span>日本語</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="de"><img class="lang-flag" src="assets/flags/de.svg" alt=""/><span>Deutsch</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="fr"><img class="lang-flag" src="assets/flags/fr.svg" alt=""/><span>Français</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="pl"><img class="lang-flag" src="assets/flags/pl.svg" alt=""/><span>Polski</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="es"><img class="lang-flag" src="assets/flags/es.svg" alt=""/><span>Español</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="pt"><img class="lang-flag" src="assets/flags/pt.svg" alt=""/><span>Português</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="it"><img class="lang-flag" src="assets/flags/it.svg" alt=""/><span>Italiano</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="tr"><img class="lang-flag" src="assets/flags/tr.svg" alt=""/><span>Türkçe</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="ar"><img class="lang-flag" src="assets/flags/ar.svg" alt=""/><span>العربية</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="hi"><img class="lang-flag" src="assets/flags/hi.svg" alt=""/><span>हिन्दी</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="bn"><img class="lang-flag" src="assets/flags/bn.svg" alt=""/><span>বাংলা</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="id"><img class="lang-flag" src="assets/flags/id.svg" alt=""/><span>Bahasa Indonesia</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="vi"><img class="lang-flag" src="assets/flags/vi.svg" alt=""/><span>Tiếng Việt</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="ko"><img class="lang-flag" src="assets/flags/ko.svg" alt=""/><span>한국어</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="nl"><img class="lang-flag" src="assets/flags/nl.svg" alt=""/><span>Nederlands</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="sv"><img class="lang-flag" src="assets/flags/sv.svg" alt=""/><span>Svenska</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="cs"><img class="lang-flag" src="assets/flags/cs.svg" alt=""/><span>Čeština</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="ro"><img class="lang-flag" src="assets/flags/ro.svg" alt=""/><span>Română</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="hu"><img class="lang-flag" src="assets/flags/hu.svg" alt=""/><span>Magyar</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="el"><img class="lang-flag" src="assets/flags/el.svg" alt=""/><span>Ελληνικά</span></a></li>
+<li><a class="lang-item" href="picu-eng.html" data-lang="kk"><img class="lang-flag" src="assets/flags/kk.svg" alt=""/><span>Қазақша</span></a></li>
+</ul>
+</div>
+<button class="nav-toggle" type="button" aria-label="Открыть меню" data-i18n-aria="aria.navToggle" aria-expanded="false"><span></span></button>
+</nav>
+</header>
+<main>
+<section class="content">
+<div class="page">
+<div class="content-layout">
+<aside class="sidebar">
+<ul class="tree-l1">
+<li class="active"><a href="#commands" aria-current="true">Основные команды</a>
+<ul class="tree-l2">
+</ul>
+</li>
+<li><a href="#source">Сборка из исходников</a>
+<ul class="tree-l2">
+</ul>
+</li>
+<li><a href="#binary">Бинарные пакеты</a>
+<ul class="tree-l2">
+</ul>
+</li>
+<li><a href="#trust">Доверие</a>
+<ul class="tree-l2">
+</ul>
+</li>
+<li><a href="#example">Пример</a>
+<ul class="tree-l2">
+</ul>
+</li>
+</ul>
+</aside>
+<div class="article">
+<nav class="breadcrumbs"><a data-i18n="crumb.home" href="index-ru.html">Главная</a> / <span data-i18n="nav.picu">picu</span></nav>
+<h1>picu</h1>
+<nav class="toc"><strong data-i18n="toc.title">Содержание</strong><ul>
+<li><a href="#commands">Основные команды</a></li>
+<li><a href="#source">Сборка из исходников</a></li>
+<li><a href="#binary">Бинарные пакеты</a></li>
+<li><a href="#trust">Доверие</a></li>
+<li><a href="#example">Пример</a></li>
+</ul></nav>
+<img class="picu-logo" src="assets/picu.svg" alt="picu"/>
+<p>picu — пакетный менеджер, лежащий в основе Summit Linux. Он отвечает за сборки из исходников, бинарные пакеты, репозитории, подписи и метаданные пакетов.</p>
+<div class="actions">
+<a class="button button-primary" href="https://github.com/Summit-picu/Picu" target="_blank" rel="noopener" data-i18n="btn.sourceCode">Source code</a>
+<a class="button button-secondary" href="https://github.com/Summit-picu" target="_blank" rel="noopener" data-i18n="btn.github">GitHub</a>
+</div>
+<h2 id="commands">Основные команды</h2>
+<pre translate="no">picu add &lt;pkg&gt;
 picu cook &lt;pkg&gt;
 picu cut &lt;pkg&gt;
 picu find &lt;query&gt;
@@ -81,94 +123,52 @@ picu info &lt;pkg&gt;
 picu update
 picu trust
 picu help</pre>
-     <h2>
-      &Scy;&bcy;&ocy;&rcy;&kcy;&acy; &icy;&zcy; &icy;&scy;&khcy;&ocy;&dcy;&ncy;&icy;&kcy;&ocy;&vcy;
-     </h2>
-     <p>
-      &Pcy;&acy;&kcy;&iecy;&tcy;&ycy; &ocy;&pcy;&icy;&scy;&ycy;&vcy;&acy;&yucy;&tcy;&scy;&yacy; &scy; &pcy;&ocy;&mcy;&ocy;&shchcy;&softcy;&yucy; &dcy;&iecy;&kcy;&lcy;&acy;&rcy;&acy;&tcy;&icy;&vcy;&ncy;&ycy;&khcy; &rcy;&iecy;&tscy;&iecy;&pcy;&tcy;&ocy;&vcy;
-      <code>
-       .picu
-      </code>
-      .
-     </p>
-     <h2>
-      &Bcy;&icy;&ncy;&acy;&rcy;&ncy;&ycy;&iecy; &pcy;&acy;&kcy;&iecy;&tcy;&ycy;
-     </h2>
-     <p>
-      picu &ucy;&mcy;&iecy;&iecy;&tcy; &ucy;&scy;&tcy;&acy;&ncy;&acy;&vcy;&lcy;&icy;&vcy;&acy;&tcy;&softcy; &pcy;&ocy;&dcy;&pcy;&icy;&scy;&acy;&ncy;&ncy;&ycy;&iecy; &bcy;&icy;&ncy;&acy;&rcy;&ncy;&ycy;&iecy; &acy;&rcy;&khcy;&icy;&vcy;&ycy; &pcy;&ocy;&scy;&lcy;&iecy; &pcy;&rcy;&ocy;&vcy;&iecy;&rcy;&kcy;&icy; &icy;&khcy; &khcy;&iecy;&shcy;&iecy;&jcy; &icy; &pcy;&ocy;&dcy;&pcy;&icy;&scy;&iecy;&jcy;.
-     </p>
-     <h2>
-      &Dcy;&ocy;&vcy;&iecy;&rcy;&icy;&iecy;
-     </h2>
-     <div class="callout">
-      <strong>
-       &Ncy;&iecy;&bcy;&iecy;&zcy;&ocy;&pcy;&acy;&scy;&ncy;&ycy;&iecy; &rcy;&iecy;&pcy;&ocy;&zcy;&icy;&tcy;&ocy;&rcy;&icy;&icy; &zcy;&acy;&bcy;&lcy;&ocy;&kcy;&icy;&rcy;&ocy;&vcy;&acy;&ncy;&ycy; &pcy;&ocy; &ucy;&mcy;&ocy;&lcy;&chcy;&acy;&ncy;&icy;&yucy;.
-      </strong>
-      <br/>
-      <span>
-       &Dcy;&lcy;&yacy; &ucy;&scy;&tcy;&acy;&ncy;&ocy;&vcy;&kcy;&icy; &icy;&zcy; &ncy;&iecy;&bcy;&iecy;&zcy;&ocy;&pcy;&acy;&scy;&ncy;&ocy;&gcy;&ocy; &zcy;&iecy;&rcy;&kcy;&acy;&lcy;&acy; &tcy;&rcy;&iecy;&bcy;&ucy;&iecy;&tcy;&scy;&yacy; &yacy;&vcy;&ncy;&ycy;&jcy; &fcy;&lcy;&acy;&gcy;
-       <code>
-        --allow-unsafe
-       </code>
-       .
-      </span>
-     </div>
-     <h2>
-      &Pcy;&rcy;&icy;&mcy;&iecy;&rcy;
-     </h2>
-     <div class="terminal">
-      <div class="terminal-bar">
-       <span>
-       </span>
-       <span>
-       </span>
-       <span>
-       </span>
-      </div>
-      <pre>$ picu find Vim Vim
+<h2 id="source">Сборка из исходников</h2>
+<p>Пакеты описываются с помощью декларативных рецептов <code>.picu</code>.</p>
+<h2 id="binary">Бинарные пакеты</h2>
+<p>picu умеет устанавливать подписанные бинарные архивы после проверки их хешей и подписей.</p>
+<h2 id="trust">Доверие</h2>
+<div class="callout"><strong>Небезопасные репозитории заблокированы по умолчанию.</strong><div class="callout-body">Для установки из небезопасного зеркала требуется явный флаг <code>--allow-unsafe</code>.</div></div>
+<h2 id="example">Пример</h2>
+<div class="terminal" translate="no">
+<div class="terminal-bar"><span></span><span></span><span></span></div>
+<pre translate="no">$ picu find Vim Vim
 Comment: Vi improved code editor
 Mirror: Summit Official
 Versions: 0.1 1.0 13.12 23.12
-Type: Src &amp; Bin $ picu add Vim  finding in mirror
- checking version
- update available 23.12
-󱞪 install? [Y/n] Y
-⣾ installing Vim
- installation completed</pre>
-     </div>
-    </div>
-   </div>
-  </main>
-  <footer class="footer">
-   <div class="footer-inner">
-    <a class="footer-brand" href="index-ru.html">
-     <img alt="" src="assets/summit.svg"/>
-     Summit Linux
-    </a>
-    <div class="footer-links">
-     <a href="about-ru.html">
-      &Ocy; &pcy;&rcy;&ocy;&iecy;&kcy;&tcy;&iecy;
-     </a>
-     <a href="download-ru.html">
-      &Scy;&kcy;&acy;&chcy;&acy;&tcy;&softcy;
-     </a>
-     <a href="picu-ru.html">
-      picu
-     </a>
-     <a href="news-ru.html">
-      &Ncy;&ocy;&vcy;&ocy;&scy;&tcy;&icy;
-     </a>
-     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
-      GitHub
-     </a>
-    </div>
-   </div>
-   <div class="copyright">
-    Summit Linux &icy; picu &middot; &Ncy;&iecy;&zcy;&acy;&vcy;&icy;&scy;&icy;&mcy;&ycy;&jcy; &pcy;&rcy;&ocy;&iecy;&kcy;&tcy; &scy; &ocy;&tcy;&kcy;&rcy;&ycy;&tcy;&ycy;&mcy; &icy;&scy;&khcy;&ocy;&dcy;&ncy;&ycy;&mcy; &kcy;&ocy;&dcy;&ocy;&mcy;
-   </div>
-  </footer>
-  <script src="js/main.js">
-  </script>
- </body>
+Type: Src &amp; Bin $ picu add Vim
+[ OK ] finding in mirror
+[ OK ] checking version
+[ OK ] update available 23.12
+[ ? ] install? [Y/n] Y
+[ .. ] installing Vim
+[ OK ] installation completed</pre>
+</div>
+<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<a class="footer-brand" href="index-ru.html"><img alt="" src="assets/summit.svg"/>Summit Linux</a>
+<div class="footer-links">
+<a data-i18n="nav.home" href="index-ru.html">Главная</a>
+<a data-i18n="nav.about" href="about-ru.html">О проекте</a>
+<a data-i18n="nav.download" href="download-ru.html">Скачать</a>
+<a data-i18n="nav.picu" href="picu-ru.html">picu</a>
+<a data-i18n="nav.news" href="news-ru.html">Новости</a>
+<a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
+<a data-i18n="nav.status" href="status-ru.html">Статус</a>
+<a href="changelog-ru.html">Изменения</a>
+<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
+</div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (скоро)</span> · <span>Telegram (скоро)</span></div>
+</div>
+<div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux и picu · Независимый проект с открытым исходным кодом</span></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+</body>
 </html>
-

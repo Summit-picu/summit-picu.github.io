@@ -1,0 +1,30 @@
+# shell / tool dotfiles accidentally created in site root
+.bashrc
+.bash_profile
+.profile
+.zprofile
+.zshrc
+.gitconfig
+.ripgreprc
+.mcp.json
+
+# editors / agents
+.idea/
+.vscode/
+.opencode/
+.claude/
+
+# sqlite leftovers
+*.db
+*.db-shm
+*.db-wal
+
+# deps
+node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# logs
+*.log

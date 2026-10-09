@@ -1,242 +1,584 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
- <head>
-  <meta charset="utf-8"/>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="Summit Linux &mdash; a source-based Linux distribution built on LFS." name="description"/>
-  <title>
-   Summit Linux
-  </title>
-  <link href="css/style.css" rel="stylesheet"/>
- </head>
- <body>
-  <div aria-hidden="true" class="snow-overlay">
-  </div>
-  <div class="mountains">
-   <div class="mountain back">
-   </div>
-   <div class="mountain front">
-   </div>
-  </div>
-  <header class="header">
-   <nav class="navbar">
-    <a class="brand" href="index.html">
-     <img alt="Summit Linux" src="assets/summit.svg"/>
-     Summit Linux
-    </a>
-    <div class="nav">
-     <a href="index.html">
-      Home
-     </a>
-     <a href="about-eng.html">
-      About
-     </a>
-     <a href="download-eng.html">
-      Download
-     </a>
-     <a href="picu-eng.html">
-      picu
-     </a>
-     <a href="news-eng.html">
-      News
-     </a>
-     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
-      GitHub
-     </a>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Independent Linux distribution built on LFS with picu package manager: transparency, security, source builds."
+    />
+    <meta property="og:title" content="Summit Linux" />
+    <meta
+      property="og:description"
+      content="Independent Linux distribution built on LFS with picu package manager: transparency, security, source builds."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/summit.svg" />
+    <title>Summit Linux</title>
+    <link rel="stylesheet" href="css/style.css" />
+<link rel="manifest" href="site.webmanifest"/>
+<meta name="theme-color" content="#0d1f31"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+  </head>
+  <body>
+    <div aria-hidden="true" class="snow-overlay"></div>
+    <div class="mountains mtn-3">
+      <div class="mountain back"></div>
+      <div class="mountain mid"></div>
+      <div class="mountain front"></div>
     </div>
-    <div aria-label="Language" class="language-switcher">
-     <span class="language-current">
-      EN
-     </span>
-     <a href="index-ru.html">
-      RU
-     </a>
+    <header class="header">
+      <nav class="navbar">
+        <a class="brand" href="index.html"
+          ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
+        >
+        <div class="nav">
+          <a href="index.html" class="active">Home</a>
+          <a data-i18n="nav.about" href="about-eng.html">About</a>
+          <a data-i18n="nav.download" href="download-eng.html">Download</a>
+          <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
+          <a data-i18n="nav.news" href="news-eng.html">News</a>
+          <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
+          <a data-i18n="nav.status" href="status-eng.html">Status</a>
+<a href="changelog-eng.html">Changelog</a>
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+        <div class="lang-dropdown">
+          <button
+            class="lang-btn"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img class="lang-flag" src="assets/flags/en.svg" alt="" /><span
+              >EN</span
+            >
+          </button>
+          <ul class="lang-list" role="menu">
+            <li>
+              <a
+                class="lang-item is-active"
+                href="index.html"
+                aria-current="true"
+                ><img class="lang-flag" src="assets/flags/en.svg" alt="" /><span
+                  >English</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index-ru.html"
+                ><img class="lang-flag" src="assets/flags/ru.svg" alt="" /><span
+                  >Русский</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="uk"
+                ><img class="lang-flag" src="assets/flags/uk.svg" alt="" /><span
+                  >Українська</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="zh"
+                ><img class="lang-flag" src="assets/flags/zh.svg" alt="" /><span
+                  >中文</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="ja"
+                ><img class="lang-flag" src="assets/flags/ja.svg" alt="" /><span
+                  >日本語</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="de"
+                ><img class="lang-flag" src="assets/flags/de.svg" alt="" /><span
+                  >Deutsch</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="fr"
+                ><img class="lang-flag" src="assets/flags/fr.svg" alt="" /><span
+                  >Français</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="pl"
+                ><img class="lang-flag" src="assets/flags/pl.svg" alt="" /><span
+                  >Polski</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="es"
+                ><img class="lang-flag" src="assets/flags/es.svg" alt="" /><span
+                  >Español</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="pt"
+                ><img class="lang-flag" src="assets/flags/pt.svg" alt="" /><span
+                  >Português</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="it"
+                ><img class="lang-flag" src="assets/flags/it.svg" alt="" /><span
+                  >Italiano</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="tr"
+                ><img class="lang-flag" src="assets/flags/tr.svg" alt="" /><span
+                  >Türkçe</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="ar"
+                ><img class="lang-flag" src="assets/flags/ar.svg" alt="" /><span
+                  >العربية</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="hi"
+                ><img class="lang-flag" src="assets/flags/hi.svg" alt="" /><span
+                  >हिन्दी</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="bn"
+                ><img class="lang-flag" src="assets/flags/bn.svg" alt="" /><span
+                  >বাংলা</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="id"
+                ><img class="lang-flag" src="assets/flags/id.svg" alt="" /><span
+                  >Bahasa Indonesia</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="vi"
+                ><img class="lang-flag" src="assets/flags/vi.svg" alt="" /><span
+                  >Tiếng Việt</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="ko"
+                ><img class="lang-flag" src="assets/flags/ko.svg" alt="" /><span
+                  >한국어</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="nl"
+                ><img class="lang-flag" src="assets/flags/nl.svg" alt="" /><span
+                  >Nederlands</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="sv"
+                ><img class="lang-flag" src="assets/flags/sv.svg" alt="" /><span
+                  >Svenska</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="cs"
+                ><img class="lang-flag" src="assets/flags/cs.svg" alt="" /><span
+                  >Čeština</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="ro"
+                ><img class="lang-flag" src="assets/flags/ro.svg" alt="" /><span
+                  >Română</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="hu"
+                ><img class="lang-flag" src="assets/flags/hu.svg" alt="" /><span
+                  >Magyar</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="el"
+                ><img class="lang-flag" src="assets/flags/el.svg" alt="" /><span
+                  >Ελληνικά</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="index.html" data-lang="kk"
+                ><img class="lang-flag" src="assets/flags/kk.svg" alt="" /><span
+                  >Қазақша</span
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          data-i18n-aria="aria.navToggle"
+          aria-expanded="false"
+        >
+          <span></span>
+        </button>
+      </nav>
+    </header>
+    <main>
+    <div class="banner" id="news-banner" role="note">
+      <span data-i18n="banner.text">Latest: picu 0.3.0 — trust rotation. Signed mirrors coming soon.</span>
+      <a href="news-eng.html#latest" data-i18n="banner.link">Read news</a>
+      <button type="button" class="banner-close" data-banner-close aria-label="Dismiss" data-i18n-aria="banner.dismiss">×</button>
     </div>
-    <button aria-expanded="false" aria-label="Open menu" class="nav-toggle" type="button">
-     <span>
-     </span>
-    </button>
-   </nav>
-  </header>
-  <main>
-   <section class="hero">
-    <div class="page">
-     <div class="hero-content">
-      <img alt="Summit Linux" class="hero-logo" src="assets/summit.svg"/>
-      <h1>
-       Summit
-       <span>
-        Linux
-       </span>
-      </h1>
-      <p>
-       Independent Linux distribution based on LFS, focused on transparency, stability, minimal overhead, and complete control over the system.
-      </p>
-      <div class="actions">
-       <a class="button button-primary" href="download-eng.html">
-        Download
-       </a>
-      </div>
-     </div>
-    </div>
-   </section>
-   <section class="section white">
-    <div class="page">
-     <div class="heading">
-      <small>
-       Summit philosophy
-      </small>
-      <h2>
-       Built from scratch.
-      </h2>
-      <p>
-       Summit Linux follows the principles of Linux From Scratch: transparent components, controlled builds, and minimal software.
-      </p>
-     </div>
-     <div class="grid">
-      <article class="card">
-       <div class="card-icon">
-        <img alt="" aria-hidden="true" class="inline-icon" src="assets/icons/mountain.svg"/>
-       </div>
-       <h3>
-        LFS / Source-based
-       </h3>
-       <p>
-        Summit is built on Linux From Scratch and source-based system construction.
-       </p>
-      </article>
-      <article class="card">
-       <div class="card-icon">
-        <img alt="" aria-hidden="true" class="inline-icon" src="assets/icons/package.svg"/>
-       </div>
-       <h3>
-        picu
-       </h3>
-       <p>
-        A package manager that can build from source, install binary packages, manage repositories, and perform cryptographic verification.
-       </p>
-      </article>
-      <article class="card">
-       <div class="card-icon">
-        <img alt="" aria-hidden="true" class="inline-icon" src="assets/icons/lock.svg"/>
-       </div>
-       <h3>
-        Trust by default
-       </h3>
-       <p>
-        Signed mirrors, trusted keys, CRL support, and downgrade protection.
-       </p>
-      </article>
-     </div>
-    </div>
-   </section>
-   <section class="section">
-    <div class="page">
-     <div class="heading">
-      <small>
-       Package management
-      </small>
-      <h2>
-       Meet picu.
-      </h2>
-      <p>
-       A package manager built specifically for Summit Linux.
-      </p>
-     </div>
-     <div class="card">
-      <img alt="picu" class="picu-logo" src="assets/picu.svg"/>
-      <p>
-       picu manages repositories, build recipes, binary packages, signatures, trust stores, and package databases.
-      </p>
-      <div class="terminal">
-       <div class="terminal-bar">
-        <span>
-        </span>
-        <span>
-        </span>
-        <span>
-        </span>
-       </div>
-       <pre>$ picu sync
+    <script>
+    (function () {
+      try {
+        var KEY = "summit-banner-dismissed";
+        var banner = document.getElementById("news-banner");
+        if (!banner) return;
+        try {
+          if (window.localStorage.getItem(KEY)) { banner.remove(); return; }
+        } catch (e) {}
+        var btn = banner.querySelector("[data-banner-close]");
+        if (btn) btn.addEventListener("click", function () {
+          try { window.localStorage.setItem(KEY, "1"); } catch (e) {}
+          banner.remove();
+        });
+      } catch (e) {}
+    })();
+    </script>
+      
+      <section class="hero">
+        <div class="page">
+          <div class="hero-content">
+            <img class="hero-logo" src="assets/summit.svg" alt="Summit Linux" />
+            <h1>Summit <span>Linux</span></h1>
+            <p data-i18n="hero.lead">
+              Independent Linux distribution based on LFS, focused on
+              transparency, stability, minimal overhead, and complete control
+              over the system.
+            </p>
+            <div class="actions">
+              <a
+                class="button button-primary"
+                href="download-eng.html"
+                data-i18n="btn.download"
+                >Download</a
+              >
+              <a
+                class="button button-secondary"
+                href="picu-eng.html"
+                data-i18n="btn.meetPicu"
+                >Meet picu</a
+              >
+            </div>
+            <div class="terminal" translate="no">
+              <div class="terminal-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <pre translate="no" class="code-write"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="page">
+          <div class="callout">
+            <strong>Coming soon:</strong> signed mirrors,
+            <code>picu trust</code> key rotation and refreshed site. See
+            <a href="news-eng.html">News</a> and
+            <a href="wiki-eng.html">Wiki</a>.
+          </div>
+        </div>
+      </section>
+      <section class="section white">
+        <div class="page">
+          <div class="heading">
+            <small>Summit philosophy</small>
+            <h2>Built from scratch.</h2>
+            <p>
+              Summit Linux follows the principles of Linux From Scratch:
+              transparent components, controlled builds, and minimal software.
+            </p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <div class="card-icon">
+                <img
+                  class="inline-icon"
+                  src="assets/icons/mountain.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <h3>LFS / Source-based</h3>
+              <p>
+                Summit is built on Linux From Scratch and source-based system
+                construction.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">
+                <img
+                  class="inline-icon"
+                  src="assets/icons/package.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <h3>picu</h3>
+              <p>
+                A package manager that can build from source, install binary
+                packages, manage repositories, and perform cryptographic
+                verification.
+              </p>
+            </article>
+            <article class="card">
+              <div class="card-icon">
+                <img
+                  class="inline-icon"
+                  src="assets/icons/lock.svg"
+                  alt=""
+                  aria-hidden="true"
+                />
+              </div>
+              <h3>Trust by default</h3>
+              <p>
+                Signed mirrors, trusted keys, CRL support, and downgrade
+                protection.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="page">
+          <div class="heading">
+            <small>Package management</small>
+            <h2>Meet picu.</h2>
+            <p>A package manager built specifically for Summit Linux.</p>
+          </div>
+          <div class="card">
+            <img class="picu-logo" src="assets/picu.svg" alt="picu" />
+            <p>
+              picu manages repositories, build recipes, binary packages,
+              signatures, trust stores, and package databases.
+            </p>
+          </div>
+          <div class="terminal" translate="no">
+              <div class="terminal-bar">
+                <span></span><span></span><span></span>
+              </div>
+              <pre translate="no">
+$ picu sync
 [ OK ] fetching repositories
 [ OK ] verifying signatures
 [ OK ] updating package indexes
-[ OK ] sync completed successfully $ picu add vim
+[ OK ] sync completed successfully
+$ picu add vim
 [ OK ] finding in mirror
 [ OK ] checking version
 [ .. ] installing Vim</pre>
+          </div>
+        </div>
+      </section>
+      <section class="section screenshots">
+        <div class="page">
+          <div class="heading">
+            <small data-i18n="shots.kicker">Screenshots</small>
+            <h2 data-i18n="shots.title">Summit in pictures.</h2>
+            <p data-i18n="shots.lead">Placeholders — real screenshots will be added here.</p>
+          </div>
+          <div class="grid">
+            <figure class="screenshot">
+              <img src="assets/img/no-shots.svg" alt="kde">
+              <figcaption data-i18n="shots.kde">kde</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="assets/img/no-shots.svg" alt="dwm">
+              <figcaption data-i18n="shots.dwm">dwm</figcaption>
+            </figure>
+            <figure class="screenshot">
+              <img src="assets/img/no-shots.svg" alt="tty">
+              <figcaption data-i18n="shots.tty">tty</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section class="section white">
+        <div class="page">
+          <div class="heading">
+            <small>Compare</small>
+            <h2>Summit vs others.</h2>
+            <p>Why a source-based system with signed indexes.</p>
+          </div>
+          <table class="table">
+            <tr>
+              <th>Feature</th>
+              <th>Summit</th>
+              <th>Others</th>
+            </tr>
+            <tr>
+              <td>Base</td>
+              <td>LFS / source-based</td>
+              <td>Prebuilt binaries</td>
+            </tr>
+            <tr>
+              <td>Package manager</td>
+              <td>picu (source + binary)</td>
+              <td>Binary-only</td>
+            </tr>
+            <tr>
+              <td>Trust</td>
+              <td>Signed indexes, CRL, expiry</td>
+              <td>Varies</td>
+            </tr>
+            <tr>
+              <td>Init</td>
+              <td>OpenRC / runit choice</td>
+              <td>Fixed</td>
+            </tr>
+            <tr>
+              <td>Desktop</td>
+              <td>Hyprland / minimal, user choice</td>
+              <td>Heavy fixed DE</td>
+            </tr>
+            <tr>
+              <td>ARM</td>
+              <td>Planned (aarch64)</td>
+              <td>Varies</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+      <section class="section white">
+        <div class="page">
+          <div class="heading">
+            <small>Documentation</small>
+            <h2>Everything is documented.</h2>
+            <p>
+              Architecture, security model, package recipes, CLI commands and
+              the development roadmap.
+            </p>
+          </div>
+          <div class="actions">
+            <a
+              class="button button-primary"
+              href="wiki-eng.html"
+              data-i18n="btn.openWiki"
+              >Open Wiki</a
+            >
+            <a
+              class="button button-secondary"
+              href="picu-eng.html"
+              data-i18n="btn.picuGuide"
+              >picu guide</a
+            >
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="page">
+          <div class="card">
+            <div class="eyebrow">Project status</div>
+            <h2>Concept &amp; implementation plan</h2>
+            <p>
+              Summit Linux is an independent LFS/source-based distribution
+              concept with <code>picu</code> as its package manager. The project
+              documentation defines the trust model, transaction model, build
+              isolation and staged implementation plan.
+            </p>
+            <div class="actions">
+              <a
+                class="button button-primary"
+                href="about-eng.html"
+                data-i18n="btn.aboutProject"
+                >About the project</a
+              >
+              <a
+                class="button button-secondary"
+                href="status-eng.html"
+                data-i18n="btn.systemStatus"
+                >System status</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="comments">
+        <a
+          href="https://github.com/Summit-picu/summit-picu.github.io/issues"
+          target="_blank"
+          rel="noopener"
+          >Discuss on GitHub</a
+        >
       </div>
-     </div>
-    </div>
-   </section>
-   <section class="section white">
-    <div class="page">
-     <div class="heading">
-      <small>
-       Documentation
-      </small>
-      <h2>
-       Everything is documented.
-      </h2>
-      <p>
-       Architecture, security model, package recipes, CLI commands and the development roadmap.
-      </p>
-     </div>
-     <div class="actions">
-     </div>
-    </div>
-   </section>
-   <section class="section">
-    <div class="page">
-     <div class="card">
-      <div class="eyebrow">
-       Project status
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="footer-brand" href="index.html"
+          ><img alt="" src="assets/summit.svg" />Summit Linux</a
+        >
+        <div class="footer-links">
+          <a data-i18n="nav.home" href="index.html">Home</a>
+          <a data-i18n="nav.about" href="about-eng.html">About</a>
+          <a data-i18n="nav.download" href="download-eng.html">Download</a>
+          <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
+          <a data-i18n="nav.news" href="news-eng.html">News</a>
+          <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
+          <a data-i18n="nav.status" href="status-eng.html">Status</a>
+<a href="changelog-eng.html">Changelog</a>
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+        <div class="social">
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          > · <span>Discord (soon)</span> · <span>Telegram (soon)</span>
+        </div>
       </div>
-      <h2>
-       Concept &amp; implementation plan
-      </h2>
-      <p>
-       Summit Linux is an independent LFS/source-based distribution concept with
-       <code>
-        picu
-       </code>
-       as its package manager. The project documentation defines the trust model, transaction model, build isolation and staged implementation plan.
-      </p>
-      <div class="actions">
+      <div class="copyright">
+        <span class="version">v0.3.0 · 2026-10</span> ·
+        <span data-i18n="foot.note"
+          >Summit Linux &amp; picu · Independent open-source project</span
+        >
       </div>
-     </div>
-    </div>
-   </section>
-  </main>
-  <footer class="footer">
-   <div class="footer-inner">
-    <a class="footer-brand" href="index.html">
-     <img alt="" src="assets/summit.svg"/>
-     Summit Linux
-    </a>
-    <div class="footer-links">
-     <a href="about-eng.html">
-      About
-     </a>
-     <a href="download-eng.html">
-      Download
-     </a>
-     <a href="picu-eng.html">
-      picu
-     </a>
-     <a href="news-eng.html">
-      News
-     </a>
-     <a href="https://github.com/Summit-picu" rel="noopener" target="_blank">
-      GitHub
-     </a>
-    </div>
-   </div>
-   <div class="copyright">
-    Summit Linux &amp; picu &middot; Independent open-source project
-   </div>
-  </footer>
-  <script src="js/main.js">
-  </script>
- </body>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+  </body>
 </html>

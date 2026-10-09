@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Summit Linux News</title>
+<link>https://summit-picu.github.io/</link>
+<description>Project updates and notes.</description>
+<language>en</language>
+<item><title>picu 0.3.0: trust rotation</title><link>https://summit-picu.github.io/news-eng.html</link><pubDate>Wed, 01 Oct 2026 00:00:00 +0000</pubDate><description>Signed mirrors, picu trust key rotation and index expiry checks.</description></item>
+<item><title>Site refresh v0.3.0</title><link>https://summit-picu.github.io/news-eng.html</link><pubDate>Sat, 20 Sep 2026 00:00:00 +0000</pubDate><description>New Wiki TOC, FAQ, status page and breadcrumbs across the site.</description></item>
+<item><title>Mirror signing live</title><link>https://summit-picu.github.io/news-eng.html</link><pubDate>Sat, 05 Sep 2026 00:00:00 +0000</pubDate><description>Official mirror serves signed repo.index.json with expiry.</description></item>
+</channel>
+</rss>

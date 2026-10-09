@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Статус Summit Linux — сайт, зеркала, реестр picu и CI."/>
+<meta property="og:title" content="Статус · Summit Linux"/>
+<meta property="og:description" content="Статус Summit Linux — сайт, зеркала, реестр picu и CI."/>
+<meta property="og:type" content="website"/>
+<meta property="og:image" content="assets/summit.svg"/>
+<title>Статус · Summit Linux</title>
+<link rel="stylesheet" href="css/style.css"/>
+<link rel="manifest" href="site.webmanifest"/>
+<meta name="theme-color" content="#0d1f31"/>
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+</head><body>
+<div aria-hidden="true" class="snow-overlay"></div>
+<div class="mountains mtn-1">
+<div class="mountain back"></div>
+<div class="mountain mid"></div>
+<div class="mountain front"></div>
+</div>
+<header class="header">
+<nav class="navbar">
+<a class="brand" href="index-ru.html"><img alt="Summit Linux" src="assets/summit.svg"/>Summit Linux</a>
+<div class="nav">
+<a data-i18n="nav.home" href="index-ru.html">Главная</a>
+<a data-i18n="nav.about" href="about-ru.html">О проекте</a>
+<a data-i18n="nav.download" href="download-ru.html">Скачать</a>
+<a data-i18n="nav.picu" href="picu-ru.html">picu</a>
+<a data-i18n="nav.news" href="news-ru.html">Новости</a>
+<a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
+<a href="status-ru.html" class="active">Статус</a>
+<a href="changelog-ru.html">Изменения</a>
+<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
+</div>
+<div class="lang-dropdown">
+<button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="assets/flags/ru.svg" alt=""/><span>RU</span></button>
+<ul class="lang-list" role="menu">
+<li><a class="lang-item" href="status-eng.html"><img class="lang-flag" src="assets/flags/en.svg" alt=""/><span>English</span></a></li>
+<li><a class="lang-item is-active" href="status-ru.html" aria-current="true"><img class="lang-flag" src="assets/flags/ru.svg" alt=""/><span>Русский</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="uk"><img class="lang-flag" src="assets/flags/uk.svg" alt=""/><span>Українська</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="zh"><img class="lang-flag" src="assets/flags/zh.svg" alt=""/><span>中文</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="ja"><img class="lang-flag" src="assets/flags/ja.svg" alt=""/><span>日本語</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="de"><img class="lang-flag" src="assets/flags/de.svg" alt=""/><span>Deutsch</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="fr"><img class="lang-flag" src="assets/flags/fr.svg" alt=""/><span>Français</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="pl"><img class="lang-flag" src="assets/flags/pl.svg" alt=""/><span>Polski</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="es"><img class="lang-flag" src="assets/flags/es.svg" alt=""/><span>Español</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="pt"><img class="lang-flag" src="assets/flags/pt.svg" alt=""/><span>Português</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="it"><img class="lang-flag" src="assets/flags/it.svg" alt=""/><span>Italiano</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="tr"><img class="lang-flag" src="assets/flags/tr.svg" alt=""/><span>Türkçe</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="ar"><img class="lang-flag" src="assets/flags/ar.svg" alt=""/><span>العربية</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="hi"><img class="lang-flag" src="assets/flags/hi.svg" alt=""/><span>हिन्दी</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="bn"><img class="lang-flag" src="assets/flags/bn.svg" alt=""/><span>বাংলা</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="id"><img class="lang-flag" src="assets/flags/id.svg" alt=""/><span>Bahasa Indonesia</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="vi"><img class="lang-flag" src="assets/flags/vi.svg" alt=""/><span>Tiếng Việt</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="ko"><img class="lang-flag" src="assets/flags/ko.svg" alt=""/><span>한국어</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="nl"><img class="lang-flag" src="assets/flags/nl.svg" alt=""/><span>Nederlands</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="sv"><img class="lang-flag" src="assets/flags/sv.svg" alt=""/><span>Svenska</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="cs"><img class="lang-flag" src="assets/flags/cs.svg" alt=""/><span>Čeština</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="ro"><img class="lang-flag" src="assets/flags/ro.svg" alt=""/><span>Română</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="hu"><img class="lang-flag" src="assets/flags/hu.svg" alt=""/><span>Magyar</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="el"><img class="lang-flag" src="assets/flags/el.svg" alt=""/><span>Ελληνικά</span></a></li>
+<li><a class="lang-item" href="status-eng.html" data-lang="kk"><img class="lang-flag" src="assets/flags/kk.svg" alt=""/><span>Қазақша</span></a></li>
+</ul>
+</div>
+<button class="nav-toggle" type="button" aria-label="Открыть меню" data-i18n-aria="aria.navToggle" aria-expanded="false"><span></span></button>
+</nav>
+</header>
+<main>
+<section class="content">
+<div class="page">
+<div class="content-layout">
+<aside class="sidebar">
+<ul class="tree-l1">
+<li class="active"><a href="#overview" aria-current="true">Обзор</a>
+<ul class="tree-l2">
+<li><a href="#site">Сайт</a></li>
+<li><a href="#mirrors">Зеркала</a></li>
+<li><a href="#mirror-table" data-i18n="mir.link">Список зеркал</a></li>
+<li><a href="#registry">Реестр picu</a></li>
+<li><a href="#ci">CI</a></li>
+</ul>
+</li>
+</ul>
+</aside>
+<div class="article">
+<nav class="breadcrumbs"><a data-i18n="crumb.home" href="index-ru.html">Главная</a> / <span data-i18n="nav.status">Статус</span></nav>
+<h1>Статус системы</h1>
+<nav class="toc"><strong data-i18n="toc.title">Содержание</strong><ul>
+<li><a href="#overview">Обзор</a></li>
+<li><a href="#site">Сайт</a></li>
+<li><a href="#mirrors">Зеркала</a></li>
+<li><a href="#mirror-table" data-i18n="mir.link">Список зеркал</a></li>
+<li><a href="#registry">Реестр picu</a></li>
+<li><a href="#ci">CI</a></li>
+</ul></nav>
+<div class="callout" id="overview"><strong>Обзор:</strong> Обзор инфраструктуры Summit. Сайт и CI <span style="color:#16a34a;font-weight:bold;">● работают</span>; зеркала и реестр picu — <span style="color:#b45309;font-weight:bold;">● скоро</span> · v0.3.0 · 2026-10</div>
+<div class="grid">
+<article class="card"><div class="card-icon">С</div><h3 id="site">Сайт</h3><p>Главный сайт и документы на GitHub Pages.</p><p><span style="color:#16a34a;font-weight:bold;">● Operational</span></p></article>
+<article class="card"><div class="card-icon">З</div><h3 id="mirrors">Зеркала</h3><p>Официальное зеркало: индекс и подписи — скоро.</p><p><span style="color:#b45309;font-weight:bold;">● Скоро</span></p></article>
+<article class="card"><div class="card-icon">Р</div><h3 id="registry">Реестр picu</h3><p>Индекс пакетов repo.index.json и рецепты — скоро.</p><p><span style="color:#b45309;font-weight:bold;">● Скоро</span></p></article>
+<article class="card"><div class="card-icon">CI</div><h3 id="ci">CI</h3><p>Сборки и проверки сайта и документов.</p><p><span style="color:#16a34a;font-weight:bold;">● Operational</span></p></article>
+</div>
+<h3 id="mirror-table" data-i18n="mir.title">Официальные / зеркала сообщества</h3>
+<table class="table">
+<tr><th data-i18n="mir.col.mirror">Зеркало</th><th data-i18n="mir.col.url">URL</th><th data-i18n="mir.col.status">Статус</th></tr>
+<tr><td data-i18n="mir.official">Официальное зеркало</td><td data-i18n="mir.officialUrlShort"><code>mirror.summit-linux.org</code> (скоро)</td><td data-i18n="mir.comingSoon">Скоро</td></tr>
+<tr><td data-i18n="mir.communities">Зеркала сообщества</td><td data-i18n="mir.none">—</td><td data-i18n="mir.comingSoon">Скоро</td></tr>
+</table>
+<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="footer">
+<div class="footer-inner">
+<a class="footer-brand" href="index-ru.html"><img alt="" src="assets/summit.svg"/>Summit Linux</a>
+<div class="footer-links">
+<a data-i18n="nav.home" href="index-ru.html">Главная</a>
+<a data-i18n="nav.about" href="about-ru.html">О проекте</a>
+<a data-i18n="nav.download" href="download-ru.html">Скачать</a>
+<a data-i18n="nav.picu" href="picu-ru.html">picu</a>
+<a data-i18n="nav.news" href="news-ru.html">Новости</a>
+<a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
+<a data-i18n="nav.status" href="status-ru.html">Статус</a>
+<a href="changelog-ru.html">Изменения</a>
+<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
+</div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (скоро)</span> · <span>Telegram (скоро)</span></div>
+</div>
+<div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux и picu · Независимый проект с открытым исходным кодом</span></div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/i18n.js"></script>
+</body>
+</html>
