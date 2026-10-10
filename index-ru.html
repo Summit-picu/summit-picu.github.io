@@ -19,6 +19,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
   </head>
   <body>
     <div aria-hidden="true" class="snow-overlay"></div>
@@ -33,14 +34,14 @@
           ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
         >
         <div class="nav">
-          <a href="index-ru.html" class="active">Главная</a>
+          <a href="index-ru.html" class="active" data-i18n="nav.home">Главная</a>
           <a data-i18n="nav.about" href="about-ru.html">О проекте</a>
           <a data-i18n="nav.download" href="download-ru.html">Скачать</a>
           <a data-i18n="nav.picu" href="picu-ru.html">picu</a>
           <a data-i18n="nav.news" href="news-ru.html">Новости</a>
           <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
           <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -311,19 +312,20 @@
       <section class="section">
         <div class="page">
           <div class="callout">
-            <strong>Скоро:</strong> подписанные зеркала, ротация ключей
-            <code>picu trust</code> и обновлённый сайт. См.
-            <a href="news-ru.html">Новости</a> и
-            <a href="wiki-ru.html">Вики</a>.
+            <strong data-i18n="idx.calloutLabel">Скоро:</strong>
+            <span data-i18n="idx.calloutText">подписанные зеркала, ротация ключей <code>picu trust</code> и обновлённый сайт. См.</span>
+            <a href="news-ru.html" data-i18n="nav.news">Новости</a>
+            <span data-i18n="idx.calloutAnd">и</span>
+            <a href="wiki-ru.html" data-i18n="nav.wiki">Вики</a>.
           </div>
         </div>
       </section>
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Философия Summit</small>
-            <h2>Построен с нуля.</h2>
-            <p>
+            <small data-i18n="idx.philoKicker">Философия Summit</small>
+            <h2 data-i18n="idx.philoTitle">Построен с нуля.</h2>
+            <p data-i18n="idx.philoLead">
               Summit Linux следует принципам Linux From Scratch: прозрачные
               компоненты, контролируемая сборка и минимум лишнего софта.
             </p>
@@ -338,8 +340,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>LFS / На основе исходников</h3>
-              <p>
+              <h3 data-i18n="idx.cardLfsTitle">LFS / На основе исходников</h3>
+              <p data-i18n="idx.cardLfsText">
                 Summit построен на основе Linux From Scratch и сборки системы из
                 исходников.
               </p>
@@ -353,8 +355,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>picu</h3>
-              <p>
+              <h3 data-i18n="idx.cardPicuTitle">picu</h3>
+              <p data-i18n="idx.cardPicuText">
                 Пакетный менеджер, способный собирать из исходников,
                 устанавливать бинарные пакеты, управлять репозиториями и
                 выполнять криптографическую проверку.
@@ -369,8 +371,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>Доверие по умолчанию</h3>
-              <p>
+              <h3 data-i18n="idx.cardTrustTitle">Доверие по умолчанию</h3>
+              <p data-i18n="idx.cardTrustText">
                 Подписанные зеркала, доверенные ключи, поддержка CRL и защита от
                 отката версий.
               </p>
@@ -381,13 +383,13 @@
       <section class="section">
         <div class="page">
           <div class="heading">
-            <small>Управление пакетами</small>
-            <h2>Знакомьтесь: picu.</h2>
-            <p>Пакетный менеджер, созданный специально для Summit Linux.</p>
+            <small data-i18n="idx.picuKicker">Управление пакетами</small>
+            <h2 data-i18n="idx.picuTitle">Знакомьтесь: picu.</h2>
+            <p data-i18n="idx.picuLead">Пакетный менеджер, созданный специально для Summit Linux.</p>
           </div>
           <div class="card">
             <img class="picu-logo" src="assets/picu.svg" alt="picu" />
-            <p>
+            <p data-i18n="idx.picuDesc">
               picu управляет репозиториями, рецептами сборки, бинарными
               пакетами, подписями, хранилищами доверия и базами пакетов.
             </p>
@@ -435,45 +437,45 @@ $ picu add vim
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Сравнение</small>
-            <h2>Summit и другие.</h2>
-            <p>Почему система из исходников с подписанными индексами.</p>
+            <small data-i18n="idx.compareKicker">Сравнение</small>
+            <h2 data-i18n="idx.compareTitle">Summit и другие.</h2>
+            <p data-i18n="idx.compareLead">Почему система из исходников с подписанными индексами.</p>
           </div>
           <table class="table">
             <tr>
-              <th>Параметр</th>
-              <th>Summit</th>
-              <th>Другие</th>
+              <th data-i18n="idx.tblFeature">Параметр</th>
+              <th data-i18n="idx.tblSummit">Summit</th>
+              <th data-i18n="idx.tblOthers">Другие</th>
             </tr>
             <tr>
-              <td>База</td>
-              <td>LFS / из исходников</td>
-              <td>Готовые бинарники</td>
+              <td data-i18n="idx.rowBase">База</td>
+              <td data-i18n="idx.rowBaseSummit">LFS / из исходников</td>
+              <td data-i18n="idx.rowBaseOthers">Готовые бинарники</td>
             </tr>
             <tr>
-              <td>Менеджер пакетов</td>
-              <td>picu (исходники + бинарники)</td>
-              <td>Только бинарники</td>
+              <td data-i18n="idx.rowPkg">Менеджер пакетов</td>
+              <td data-i18n="idx.rowPkgSummit">picu (исходники + бинарники)</td>
+              <td data-i18n="idx.rowPkgOthers">Только бинарники</td>
             </tr>
             <tr>
-              <td>Доверие</td>
-              <td>Подписанные индексы, CRL, срок действия</td>
-              <td>По-разному</td>
+              <td data-i18n="idx.rowTrust">Доверие</td>
+              <td data-i18n="idx.rowTrustSummit">Подписанные индексы, CRL, срок действия</td>
+              <td data-i18n="idx.rowTrustOthers">По-разному</td>
             </tr>
             <tr>
-              <td>Init</td>
-              <td>OpenRC / runit на выбор</td>
-              <td>Фиксированный</td>
+              <td data-i18n="idx.rowInit">Init</td>
+              <td data-i18n="idx.rowInitSummit">OpenRC / runit на выбор</td>
+              <td data-i18n="idx.rowInitOthers">Фиксированный</td>
             </tr>
             <tr>
-              <td>Рабочий стол</td>
-              <td>Hyprland / минимальный, на выбор</td>
-              <td>Тяжёлое фиксированное DE</td>
+              <td data-i18n="idx.rowDesktop">Рабочий стол</td>
+              <td data-i18n="idx.rowDesktopSummit">Hyprland / минимальный, на выбор</td>
+              <td data-i18n="idx.rowDesktopOthers">Тяжёлое фиксированное DE</td>
             </tr>
             <tr>
-              <td>ARM</td>
-              <td>Запланировано (aarch64)</td>
-              <td>По-разному</td>
+              <td data-i18n="idx.rowArm">ARM</td>
+              <td data-i18n="idx.rowArmSummit">Запланировано (aarch64)</td>
+              <td data-i18n="idx.rowTrustOthers">По-разному</td>
             </tr>
           </table>
         </div>
@@ -481,9 +483,9 @@ $ picu add vim
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Документация</small>
-            <h2>Всё задокументировано.</h2>
-            <p>
+            <small data-i18n="idx.docsKicker">Документация</small>
+            <h2 data-i18n="idx.docsTitle">Всё задокументировано.</h2>
+            <p data-i18n="idx.docsLead">
               Архитектура, модель безопасности, рецепты пакетов, команды CLI и
               дорожная карта разработки.
             </p>
@@ -507,9 +509,9 @@ $ picu add vim
       <section class="section">
         <div class="page">
           <div class="card">
-            <div class="eyebrow">Статус проекта</div>
-            <h2>Концепция и план реализации</h2>
-            <p>
+            <div class="eyebrow" data-i18n="idx.statusEyebrow">Статус проекта</div>
+            <h2 data-i18n="idx.statusTitle">Концепция и план реализации</h2>
+            <p data-i18n="idx.statusText">
               Summit Linux — независимый дистрибутив Linux на основе LFS и
               исходного кода, использующий <code>picu</code> как пакетный
               менеджер. Документация проекта описывает модель доверия, модель
@@ -534,10 +536,11 @@ $ picu add vim
       </section>
       <div class="comments">
         <a
+          class="discuss-plain"
           href="https://github.com/Summit-picu/summit-picu.github.io/issues"
           target="_blank"
           rel="noopener"
-          >Discuss on GitHub</a
+          ><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a
         >
       </div>
     </main>
@@ -554,7 +557,7 @@ $ picu add vim
           <a data-i18n="nav.news" href="news-ru.html">Новости</a>
           <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
           <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -568,7 +571,7 @@ $ picu add vim
             target="_blank"
             rel="noopener"
             >GitHub</a
-          > · <span>Discord (скоро)</span> · <span>Telegram (скоро)</span>
+          > · <span data-i18n="social.discord">Discord (скоро)</span> · <span data-i18n="social.telegram">Telegram (скоро)</span>
         </div>
       </div>
       <div class="copyright">

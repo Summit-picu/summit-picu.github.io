@@ -1,0 +1,233 @@
+/* ==========================================================================
+   Summit Linux — FEST Halloween overlay.
+   Scope: html[data-fest="halloween"] only. No images — webs are pure CSS
+   gradients. Loaded dynamically by js/fest.js on ?fest=halloween.
+   Base theme (css/style.css) untouched.
+   ========================================================================== */
+
+/* ---- Tokens: dark violet bg, orange accents ------------------------------ */
+html[data-fest="halloween"] {
+  --background: #160f24;
+  --surface: #221638;
+  --surface-2: #2b1d45;
+  --text: #f3e8d8;
+  --muted: #c9b3a3;
+  --muted-light: #a08bb0;
+  --border: #453063;
+  --blue: #ffb347;
+  --blue-dark: #e07b1a;
+  --blue-soft: #33204f;
+  --accent: #ff8c1a;
+  --accent-2: #ffb347;
+  --accent-glow: rgba(255, 140, 26, 0.35);
+  --code-fg: #ffd9a0;
+  --code-bg: #33204f;
+  color-scheme: dark;
+}
+
+html[data-fest="halloween"] body {
+  background: #160f24;
+  background-image: none;
+  color: #f3e8d8;
+}
+
+/* ---- Mountains: night violet -------------------------------------------- */
+html[data-fest="halloween"] .mountains {
+  background: linear-gradient(to bottom, #120a1e 0%, #1c1230 52%, #25173d 100%);
+}
+html[data-fest="halloween"] .mountain.back {
+  background: linear-gradient(to bottom, #3a2658 0%, #2c1c46 70%, #231739 100%);
+}
+html[data-fest="halloween"] .mountain.mid {
+  background: linear-gradient(to bottom, #2f2049 0%, #241839 70%, #1d132e 100%);
+}
+html[data-fest="halloween"] .mountain.front {
+  background: linear-gradient(to bottom, #261a3d 0%, #1a1129 70%, #140d20 100%);
+}
+html[data-fest="halloween"] .mountain::after {
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 180, 90, 0.35) 0%,
+    rgba(255, 140, 26, 0.15) 60%,
+    rgba(255, 140, 26, 0) 100%
+  );
+  opacity: 0.6;
+}
+
+/* ---- Surfaces: cards / article / navbar / toc / comments ----------------- */
+html[data-fest="halloween"] .navbar {
+  background: rgba(34, 22, 56, 0.94);
+  border-color: #ff8c1a;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
+}
+html[data-fest="halloween"] .brand,
+html[data-fest="halloween"] .nav a:hover,
+html[data-fest="halloween"] .nav a.active,
+html[data-fest="halloween"] .heading h2,
+html[data-fest="halloween"] .article h1,
+html[data-fest="halloween"] .article h2,
+html[data-fest="halloween"] .card h3 {
+  color: #ffb347;
+}
+html[data-fest="halloween"] .nav a {
+  color: #c9b3a3;
+}
+html[data-fest="halloween"] .nav a::after {
+  background: #ff8c1a;
+}
+html[data-fest="halloween"] .card,
+html[data-fest="halloween"] .news-card,
+html[data-fest="halloween"] .article,
+html[data-fest="halloween"] .content .page,
+html[data-fest="halloween"] .toc,
+html[data-fest="halloween"] .comments,
+html[data-fest="halloween"] .hot-news {
+  background: #221638;
+  background-image: none;
+  border-color: #453063;
+  color: #f3e8d8;
+}
+html[data-fest="halloween"] .card::before,
+html[data-fest="halloween"] .news-card::before {
+  background: linear-gradient(90deg, #ff8c1a, #ffb347);
+  background-image: linear-gradient(90deg, #ff8c1a, #ffb347);
+}
+html[data-fest="halloween"] .comments a,
+html[data-fest="halloween"] .news-card-link,
+html[data-fest="halloween"] .toc a:hover,
+html[data-fest="halloween"] .breadcrumbs a {
+  color: #ffb347;
+}
+html[data-fest="halloween"] .button-primary {
+  background: #e07b1a;
+  background-image: none;
+  border-color: transparent;
+  color: #160f24;
+}
+html[data-fest="halloween"] .button-primary:hover {
+  background: #ff8c1a;
+  background-image: none;
+}
+html[data-fest="halloween"] .footer {
+  background: #120a1e;
+  background-image: none;
+  color: #f3e8d8;
+}
+html[data-fest="halloween"] .footer::before {
+  background: linear-gradient(90deg, #ff8c1a 0%, #ffb347 55%, #7a3fa0 100%);
+  background-image: linear-gradient(
+    90deg,
+    #ff8c1a 0%,
+    #ffb347 55%,
+    #7a3fa0 100%
+  );
+}
+
+/* ---- Webs in corners: pure CSS (radial rings + conic spokes), no imgs ---- */
+html[data-fest="halloween"] body::before,
+html[data-fest="halloween"] body::after {
+  content: "";
+  position: fixed;
+  width: 220px;
+  height: 220px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: 0.55;
+}
+html[data-fest="halloween"] body::before {
+  top: 0;
+  left: 0;
+  background:
+    repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0 18px,
+      rgba(200, 180, 220, 0.35) 18px 19px
+    ),
+    repeating-conic-gradient(
+      from 0deg at 0 0,
+      rgba(200, 180, 220, 0.3) 0deg 1deg,
+      transparent 1deg 15deg
+    );
+  border-bottom-right-radius: 100%;
+}
+html[data-fest="halloween"] body::after {
+  top: 0;
+  right: 0;
+  background:
+    repeating-radial-gradient(
+      circle at 100% 0,
+      transparent 0 18px,
+      rgba(200, 180, 220, 0.35) 18px 19px
+    ),
+    repeating-conic-gradient(
+      from 0deg at 100% 0,
+      rgba(200, 180, 220, 0.3) 0deg 1deg,
+      transparent 1deg 15deg
+    );
+  border-bottom-left-radius: 100%;
+}
+
+/* ---- Pumpkin badge (inserted by fest.js as .fest-badge) ------------------- */
+html[data-fest="halloween"] .fest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #ff8c1a;
+  border-radius: 999px;
+  color: #1c0f00;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 22px rgba(255, 140, 26, 0.4);
+}
+html[data-fest="halloween"] .fest-badge::before {
+  content: "🎃";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+/* ---- Leaves canvas (painted by fest.js, same ladder as snow) -------------- */
+.fest-leaves-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ---- Inline-SVG decor layer (inserted by fest.js as .fest-decor) ---------- */
+html[data-fest="halloween"] .fest-decor {
+  position: fixed;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+html[data-fest="halloween"] .fest-decor svg {
+  position: absolute;
+  opacity: 0.8;
+}
+html[data-fest="halloween"] .fest-decor .fest-web-tl {
+  top: 64px;
+  left: 0;
+}
+html[data-fest="halloween"] .fest-decor .fest-web-tr {
+  top: 64px;
+  right: 0;
+}
+html[data-fest="halloween"] .fest-decor .fest-pumpkin {
+  bottom: 12px;
+  right: 14px;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-fest="halloween"] body::before,
+  html[data-fest="halloween"] body::after {
+    display: none;
+  }
+  .fest-leaves-canvas {
+    display: none;
+  }
+}

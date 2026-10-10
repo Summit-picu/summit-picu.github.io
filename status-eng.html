@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
 <div class="mountains mtn-3">
@@ -30,8 +31,8 @@
 <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
-<a href="status-eng.html" class="active">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="status-eng.html" class="active" data-i18n="nav.status">Status</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -73,34 +74,34 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#overview" aria-current="true">Overview</a>
+<li class="active"><a href="#overview" aria-current="true" data-i18n="st.sec.overview">Overview</a>
 <ul class="tree-l2">
-<li><a href="#site">Site</a></li>
-<li><a href="#mirrors">Mirrors</a></li>
+<li><a href="#site" data-i18n="st.sec.site">Site</a></li>
+<li><a href="#mirrors" data-i18n="st.sec.mirrors">Mirrors</a></li>
 <li><a href="#mirror-table" data-i18n="mir.link">Mirror list</a></li>
-<li><a href="#registry">picu registry</a></li>
-<li><a href="#ci">CI</a></li>
+<li><a href="#registry" data-i18n="st.sec.registry">picu registry</a></li>
+<li><a href="#ci" data-i18n="st.sec.ci">CI</a></li>
 </ul>
 </li>
 </ul>
 </aside>
 <div class="article">
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index.html">Home</a> / <span data-i18n="nav.status">Status</span></nav>
-<h1>System status</h1>
+<h1 data-i18n="st.title">System status</h1>
 <nav class="toc"><strong data-i18n="toc.title">Contents</strong><ul>
-<li><a href="#overview">Overview</a></li>
-<li><a href="#site">Site</a></li>
-<li><a href="#mirrors">Mirrors</a></li>
+<li><a href="#overview" data-i18n="st.sec.overview">Overview</a></li>
+<li><a href="#site" data-i18n="st.sec.site">Site</a></li>
+<li><a href="#mirrors" data-i18n="st.sec.mirrors">Mirrors</a></li>
 <li><a href="#mirror-table" data-i18n="mir.link">Mirror list</a></li>
-<li><a href="#registry">picu registry</a></li>
-<li><a href="#ci">CI</a></li>
+<li><a href="#registry" data-i18n="st.sec.registry">picu registry</a></li>
+<li><a href="#ci" data-i18n="st.sec.ci">CI</a></li>
 </ul></nav>
-<div class="callout" id="overview"><strong>Overview:</strong> Live overview of Summit infrastructure. Site and CI are <span style="color:#16a34a;font-weight:bold;">● Operational</span>; mirrors and picu registry — <span style="color:#b45309;font-weight:bold;">● Coming soon</span> · v0.3.0 · 2026-10</div>
+<div class="callout" id="overview"><strong data-i18n="st.ovLabel">Overview:</strong> <span data-i18n="st.ovA">Live overview of Summit infrastructure. Site and CI are</span> <span style="color:#16a34a;font-weight:bold;" data-i18n="st.op">● Operational</span><span data-i18n="st.ovB">; mirrors and picu registry —</span> <span style="color:#b45309;font-weight:bold;" data-i18n="st.soon">● Coming soon</span> · v0.3.0 · 2026-10</div>
 <div class="grid">
-<article class="card"><div class="card-icon">S</div><h3 id="site">Site</h3><p>Main site and docs on GitHub Pages.</p><p><span style="color:#16a34a;font-weight:bold;">● Operational</span></p></article>
-<article class="card"><div class="card-icon">M</div><h3 id="mirrors">Mirrors</h3><p>Official mirror index and signatures — coming soon.</p><p><span style="color:#b45309;font-weight:bold;">● Coming soon</span></p></article>
-<article class="card"><div class="card-icon">P</div><h3 id="registry">picu registry</h3><p>Package index repo.index.json and recipes — coming soon.</p><p><span style="color:#b45309;font-weight:bold;">● Coming soon</span></p></article>
-<article class="card"><div class="card-icon">CI</div><h3 id="ci">CI</h3><p>Builds and checks for site and docs.</p><p><span style="color:#16a34a;font-weight:bold;">● Operational</span></p></article>
+<article class="card"><div class="card-icon">S</div><h3 id="site" data-i18n="st.sec.site">Site</h3><p data-i18n="st.card.site">Main site and docs on GitHub Pages.</p><p><span style="color:#16a34a;font-weight:bold;" data-i18n="st.op">● Operational</span></p></article>
+<article class="card"><div class="card-icon">M</div><h3 id="mirrors" data-i18n="st.sec.mirrors">Mirrors</h3><p data-i18n="st.card.mirrors">Official mirror index and signatures — coming soon.</p><p><span style="color:#b45309;font-weight:bold;" data-i18n="st.soon">● Coming soon</span></p></article>
+<article class="card"><div class="card-icon">P</div><h3 id="registry" data-i18n="st.sec.registry">picu registry</h3><p data-i18n="st.card.registry">Package index repo.index.json and recipes — coming soon.</p><p><span style="color:#b45309;font-weight:bold;" data-i18n="st.soon">● Coming soon</span></p></article>
+<article class="card"><div class="card-icon">CI</div><h3 id="ci" data-i18n="st.sec.ci">CI</h3><p data-i18n="st.card.ci">Builds and checks for site and docs.</p><p><span style="color:#16a34a;font-weight:bold;" data-i18n="st.op">● Operational</span></p></article>
 </div>
 <h3 id="mirror-table" data-i18n="mir.title">Official / Community mirrors</h3>
 <table class="table">
@@ -108,7 +109,7 @@
 <tr><td data-i18n="mir.official">Official mirror</td><td data-i18n="mir.officialUrlShort"><code>mirror.summit-linux.org</code> (coming soon)</td><td data-i18n="mir.comingSoon">Coming soon</td></tr>
 <tr><td data-i18n="mir.communities">Community mirrors</td><td data-i18n="mir.none">—</td><td data-i18n="mir.comingSoon">Coming soon</td></tr>
 </table>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -125,10 +126,10 @@
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (soon)</span> · <span>Telegram (soon)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux &amp; picu · Independent open-source project</span></div>
 </footer>

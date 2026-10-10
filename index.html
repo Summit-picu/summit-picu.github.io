@@ -19,6 +19,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
   </head>
   <body>
     <div aria-hidden="true" class="snow-overlay"></div>
@@ -33,14 +34,14 @@
           ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
         >
         <div class="nav">
-          <a href="index.html" class="active">Home</a>
+          <a href="index.html" class="active" data-i18n="nav.home">Home</a>
           <a data-i18n="nav.about" href="about-eng.html">About</a>
           <a data-i18n="nav.download" href="download-eng.html">Download</a>
           <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
           <a data-i18n="nav.news" href="news-eng.html">News</a>
           <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
           <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -311,19 +312,20 @@
       <section class="section">
         <div class="page">
           <div class="callout">
-            <strong>Coming soon:</strong> signed mirrors,
-            <code>picu trust</code> key rotation and refreshed site. See
-            <a href="news-eng.html">News</a> and
-            <a href="wiki-eng.html">Wiki</a>.
+            <strong data-i18n="idx.calloutLabel">Coming soon:</strong>
+            <span data-i18n="idx.calloutText">signed mirrors, <code>picu trust</code> key rotation and refreshed site. See</span>
+            <a href="news-eng.html" data-i18n="nav.news">News</a>
+            <span data-i18n="idx.calloutAnd">and</span>
+            <a href="wiki-eng.html" data-i18n="nav.wiki">Wiki</a>.
           </div>
         </div>
       </section>
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Summit philosophy</small>
-            <h2>Built from scratch.</h2>
-            <p>
+            <small data-i18n="idx.philoKicker">Summit philosophy</small>
+            <h2 data-i18n="idx.philoTitle">Built from scratch.</h2>
+            <p data-i18n="idx.philoLead">
               Summit Linux follows the principles of Linux From Scratch:
               transparent components, controlled builds, and minimal software.
             </p>
@@ -338,8 +340,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>LFS / Source-based</h3>
-              <p>
+              <h3 data-i18n="idx.cardLfsTitle">LFS / Source-based</h3>
+              <p data-i18n="idx.cardLfsText">
                 Summit is built on Linux From Scratch and source-based system
                 construction.
               </p>
@@ -353,8 +355,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>picu</h3>
-              <p>
+              <h3 data-i18n="idx.cardPicuTitle">picu</h3>
+              <p data-i18n="idx.cardPicuText">
                 A package manager that can build from source, install binary
                 packages, manage repositories, and perform cryptographic
                 verification.
@@ -369,8 +371,8 @@
                   aria-hidden="true"
                 />
               </div>
-              <h3>Trust by default</h3>
-              <p>
+              <h3 data-i18n="idx.cardTrustTitle">Trust by default</h3>
+              <p data-i18n="idx.cardTrustText">
                 Signed mirrors, trusted keys, CRL support, and downgrade
                 protection.
               </p>
@@ -381,13 +383,13 @@
       <section class="section">
         <div class="page">
           <div class="heading">
-            <small>Package management</small>
-            <h2>Meet picu.</h2>
-            <p>A package manager built specifically for Summit Linux.</p>
+            <small data-i18n="idx.picuKicker">Package management</small>
+            <h2 data-i18n="idx.picuTitle">Meet picu.</h2>
+            <p data-i18n="idx.picuLead">A package manager built specifically for Summit Linux.</p>
           </div>
           <div class="card">
             <img class="picu-logo" src="assets/picu.svg" alt="picu" />
-            <p>
+            <p data-i18n="idx.picuDesc">
               picu manages repositories, build recipes, binary packages,
               signatures, trust stores, and package databases.
             </p>
@@ -435,45 +437,45 @@ $ picu add vim
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Compare</small>
-            <h2>Summit vs others.</h2>
-            <p>Why a source-based system with signed indexes.</p>
+            <small data-i18n="idx.compareKicker">Compare</small>
+            <h2 data-i18n="idx.compareTitle">Summit vs others.</h2>
+            <p data-i18n="idx.compareLead">Why a source-based system with signed indexes.</p>
           </div>
           <table class="table">
             <tr>
-              <th>Feature</th>
-              <th>Summit</th>
-              <th>Others</th>
+              <th data-i18n="idx.tblFeature">Feature</th>
+              <th data-i18n="idx.tblSummit">Summit</th>
+              <th data-i18n="idx.tblOthers">Others</th>
             </tr>
             <tr>
-              <td>Base</td>
-              <td>LFS / source-based</td>
-              <td>Prebuilt binaries</td>
+              <td data-i18n="idx.rowBase">Base</td>
+              <td data-i18n="idx.rowBaseSummit">LFS / source-based</td>
+              <td data-i18n="idx.rowBaseOthers">Prebuilt binaries</td>
             </tr>
             <tr>
-              <td>Package manager</td>
-              <td>picu (source + binary)</td>
-              <td>Binary-only</td>
+              <td data-i18n="idx.rowPkg">Package manager</td>
+              <td data-i18n="idx.rowPkgSummit">picu (source + binary)</td>
+              <td data-i18n="idx.rowPkgOthers">Binary-only</td>
             </tr>
             <tr>
-              <td>Trust</td>
-              <td>Signed indexes, CRL, expiry</td>
-              <td>Varies</td>
+              <td data-i18n="idx.rowTrust">Trust</td>
+              <td data-i18n="idx.rowTrustSummit">Signed indexes, CRL, expiry</td>
+              <td data-i18n="idx.rowTrustOthers">Varies</td>
             </tr>
             <tr>
-              <td>Init</td>
-              <td>OpenRC / runit choice</td>
-              <td>Fixed</td>
+              <td data-i18n="idx.rowInit">Init</td>
+              <td data-i18n="idx.rowInitSummit">OpenRC / runit choice</td>
+              <td data-i18n="idx.rowInitOthers">Fixed</td>
             </tr>
             <tr>
-              <td>Desktop</td>
-              <td>Hyprland / minimal, user choice</td>
-              <td>Heavy fixed DE</td>
+              <td data-i18n="idx.rowDesktop">Desktop</td>
+              <td data-i18n="idx.rowDesktopSummit">Hyprland / minimal, user choice</td>
+              <td data-i18n="idx.rowDesktopOthers">Heavy fixed DE</td>
             </tr>
             <tr>
-              <td>ARM</td>
-              <td>Planned (aarch64)</td>
-              <td>Varies</td>
+              <td data-i18n="idx.rowArm">ARM</td>
+              <td data-i18n="idx.rowArmSummit">Planned (aarch64)</td>
+              <td data-i18n="idx.rowTrustOthers">Varies</td>
             </tr>
           </table>
         </div>
@@ -481,9 +483,9 @@ $ picu add vim
       <section class="section white">
         <div class="page">
           <div class="heading">
-            <small>Documentation</small>
-            <h2>Everything is documented.</h2>
-            <p>
+            <small data-i18n="idx.docsKicker">Documentation</small>
+            <h2 data-i18n="idx.docsTitle">Everything is documented.</h2>
+            <p data-i18n="idx.docsLead">
               Architecture, security model, package recipes, CLI commands and
               the development roadmap.
             </p>
@@ -507,9 +509,9 @@ $ picu add vim
       <section class="section">
         <div class="page">
           <div class="card">
-            <div class="eyebrow">Project status</div>
-            <h2>Concept &amp; implementation plan</h2>
-            <p>
+            <div class="eyebrow" data-i18n="idx.statusEyebrow">Project status</div>
+            <h2 data-i18n="idx.statusTitle">Concept &amp; implementation plan</h2>
+            <p data-i18n="idx.statusText">
               Summit Linux is an independent LFS/source-based distribution
               concept with <code>picu</code> as its package manager. The project
               documentation defines the trust model, transaction model, build
@@ -534,10 +536,11 @@ $ picu add vim
       </section>
       <div class="comments">
         <a
+          class="discuss-plain"
           href="https://github.com/Summit-picu/summit-picu.github.io/issues"
           target="_blank"
           rel="noopener"
-          >Discuss on GitHub</a
+          ><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a
         >
       </div>
     </main>
@@ -554,7 +557,7 @@ $ picu add vim
           <a data-i18n="nav.news" href="news-eng.html">News</a>
           <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
           <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -568,7 +571,7 @@ $ picu add vim
             target="_blank"
             rel="noopener"
             >GitHub</a
-          > · <span>Discord (soon)</span> · <span>Telegram (soon)</span>
+          > · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span>
         </div>
       </div>
       <div class="copyright">

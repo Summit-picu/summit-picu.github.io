@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
 <div class="mountains mtn-3">
@@ -25,13 +26,13 @@
 <a class="brand" href="index-ru.html"><img alt="Summit Linux" src="assets/summit.svg"/>Summit Linux</a>
 <div class="nav">
 <a data-i18n="nav.home" href="index-ru.html">Главная</a>
-<a href="about-ru.html" class="active">О проекте</a>
+<a href="about-ru.html" class="active" data-i18n="nav.about">О проекте</a>
 <a data-i18n="nav.download" href="download-ru.html">Скачать</a>
 <a data-i18n="nav.picu" href="picu-ru.html">picu</a>
 <a data-i18n="nav.news" href="news-ru.html">Новости</a>
 <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
 <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -73,31 +74,31 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#principles" aria-current="true">Основные принципы</a>
+<li class="active"><a href="#principles" aria-current="true" data-i18n="abt.sec.principles">Основные принципы</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#base">Базовая система</a>
+<li><a href="#base" data-i18n="abt.sec.base">Базовая система</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#style">Визуальный стиль</a>
+<li><a href="#style" data-i18n="abt.sec.style">Визуальный стиль</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#mission">Наша миссия</a>
+<li><a href="#mission" data-i18n="abt.sec.mission">Наша миссия</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#features">Возможности</a>
+<li><a href="#features" data-i18n="abt.sec.features">Возможности</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#stack">Стек picu</a>
+<li><a href="#stack" data-i18n="abt.sec.stack">Стек picu</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#roadmap">Дорожная карта</a>
+<li><a href="#roadmap" data-i18n="abt.sec.roadmap">Дорожная карта</a>
 <ul class="tree-l2">
 </ul>
 </li>
@@ -105,58 +106,58 @@
 </aside>
 <div class="article">
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index-ru.html">Главная</a> / <span data-i18n="nav.about">О проекте</span></nav>
-<h1>О проекте Summit Linux</h1>
+<h1 data-i18n="abt.title">О проекте Summit Linux</h1>
 <nav class="toc"><strong data-i18n="toc.title">Содержание</strong><ul>
-<li><a href="#principles">Основные принципы</a></li>
-<li><a href="#base">Базовая система</a></li>
-<li><a href="#style">Визуальный стиль</a></li>
-<li><a href="#mission">Наша миссия</a></li>
-<li><a href="#features">Возможности</a></li>
-<li><a href="#stack">Стек picu</a></li>
-<li><a href="#roadmap">Дорожная карта</a></li>
+<li><a href="#principles" data-i18n="abt.sec.principles">Основные принципы</a></li>
+<li><a href="#base" data-i18n="abt.sec.base">Базовая система</a></li>
+<li><a href="#style" data-i18n="abt.sec.style">Визуальный стиль</a></li>
+<li><a href="#mission" data-i18n="abt.sec.mission">Наша миссия</a></li>
+<li><a href="#features" data-i18n="abt.sec.features">Возможности</a></li>
+<li><a href="#stack" data-i18n="abt.sec.stack">Стек picu</a></li>
+<li><a href="#roadmap" data-i18n="abt.sec.roadmap">Дорожная карта</a></li>
 </ul></nav>
-<p>Summit Linux — это независимый дистрибутив Linux, собираемый из исходного кода по принципам Linux From Scratch.</p>
-<div class="callout"><strong>Философия:</strong> прозрачность вместо магии, рецепт вместо чёрного ящика.</div>
-<h2 id="principles">Основные принципы</h2>
+<p data-i18n="abt.intro">Summit Linux — это независимый дистрибутив Linux, собираемый из исходного кода по принципам Linux From Scratch.</p>
+<div class="callout"><strong data-i18n="abt.philoLabel">Философия:</strong> <span data-i18n="abt.philoText">прозрачность вместо магии, рецепт вместо чёрного ящика.</span></div>
+<h2 id="principles" data-i18n="abt.sec.principles">Основные принципы</h2>
 <ul>
-<li>Полный контроль над флагами компиляции.</li>
-<li>Минимум лишнего программного обеспечения.</li>
-<li>Декларативные рецепты пакетов.</li>
-<li>Воспроизводимые и проверяемые сборки.</li>
-<li>Криптографически проверенные репозитории.</li>
-<li>Стабильное и предсказуемое поведение системы.</li>
+<li data-i18n="abt.li.1">Полный контроль над флагами компиляции.</li>
+<li data-i18n="abt.li.2">Минимум лишнего программного обеспечения.</li>
+<li data-i18n="abt.li.3">Декларативные рецепты пакетов.</li>
+<li data-i18n="abt.li.4">Воспроизводимые и проверяемые сборки.</li>
+<li data-i18n="abt.li.5">Криптографически проверенные репозитории.</li>
+<li data-i18n="abt.li.6">Стабильное и предсказуемое поведение системы.</li>
 </ul>
-<h2 id="base">Базовая система</h2>
-<p>Summit ориентирован на опытных пользователей Linux и построен по модели LFS/сборки из исходников.</p>
+<h2 id="base" data-i18n="abt.sec.base">Базовая система</h2>
+<p data-i18n="abt.baseP">Summit ориентирован на опытных пользователей Linux и построен по модели LFS/сборки из исходников.</p>
 <table class="table">
-<tr><th>Компонент</th><th>Summit</th></tr>
-<tr><td>Основа</td><td>LFS / На основе исходников</td></tr>
-<tr><td>Пакетный менеджер</td><td>picu</td></tr>
-<tr><td>Аудитория</td><td>Опытные пользователи и администраторы</td></tr>
-<tr><td>Init-система</td><td>OpenRC / sysvinit / опционально runit</td></tr>
-<tr><td>Окружение по умолчанию</td><td>Минимальный CLI</td></tr>
+<tr><th data-i18n="abt.thComp">Компонент</th><th>Summit</th></tr>
+<tr><td data-i18n="abt.rowBase">Основа</td><td data-i18n="abt.rowBaseV">LFS / На основе исходников</td></tr>
+<tr><td data-i18n="abt.rowPkg">Пакетный менеджер</td><td>picu</td></tr>
+<tr><td data-i18n="abt.rowAud">Аудитория</td><td data-i18n="abt.rowAudV">Опытные пользователи и администраторы</td></tr>
+<tr><td data-i18n="abt.rowInit">Init-система</td><td data-i18n="abt.rowInitV">OpenRC / sysvinit / опционально runit</td></tr>
+<tr><td data-i18n="abt.rowEnv">Окружение по умолчанию</td><td data-i18n="abt.rowEnvV">Минимальный CLI</td></tr>
 </table>
-<h2 id="style">Визуальный стиль</h2>
-<p>Summit использует холодную снежную палитру на основе синего, белого и светло-серого цветов.</p>
+<h2 id="style" data-i18n="abt.sec.style">Визуальный стиль</h2>
+<p data-i18n="abt.styleP">Summit использует холодную снежную палитру на основе синего, белого и светло-серого цветов.</p>
 <pre translate="no">#ffffff
 #a6b5c2
 #1e5571
 #97a7b6
 #85a1b6</pre>
-<h2 id="mission">Наша миссия</h2>
-<p>Дать опытным пользователям систему, которую можно полностью объяснить: каждый бинарник восходит к читаемому рецепту, каждый индекс репозитория несёт проверяемую подпись, и ничего не ставится без ведома пользователя.</p>
-<div class="callout"><strong>Цель:</strong> минимальный проверяемый базис, который можно пересобрать с нуля на любой машине.</div>
-<h2 id="features">Возможности Summit Linux</h2>
+<h2 id="mission" data-i18n="abt.sec.mission">Наша миссия</h2>
+<p data-i18n="abt.missionP">Дать опытным пользователям систему, которую можно полностью объяснить: каждый бинарник восходит к читаемому рецепту, каждый индекс репозитория несёт проверяемую подпись, и ничего не ставится без ведома пользователя.</p>
+<div class="callout"><strong data-i18n="abt.goalLabel">Цель:</strong> <span data-i18n="abt.goalText">минимальный проверяемый базис, который можно пересобрать с нуля на любой машине.</span></div>
+<h2 id="features" data-i18n="abt.featTitle">Возможности Summit Linux</h2>
 <ul>
-<li>Исходники прежде всего: LFS-тулчейн и декларативные рецепты сборки.</li>
-<li>Минимальный базис: установка с CLI по умолчанию, без скрытых сервисов.</li>
-<li>Init на выбор: OpenRC / sysvinit с опциональным runit.</li>
-<li>Воспроизводимые сборки: фиксированные флаги, изолированное окружение, контрольные суммы исходников.</li>
-<li>Всё подписано: индексы репозиториев, релизы и рецепты проверяются криптографически.</li>
-<li>Защита от отката: проверка версий и сроков действия метаданных репозиториев.</li>
+<li data-i18n="abt.feat.1">Исходники прежде всего: LFS-тулчейн и декларативные рецепты сборки.</li>
+<li data-i18n="abt.feat.2">Минимальный базис: установка с CLI по умолчанию, без скрытых сервисов.</li>
+<li data-i18n="abt.feat.3">Init на выбор: OpenRC / sysvinit с опциональным runit.</li>
+<li data-i18n="abt.feat.4">Воспроизводимые сборки: фиксированные флаги, изолированное окружение, контрольные суммы исходников.</li>
+<li data-i18n="abt.feat.5">Всё подписано: индексы репозиториев, релизы и рецепты проверяются криптографически.</li>
+<li data-i18n="abt.feat.6">Защита от отката: проверка версий и сроков действия метаданных репозиториев.</li>
 </ul>
-<h2 id="stack">Стек picu</h2>
-<p>picu написан на Rust и сочетает рецепты из исходников с бинарными пакетами: получает подписанные индексы, разрешает зависимости, собирает в изоляции командой <code>picu cook</code> и ставит транзакционно с учётом файлов в реестре.</p>
+<h2 id="stack" data-i18n="abt.sec.stack">Стек picu</h2>
+<p data-i18n="abt.stackP">picu написан на Rust и сочетает рецепты из исходников с бинарными пакетами: получает подписанные индексы, разрешает зависимости, собирает в изоляции командой <code>picu cook</code> и ставит транзакционно с учётом файлов в реестре.</p>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
 <pre translate="no">$ picu --version
@@ -165,16 +166,16 @@ $ picu trust list
 [ OK ] release key: summit-release-01
 [ OK ] 1 mirror trusted, 0 revoked</pre>
 </div>
-<h2 id="roadmap">Дорожная карта</h2>
+<h2 id="roadmap" data-i18n="abt.sec.roadmap">Дорожная карта</h2>
 <table class="table">
-<tr><th>Этап</th><th>Статус</th></tr>
-<tr><td>Базовая система (LFS-тулчейн)</td><td>В работе</td></tr>
-<tr><td>picu MVP (sync / add / cook)</td><td>В работе</td></tr>
-<tr><td>Подписанное официальное зеркало</td><td>Запланировано</td></tr>
-<tr><td>Установочный ISO</td><td>Запланировано</td></tr>
-<tr><td>Зеркала сообщества</td><td>Запланировано</td></tr>
+<tr><th data-i18n="abt.thStage">Этап</th><th data-i18n="abt.thStatus">Статус</th></tr>
+<tr><td data-i18n="abt.rm.1t">Базовая система (LFS-тулчейн)</td><td data-i18n="abt.stProg">В работе</td></tr>
+<tr><td data-i18n="abt.rm.2t">picu MVP (sync / add / cook)</td><td data-i18n="abt.stProg">В работе</td></tr>
+<tr><td data-i18n="abt.rm.3t">Подписанное официальное зеркало</td><td data-i18n="abt.stPlan">Запланировано</td></tr>
+<tr><td data-i18n="abt.rm.4t">Установочный ISO</td><td data-i18n="abt.stPlan">Запланировано</td></tr>
+<tr><td data-i18n="abt.rm.5t">Зеркала сообщества</td><td data-i18n="abt.stPlan">Запланировано</td></tr>
 </table>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -191,10 +192,10 @@ $ picu trust list
 <a data-i18n="nav.news" href="news-ru.html">Новости</a>
 <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
 <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (скоро)</span> · <span>Telegram (скоро)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (скоро)</span> · <span data-i18n="social.telegram">Telegram (скоро)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux и picu · Независимый проект с открытым исходным кодом</span></div>
 </footer>

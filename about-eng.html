@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
 <div class="mountains mtn-2">
@@ -25,13 +26,13 @@
 <a class="brand" href="index.html"><img alt="Summit Linux" src="assets/summit.svg"/>Summit Linux</a>
 <div class="nav">
 <a data-i18n="nav.home" href="index.html">Home</a>
-<a href="about-eng.html" class="active">About</a>
+<a href="about-eng.html" class="active" data-i18n="nav.about">About</a>
 <a data-i18n="nav.download" href="download-eng.html">Download</a>
 <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -73,31 +74,31 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#principles" aria-current="true">Core principles</a>
+<li class="active"><a href="#principles" aria-current="true" data-i18n="abt.sec.principles">Core principles</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#base">Base system</a>
+<li><a href="#base" data-i18n="abt.sec.base">Base system</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#style">Visual style</a>
+<li><a href="#style" data-i18n="abt.sec.style">Visual style</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#mission">Our mission</a>
+<li><a href="#mission" data-i18n="abt.sec.mission">Our mission</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#features">Features</a>
+<li><a href="#features" data-i18n="abt.sec.features">Features</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#stack">picu stack</a>
+<li><a href="#stack" data-i18n="abt.sec.stack">picu stack</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#roadmap">Roadmap</a>
+<li><a href="#roadmap" data-i18n="abt.sec.roadmap">Roadmap</a>
 <ul class="tree-l2">
 </ul>
 </li>
@@ -105,58 +106,58 @@
 </aside>
 <div class="article">
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index.html">Home</a> / <span data-i18n="nav.about">About</span></nav>
-<h1>About Summit Linux</h1>
+<h1 data-i18n="abt.title">About Summit Linux</h1>
 <nav class="toc"><strong data-i18n="toc.title">Contents</strong><ul>
-<li><a href="#principles">Core principles</a></li>
-<li><a href="#base">Base system</a></li>
-<li><a href="#style">Visual style</a></li>
-<li><a href="#mission">Our mission</a></li>
-<li><a href="#features">Features</a></li>
-<li><a href="#stack">picu stack</a></li>
-<li><a href="#roadmap">Roadmap</a></li>
+<li><a href="#principles" data-i18n="abt.sec.principles">Core principles</a></li>
+<li><a href="#base" data-i18n="abt.sec.base">Base system</a></li>
+<li><a href="#style" data-i18n="abt.sec.style">Visual style</a></li>
+<li><a href="#mission" data-i18n="abt.sec.mission">Our mission</a></li>
+<li><a href="#features" data-i18n="abt.sec.features">Features</a></li>
+<li><a href="#stack" data-i18n="abt.sec.stack">picu stack</a></li>
+<li><a href="#roadmap" data-i18n="abt.sec.roadmap">Roadmap</a></li>
 </ul></nav>
-<p>Summit Linux is an independent Linux distribution built from source following Linux From Scratch principles.</p>
-<div class="callout"><strong>Philosophy:</strong> transparency instead of magic, a recipe instead of a black box.</div>
-<h2 id="principles">Core principles</h2>
+<p data-i18n="abt.intro">Summit Linux is an independent Linux distribution built from source following Linux From Scratch principles.</p>
+<div class="callout"><strong data-i18n="abt.philoLabel">Philosophy:</strong> <span data-i18n="abt.philoText">transparency instead of magic, a recipe instead of a black box.</span></div>
+<h2 id="principles" data-i18n="abt.sec.principles">Core principles</h2>
 <ul>
-<li>Full control over compilation flags.</li>
-<li>Minimal unnecessary software.</li>
-<li>Declarative package recipes.</li>
-<li>Reproducible and verifiable builds.</li>
-<li>Cryptographically verified repositories.</li>
-<li>Stable and predictable system behavior.</li>
+<li data-i18n="abt.li.1">Full control over compilation flags.</li>
+<li data-i18n="abt.li.2">Minimal unnecessary software.</li>
+<li data-i18n="abt.li.3">Declarative package recipes.</li>
+<li data-i18n="abt.li.4">Reproducible and verifiable builds.</li>
+<li data-i18n="abt.li.5">Cryptographically verified repositories.</li>
+<li data-i18n="abt.li.6">Stable and predictable system behavior.</li>
 </ul>
-<h2 id="base">Base system</h2>
-<p>Summit is aimed at experienced Linux users and follows an LFS/source-build model.</p>
+<h2 id="base" data-i18n="abt.sec.base">Base system</h2>
+<p data-i18n="abt.baseP">Summit is aimed at experienced Linux users and follows an LFS/source-build model.</p>
 <table class="table">
-<tr><th>Component</th><th>Summit</th></tr>
-<tr><td>Base</td><td>LFS / Source-based</td></tr>
-<tr><td>Package manager</td><td>picu</td></tr>
-<tr><td>Audience</td><td>Experienced users and administrators</td></tr>
-<tr><td>Init system</td><td>OpenRC / sysvinit / optional runit</td></tr>
-<tr><td>Default environment</td><td>Minimal CLI</td></tr>
+<tr><th data-i18n="abt.thComp">Component</th><th>Summit</th></tr>
+<tr><td data-i18n="abt.rowBase">Base</td><td data-i18n="abt.rowBaseV">LFS / Source-based</td></tr>
+<tr><td data-i18n="abt.rowPkg">Package manager</td><td>picu</td></tr>
+<tr><td data-i18n="abt.rowAud">Audience</td><td data-i18n="abt.rowAudV">Experienced users and administrators</td></tr>
+<tr><td data-i18n="abt.rowInit">Init system</td><td data-i18n="abt.rowInitV">OpenRC / sysvinit / optional runit</td></tr>
+<tr><td data-i18n="abt.rowEnv">Default environment</td><td data-i18n="abt.rowEnvV">Minimal CLI</td></tr>
 </table>
-<h2 id="style">Visual style</h2>
-<p>Summit uses a cool snow-inspired palette based on blue, white and light gray.</p>
+<h2 id="style" data-i18n="abt.sec.style">Visual style</h2>
+<p data-i18n="abt.styleP">Summit uses a cool snow-inspired palette based on blue, white and light gray.</p>
 <pre translate="no">#ffffff
 #a6b5c2
 #1e5571
 #97a7b6
 #85a1b6</pre>
-<h2 id="mission">Our mission</h2>
-<p>Give experienced users a system they can fully explain: every binary traces back to a readable recipe, every repository index carries a verifiable signature, and nothing is installed that the user did not ask for.</p>
-<div class="callout"><strong>Goal:</strong> a minimal, auditable base you can rebuild from scratch on any machine.</div>
-<h2 id="features">Summit Linux features</h2>
+<h2 id="mission" data-i18n="abt.sec.mission">Our mission</h2>
+<p data-i18n="abt.missionP">Give experienced users a system they can fully explain: every binary traces back to a readable recipe, every repository index carries a verifiable signature, and nothing is installed that the user did not ask for.</p>
+<div class="callout"><strong data-i18n="abt.goalLabel">Goal:</strong> <span data-i18n="abt.goalText">a minimal, auditable base you can rebuild from scratch on any machine.</span></div>
+<h2 id="features" data-i18n="abt.featTitle">Summit Linux features</h2>
 <ul>
-<li>Source-first: LFS-based toolchain with declarative build recipes.</li>
-<li>Minimal base: CLI-only default install, no hidden services.</li>
-<li>Your init, your choice: OpenRC / sysvinit with optional runit.</li>
-<li>Reproducible builds: fixed flags, isolated build environment, checksummed sources.</li>
-<li>Signed everything: repository indexes, releases and recipes are cryptographically verified.</li>
-<li>Downgrade protection: version checks and expiry dates on repository metadata.</li>
+<li data-i18n="abt.feat.1">Source-first: LFS-based toolchain with declarative build recipes.</li>
+<li data-i18n="abt.feat.2">Minimal base: CLI-only default install, no hidden services.</li>
+<li data-i18n="abt.feat.3">Your init, your choice: OpenRC / sysvinit with optional runit.</li>
+<li data-i18n="abt.feat.4">Reproducible builds: fixed flags, isolated build environment, checksummed sources.</li>
+<li data-i18n="abt.feat.5">Signed everything: repository indexes, releases and recipes are cryptographically verified.</li>
+<li data-i18n="abt.feat.6">Downgrade protection: version checks and expiry dates on repository metadata.</li>
 </ul>
-<h2 id="stack">picu stack</h2>
-<p>picu is written in Rust and combines source recipes with binary packages: it fetches signed indexes, resolves dependencies, builds in isolation with <code>picu cook</code>, and installs transactionally into a tracked file registry.</p>
+<h2 id="stack" data-i18n="abt.sec.stack">picu stack</h2>
+<p data-i18n="abt.stackP">picu is written in Rust and combines source recipes with binary packages: it fetches signed indexes, resolves dependencies, builds in isolation with <code>picu cook</code>, and installs transactionally into a tracked file registry.</p>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
 <pre translate="no">$ picu --version
@@ -165,16 +166,16 @@ $ picu trust list
 [ OK ] release key: summit-release-01
 [ OK ] 1 mirror trusted, 0 revoked</pre>
 </div>
-<h2 id="roadmap">Roadmap</h2>
+<h2 id="roadmap" data-i18n="abt.sec.roadmap">Roadmap</h2>
 <table class="table">
-<tr><th>Stage</th><th>Status</th></tr>
-<tr><td>Base system (LFS toolchain)</td><td>In progress</td></tr>
-<tr><td>picu MVP (sync / add / cook)</td><td>In progress</td></tr>
-<tr><td>Signed official mirror</td><td>Planned</td></tr>
-<tr><td>Installer ISO</td><td>Planned</td></tr>
-<tr><td>Community mirrors</td><td>Planned</td></tr>
+<tr><th data-i18n="abt.thStage">Stage</th><th data-i18n="abt.thStatus">Status</th></tr>
+<tr><td data-i18n="abt.rm.1t">Base system (LFS toolchain)</td><td data-i18n="abt.stProg">In progress</td></tr>
+<tr><td data-i18n="abt.rm.2t">picu MVP (sync / add / cook)</td><td data-i18n="abt.stProg">In progress</td></tr>
+<tr><td data-i18n="abt.rm.3t">Signed official mirror</td><td data-i18n="abt.stPlan">Planned</td></tr>
+<tr><td data-i18n="abt.rm.4t">Installer ISO</td><td data-i18n="abt.stPlan">Planned</td></tr>
+<tr><td data-i18n="abt.rm.5t">Community mirrors</td><td data-i18n="abt.stPlan">Planned</td></tr>
 </table>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -191,10 +192,10 @@ $ picu trust list
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (soon)</span> · <span>Telegram (soon)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux &amp; picu · Independent open-source project</span></div>
 </footer>

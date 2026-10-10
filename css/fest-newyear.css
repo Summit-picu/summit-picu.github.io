@@ -1,0 +1,161 @@
+/* ==========================================================================
+   Summit Linux — FEST New Year overlay.
+   Scope: html[data-fest="newyear"] only. Snow boost = second autonomous
+   canvas (.fest-snow-extra, painted by js/fest.js) + CSS emphasis.
+   Garland (.garland) is inserted by fest.js into .navbar.
+   Loaded dynamically by js/fest.js on ?fest=newyear.
+   ========================================================================== */
+
+html[data-fest="newyear"] {
+  --accent: #1e9e6a;
+  --accent-2: #9be8c4;
+  --accent-glow: rgba(30, 158, 106, 0.3);
+  color-scheme: light;
+}
+
+/* ---- Snow boost: emphasize base canvas + style the extra fest canvas ----- */
+html[data-fest="newyear"] .snow-canvas,
+html[data-fest="newyear"] .snow-overlay {
+  opacity: 1 !important;
+}
+.fest-snow-extra {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.9;
+}
+
+/* ---- Garland: wire + blinking bulbs (spans injected by fest.js) ----------- */
+html[data-fest="newyear"] .navbar {
+  position: relative;
+  border-color: #1e9e6a;
+  overflow: visible;
+}
+html[data-fest="newyear"] .garland {
+  position: absolute;
+  top: 100%;
+  left: 18px;
+  right: 18px;
+  height: 22px;
+  margin-top: -4px;
+  z-index: 101;
+  pointer-events: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+/* hanging wire */
+html[data-fest="newyear"] .garland::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #1e5571, #1e9e6a);
+  border-radius: 999px;
+  opacity: 0.7;
+}
+/* bulbs */
+html[data-fest="newyear"] .garland span {
+  position: relative;
+  width: 10px;
+  height: 10px;
+  margin-top: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fff 0%,
+    #ffd76a 35%,
+    #e07b1a 100%
+  );
+  box-shadow: 0 0 8px 2px rgba(255, 200, 80, 0.7);
+  animation: garland-blink 1.2s ease-in-out infinite;
+}
+html[data-fest="newyear"] .garland span:nth-child(3n) {
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fff 0%,
+    #ff9d9d 40%,
+    #c81e3a 100%
+  );
+  box-shadow: 0 0 8px 2px rgba(220, 60, 80, 0.65);
+  animation-delay: 0s;
+}
+html[data-fest="newyear"] .garland span:nth-child(3n + 1) {
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fff 0%,
+    #ffd76a 35%,
+    #e07b1a 100%
+  );
+  box-shadow: 0 0 8px 2px rgba(255, 200, 80, 0.7);
+  animation-delay: 0.4s;
+}
+html[data-fest="newyear"] .garland span:nth-child(3n + 2) {
+  background: radial-gradient(
+    circle at 35% 35%,
+    #fff 0%,
+    #9be8c4 35%,
+    #1e9e6a 100%
+  );
+  box-shadow: 0 0 8px 2px rgba(60, 200, 130, 0.65);
+  animation-delay: 0.8s;
+}
+@keyframes garland-blink {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
+/* ---- Festive ribbon on hot-news badge ------------------------------------- */
+html[data-fest="newyear"] .hot-news .hot-badge,
+html[data-fest="newyear"] .hot-news .badge {
+  background: #1e9e6a;
+}
+html[data-fest="newyear"] .fest-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: #1e9e6a;
+  border-radius: 999px;
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 8px 22px rgba(30, 158, 106, 0.4);
+}
+html[data-fest="newyear"] .fest-badge::before {
+  content: "❄";
+  font-size: 1rem;
+  line-height: 1;
+}
+
+@media (max-width: 760px) {
+  html[data-fest="newyear"] .garland {
+    left: 10px;
+    right: 10px;
+  }
+  html[data-fest="newyear"] .garland span:nth-child(n + 13) {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-fest="newyear"] .garland span {
+    animation: none;
+    opacity: 1;
+  }
+  .fest-snow-extra {
+    display: none;
+  }
+}

@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
 <div class="mountains mtn-1">
@@ -26,12 +27,12 @@
 <div class="nav">
 <a data-i18n="nav.home" href="index-ru.html">Главная</a>
 <a data-i18n="nav.about" href="about-ru.html">О проекте</a>
-<a href="download-ru.html" class="active">Скачать</a>
+<a href="download-ru.html" class="active" data-i18n="nav.download">Скачать</a>
 <a data-i18n="nav.picu" href="picu-ru.html">picu</a>
 <a data-i18n="nav.news" href="news-ru.html">Новости</a>
 <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
 <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -73,15 +74,15 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#status" aria-current="true">Статус разработки</a>
+<li class="active"><a href="#status" aria-current="true" data-i18n="dl.sec.status">Статус разработки</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#planned">Планируемая конфигурация</a>
+<li><a href="#planned" data-i18n="dl.sec.planned">Планируемая конфигурация</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#release">Первый релиз</a>
+<li><a href="#release" data-i18n="dl.sec.release">Первый релиз</a>
 <ul class="tree-l2">
 </ul>
 </li>
@@ -89,24 +90,24 @@
 </aside>
 <div class="article">
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index-ru.html">Главная</a> / <span data-i18n="nav.download">Скачать</span></nav>
-<h1>Скачать Summit Linux</h1>
+<h1 data-i18n="dl.title">Скачать Summit Linux</h1>
 <nav class="toc"><strong data-i18n="toc.title">Содержание</strong><ul>
-<li><a href="#status">Статус разработки</a></li>
-<li><a href="#planned">Планируемая конфигурация</a></li>
-<li><a href="#release">Первый релиз</a></li>
+<li><a href="#status" data-i18n="dl.sec.status">Статус разработки</a></li>
+<li><a href="#planned" data-i18n="dl.sec.planned">Планируемая конфигурация</a></li>
+<li><a href="#release" data-i18n="dl.sec.release">Первый релиз</a></li>
 <li><a href="#screenshots" data-i18n="shots.kicker">Скриншоты</a></li>
 </ul></nav>
-<p>Summit Linux сейчас находится в разработке. Публичные установочные образы пока недоступны.</p>
-<div class="callout" id="status"><strong>Статус разработки</strong><div class="callout-body">Сейчас проект сосредоточен на базовой системе Summit, picu и инфраструктуре репозиториев.</div></div>
-<h2 id="planned">Планируемая конфигурация</h2>
+<p data-i18n="dl.intro">Summit Linux сейчас находится в разработке. Публичные установочные образы пока недоступны.</p>
+<div class="callout" id="status"><strong data-i18n="dl.sec.status">Статус разработки</strong><div class="callout-body" data-i18n="dl.statusText">Сейчас проект сосредоточен на базовой системе Summit, picu и инфраструктуре репозиториев.</div></div>
+<h2 id="planned" data-i18n="dl.sec.planned">Планируемая конфигурация</h2>
 <table class="table">
-<tr><th>Архитектура</th><td>x86_64</td></tr>
-<tr><th>Основа</th><td>LFS / На основе исходников</td></tr>
-<tr><th>Init-система</th><td>OpenRC / sysvinit / runit</td></tr>
-<tr><th>Пакетный менеджер</th><td>picu</td></tr>
+<tr><th data-i18n="dl.rowArch">Архитектура</th><td>x86_64</td></tr>
+<tr><th data-i18n="abt.rowBase">Основа</th><td data-i18n="abt.rowBaseV">LFS / На основе исходников</td></tr>
+<tr><th data-i18n="abt.rowInit">Init-система</th><td data-i18n="dl.rowInitV">OpenRC / sysvinit / runit</td></tr>
+<tr><th data-i18n="abt.rowPkg">Пакетный менеджер</th><td>picu</td></tr>
 </table>
-<h2 id="release">Первый релиз</h2>
-<p>Первый публичный релиз появится здесь, как только базовая система и инфраструктура пакетов будут готовы.</p>
+<h2 id="release" data-i18n="dl.sec.release">Первый релиз</h2>
+<p data-i18n="dl.releaseP">Первый публичный релиз появится здесь, как только базовая система и инфраструктура пакетов будут готовы.</p>
 <h2 id="screenshots" data-i18n="shots.title">Summit в картинках.</h2>
 <p data-i18n="shots.lead">Заглушки — настоящие скриншоты будут добавлены сюда.</p>
 <div class="screenshots">
@@ -123,7 +124,7 @@
     <figcaption data-i18n="shots.tty">tty</figcaption>
   </figure>
 </div>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -140,10 +141,10 @@
 <a data-i18n="nav.news" href="news-ru.html">Новости</a>
 <a data-i18n="nav.wiki" href="wiki-ru.html">Вики</a>
 <a data-i18n="nav.status" href="status-ru.html">Статус</a>
-<a href="changelog-ru.html">Изменения</a>
+<a href="changelog-ru.html" data-i18n="nav.changelog">Изменения</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (скоро)</span> · <span>Telegram (скоро)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (скоро)</span> · <span data-i18n="social.telegram">Telegram (скоро)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux и picu · Независимый проект с открытым исходным кодом</span></div>
 </footer>

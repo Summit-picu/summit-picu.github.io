@@ -4561,3 +4561,613 @@ html[data-theme="dark"] .search-empty {
     -webkit-line-clamp: 3;
   }
 }
+/* ==========================================================================
+   PACK6 (designer append-block): snow click-through fix for Discuss/GitHub
+   links. Snow canvas/overlay live at z-index:1, content at z-index:2 —
+   .comments / .news-card-link / .toc links are lifted to z-index:3 so the
+   "Discuss on GitHub" link stays clickable above the snow. Appends only —
+   older blocks untouched. Wins by source order.
+   ========================================================================== */
+.comments {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+.comments a {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+.news-card-link {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+.toc a {
+  position: relative;
+  z-index: 3;
+  pointer-events: auto;
+}
+/* ==========================================================================
+   PACK7 (designer append-block): seamless mountains drift + ridge variety
+   (mtn-1..mtn-5) + sidebar scroll + dark icons + .button-sm.
+   Appends only — older blocks untouched. Wins by source order.
+   ========================================================================== */
+/* ---- P7-1. SEAMLESS DRIFT: 200% width, periodic clip-path, 0 -> -50% ------ */
+/* All mountain layers are 200% wide; the second half duplicates the first
+   so translateX(0 -> -50%) loops without a jump. All use linear infinite
+   with normal direction only. */
+.mountain,
+.mountains::before,
+.mountains::after {
+  width: 200%;
+  animation-name: mountain-drift-left;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: normal;
+}
+.mountain {
+  animation: mountain-drift-left linear infinite;
+}
+.mountains::before,
+.mountains::after {
+  animation: mountain-drift-left linear infinite;
+}
+.mountain.back {
+  animation-duration: 70s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.mountain.mid {
+  animation-duration: 50s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.mountain.front {
+  animation-duration: 32s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.mountains::before {
+  animation-duration: 95s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+.mountains::after {
+  animation-duration: 80s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes mountain-drift-left {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+/* ---- P7-2. SIZE: layers ~+25% taller (desktop + mobile) -------------------- */
+.mountain.back {
+  height: 600px;
+}
+.mountain.mid {
+  height: 562px;
+}
+.mountain.front {
+  height: 525px;
+}
+.mountains::before {
+  height: 550px;
+}
+.mountains::after {
+  height: 575px;
+}
+@media (max-width: 700px) {
+  .mountain.back {
+    height: 375px;
+  }
+  .mountain.mid {
+    height: 350px;
+  }
+  .mountain.front {
+    height: 325px;
+  }
+}
+/* ---- P7-3. RIDGE VARIETY: .mtn-1..mtn-5, strictly periodic ---------------- */
+/* Each polygon below is strictly periodic: 0% == 50% == 100% on Y and the
+   50-100% half duplicates the 0-50% half, so the -50% loop never jumps.
+   6 peaks per ridge, alternating steep/gentle slopes. */
+/* --- mtn-1: high sharp peaks --- */
+.mountains.mtn-1 .mountain.back {
+  clip-path: polygon(
+    0 100%,
+    0 70%,
+    5% 60%,
+    10% 42%,
+    15% 58%,
+    21% 66%,
+    27% 48%,
+    33% 32%,
+    39% 54%,
+    45% 63%,
+    50% 70%,
+    55% 60%,
+    60% 42%,
+    65% 58%,
+    71% 66%,
+    77% 48%,
+    83% 32%,
+    89% 54%,
+    95% 63%,
+    100% 70%,
+    100% 100%
+  );
+}
+.mountains.mtn-1 .mountain.mid {
+  clip-path: polygon(
+    0 100%,
+    0 64%,
+    5% 55%,
+    11% 38%,
+    16% 56%,
+    22% 63%,
+    28% 47%,
+    34% 30%,
+    40% 52%,
+    46% 60%,
+    50% 64%,
+    55% 55%,
+    61% 38%,
+    66% 56%,
+    72% 63%,
+    78% 47%,
+    84% 30%,
+    90% 52%,
+    96% 60%,
+    100% 64%,
+    100% 100%
+  );
+}
+.mountains.mtn-1 .mountain.front {
+  clip-path: polygon(
+    0 100%,
+    0 72%,
+    6% 61%,
+    11% 44%,
+    17% 59%,
+    23% 67%,
+    29% 50%,
+    35% 34%,
+    41% 56%,
+    46% 64%,
+    50% 72%,
+    56% 61%,
+    61% 44%,
+    67% 59%,
+    73% 67%,
+    79% 50%,
+    85% 34%,
+    91% 56%,
+    96% 64%,
+    100% 72%,
+    100% 100%
+  );
+}
+/* --- mtn-2: double-summit massifs --- */
+.mountains.mtn-2 .mountain.back {
+  clip-path: polygon(
+    0 100%,
+    0 70%,
+    4% 62%,
+    9% 40%,
+    14% 57%,
+    19% 65%,
+    24% 49%,
+    30% 30%,
+    36% 53%,
+    44% 62%,
+    50% 70%,
+    54% 62%,
+    59% 40%,
+    64% 57%,
+    69% 65%,
+    74% 49%,
+    80% 30%,
+    86% 53%,
+    94% 62%,
+    100% 70%,
+    100% 100%
+  );
+}
+.mountains.mtn-2 .mountain.mid {
+  clip-path: polygon(
+    0 100%,
+    0 64%,
+    5% 54%,
+    10% 36%,
+    15% 55%,
+    21% 62%,
+    27% 46%,
+    32% 30%,
+    38% 51%,
+    45% 60%,
+    50% 64%,
+    55% 54%,
+    60% 36%,
+    65% 55%,
+    71% 62%,
+    77% 46%,
+    82% 30%,
+    88% 51%,
+    95% 60%,
+    100% 64%,
+    100% 100%
+  );
+}
+.mountains.mtn-2 .mountain.front {
+  clip-path: polygon(
+    0 100%,
+    0 74%,
+    5% 63%,
+    10% 42%,
+    16% 60%,
+    22% 68%,
+    28% 52%,
+    34% 34%,
+    40% 57%,
+    46% 66%,
+    50% 74%,
+    55% 63%,
+    60% 42%,
+    66% 60%,
+    72% 68%,
+    78% 52%,
+    84% 34%,
+    90% 57%,
+    96% 66%,
+    100% 74%,
+    100% 100%
+  );
+}
+/* --- mtn-3: rolling asymmetric slopes --- */
+.mountains.mtn-3 .mountain.back {
+  clip-path: polygon(
+    0 100%,
+    0 68%,
+    6% 58%,
+    12% 40%,
+    18% 57%,
+    24% 64%,
+    30% 47%,
+    36% 32%,
+    42% 55%,
+    47% 62%,
+    50% 68%,
+    56% 58%,
+    62% 40%,
+    68% 57%,
+    74% 64%,
+    80% 47%,
+    86% 32%,
+    92% 55%,
+    97% 62%,
+    100% 68%,
+    100% 100%
+  );
+}
+.mountains.mtn-3 .mountain.mid {
+  clip-path: polygon(
+    0 100%,
+    0 62%,
+    6% 52%,
+    12% 36%,
+    18% 54%,
+    24% 61%,
+    30% 45%,
+    36% 28%,
+    41% 52%,
+    47% 59%,
+    50% 62%,
+    56% 52%,
+    62% 36%,
+    68% 54%,
+    74% 61%,
+    80% 45%,
+    86% 28%,
+    91% 52%,
+    97% 59%,
+    100% 62%,
+    100% 100%
+  );
+}
+.mountains.mtn-3 .mountain.front {
+  clip-path: polygon(
+    0 100%,
+    0 74%,
+    7% 62%,
+    13% 44%,
+    19% 60%,
+    25% 68%,
+    31% 51%,
+    37% 36%,
+    43% 58%,
+    48% 66%,
+    50% 74%,
+    57% 62%,
+    63% 44%,
+    69% 60%,
+    75% 68%,
+    81% 51%,
+    87% 36%,
+    93% 58%,
+    98% 66%,
+    100% 74%,
+    100% 100%
+  );
+}
+/* --- mtn-4: jagged saw-tooth crest --- */
+.mountains.mtn-4 .mountain.back {
+  clip-path: polygon(
+    0 100%,
+    0 70%,
+    4% 58%,
+    8% 44%,
+    13% 60%,
+    18% 38%,
+    23% 57%,
+    29% 66%,
+    35% 46%,
+    41% 30%,
+    46% 58%,
+    50% 70%,
+    54% 58%,
+    58% 44%,
+    63% 60%,
+    68% 38%,
+    73% 57%,
+    79% 66%,
+    85% 46%,
+    91% 30%,
+    96% 58%,
+    100% 70%,
+    100% 100%
+  );
+}
+.mountains.mtn-4 .mountain.mid {
+  clip-path: polygon(
+    0 100%,
+    0 64%,
+    4% 54%,
+    9% 38%,
+    14% 57%,
+    19% 34%,
+    24% 55%,
+    30% 62%,
+    36% 45%,
+    42% 28%,
+    47% 56%,
+    50% 64%,
+    54% 54%,
+    59% 38%,
+    64% 57%,
+    69% 34%,
+    74% 55%,
+    80% 62%,
+    86% 45%,
+    92% 28%,
+    97% 56%,
+    100% 64%,
+    100% 100%
+  );
+}
+.mountains.mtn-4 .mountain.front {
+  clip-path: polygon(
+    0 100%,
+    0 72%,
+    5% 60%,
+    10% 42%,
+    15% 61%,
+    20% 36%,
+    25% 58%,
+    31% 67%,
+    37% 49%,
+    42% 32%,
+    47% 60%,
+    50% 72%,
+    55% 60%,
+    60% 42%,
+    65% 61%,
+    70% 36%,
+    75% 58%,
+    81% 67%,
+    87% 49%,
+    92% 32%,
+    97% 60%,
+    100% 72%,
+    100% 100%
+  );
+}
+/* --- mtn-5: soft domes + one needle --- */
+.mountains.mtn-5 .mountain.back {
+  clip-path: polygon(
+    0 100%,
+    0 70%,
+    6% 62%,
+    12% 50%,
+    18% 60%,
+    24% 36%,
+    29% 55%,
+    34% 64%,
+    40% 50%,
+    45% 60%,
+    50% 70%,
+    56% 62%,
+    62% 50%,
+    68% 60%,
+    74% 36%,
+    79% 55%,
+    84% 64%,
+    90% 50%,
+    95% 60%,
+    100% 70%,
+    100% 100%
+  );
+}
+.mountains.mtn-5 .mountain.mid {
+  clip-path: polygon(
+    0 100%,
+    0 64%,
+    6% 56%,
+    12% 46%,
+    18% 58%,
+    24% 32%,
+    29% 53%,
+    35% 61%,
+    41% 47%,
+    46% 57%,
+    50% 64%,
+    56% 56%,
+    62% 46%,
+    68% 58%,
+    74% 32%,
+    79% 53%,
+    85% 61%,
+    91% 47%,
+    96% 57%,
+    100% 64%,
+    100% 100%
+  );
+}
+.mountains.mtn-5 .mountain.front {
+  clip-path: polygon(
+    0 100%,
+    0 74%,
+    6% 64%,
+    12% 52%,
+    18% 62%,
+    24% 38%,
+    30% 57%,
+    36% 66%,
+    42% 52%,
+    47% 62%,
+    50% 74%,
+    56% 64%,
+    62% 52%,
+    68% 62%,
+    74% 38%,
+    80% 57%,
+    86% 66%,
+    92% 52%,
+    97% 62%,
+    100% 74%,
+    100% 100%
+  );
+}
+/* ---- P7-4. SIDEBAR SCROLL -------------------------------------------------- */
+.sidebar {
+  position: sticky;
+  top: 92px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #9db4c2 transparent;
+}
+.sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background: #b9d4e0;
+  border-radius: 999px;
+}
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: #8fb0c2;
+}
+html[data-theme="dark"] .sidebar {
+  scrollbar-color: #3d5a72 transparent;
+}
+html[data-theme="dark"] .sidebar::-webkit-scrollbar-thumb {
+  background: #2b4356;
+}
+html[data-theme="dark"] .sidebar::-webkit-scrollbar-thumb:hover {
+  background: #3d5a72;
+}
+/* ---- P7-5. DARK ICONS: every img.inline-icon (not only .card) -------------- */
+html[data-theme="dark"] img.inline-icon {
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+}
+/* ---- P7-6. SMALL BUTTON: .button-sm --------------------------------------- */
+.button-sm {
+  min-width: 0;
+  padding: 6px 12px;
+  border-radius: 9px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+html[data-theme="dark"] .button-sm.button-primary {
+  background: #2c6d8a;
+  border-color: transparent;
+  color: #fff;
+}
+html[data-theme="dark"] .button-sm.button-primary:hover {
+  background: #357e9e;
+}
+html[data-theme="dark"] .button-sm.button-secondary {
+  background: #162836;
+  border-color: #2b4356;
+  color: #c4dde9;
+}
+html[data-theme="dark"] .button-sm.button-secondary:hover {
+  background: #1e3446;
+  border-color: #4aa8cf;
+  color: #dcebf3;
+}
+
+/* ==========================================================================
+   PACK8 (designer append-block): plain Discuss on GitHub link — no widget/bg.
+   ========================================================================== */
+.discuss-plain {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.discuss-plain svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  fill: currentColor;
+  color: currentColor;
+}
+.discuss-plain:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}
+.discuss-plain:focus-visible {
+  outline: 2px solid var(--accent, #2f9fd6);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+html[data-theme="dark"] .discuss-plain {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  color: #dcebf3;
+}
+html[data-theme="dark"] .discuss-plain:hover {
+  text-decoration: underline;
+  opacity: 0.85;
+}

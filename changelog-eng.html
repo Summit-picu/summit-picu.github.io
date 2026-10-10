@@ -5,20 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Summit Linux changelog: release history v0.1 to v0.3."
+      content="Summit Linux changelog: Summit Linux, picu and website release history."
     />
     <meta property="og:title" content="Changelog · Summit Linux" />
     <meta
       property="og:description"
-      content="Summit Linux changelog: release history v0.1 to v0.3."
+      content="Summit Linux changelog: Summit Linux, picu and website release history."
     />
     <meta property="og:type" content="website" />
     <meta property="og:image" content="assets/summit.svg" />
     <title>Changelog · Summit Linux</title>
     <link rel="stylesheet" href="css/style.css" />
-<link rel="manifest" href="site.webmanifest"/>
-<meta name="theme-color" content="#0d1f31"/>
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#0d1f31" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/summit.svg">
     <style media="print">
       .header,
       .footer,
@@ -62,7 +63,7 @@
           <a data-i18n="nav.news" href="news-eng.html">News</a>
           <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
           <a data-i18n="nav.status" href="status-eng.html">Status</a>
-          <a href="changelog-eng.html" class="active">Changelog</a>
+          <a href="changelog-eng.html" class="active" data-i18n="nav.changelog">Changelog</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -280,11 +281,24 @@
             <aside class="sidebar">
               <ul class="tree-l1">
                 <li class="active">
-                  <a href="#v0-3" aria-current="true">v0.3.0</a>
+                  <a
+                    href="#summit-linux"
+                    aria-current="true"
+                    data-i18n="chl.grpSummit"
+                    >Summit Linux</a
+                  >
                   <ul class="tree-l2"></ul>
                 </li>
                 <li>
-                  <a href="#v0-1">v0.1.0</a>
+                  <a href="#picu" data-i18n="chl.grpPicu"
+                    >picu package manager</a
+                  >
+                  <ul class="tree-l2"></ul>
+                </li>
+                <li>
+                  <a href="#website" data-i18n="chl.grpSite"
+                    >Summit Linux website</a
+                  >
                   <ul class="tree-l2"></ul>
                 </li>
               </ul>
@@ -292,18 +306,32 @@
             <div class="article">
               <nav class="breadcrumbs">
                 <a data-i18n="crumb.home" href="index.html">Home</a> /
-                <span>Changelog</span>
+                <span data-i18n="nav.changelog">Changelog</span>
               </nav>
-              <h1>Changelog</h1>
+              <h1 data-i18n="nav.changelog">Changelog</h1>
               <nav class="toc">
                 <strong data-i18n="toc.title">Contents</strong>
                 <ul>
-                  <li><a href="#v0-3">v0.3.0 — 2026-10-01</a></li>
-                  <li><a href="#v0-1">v0.1.0 — 2026-08-12</a></li>
+                  <li>
+                    <a href="#summit-linux" data-i18n="chl.grpSummit"
+                      >Summit Linux</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#picu" data-i18n="chl.grpPicu"
+                      >picu package manager</a
+                    >
+                  </li>
+                  <li>
+                    <a href="#website" data-i18n="chl.grpSite"
+                      >Summit Linux website</a
+                    >
+                  </li>
                 </ul>
               </nav>
-              <p>
-                Release history of Summit Linux and the picu package manager.
+              <p data-i18n="chl.lead">
+                Release history of Summit Linux, the picu package manager and
+                this website.
               </p>
               <div class="actions">
                 <a
@@ -314,58 +342,38 @@
                   >Download PDF</a
                 >
               </div>
-              <h2 id="v0-3">v0.3.0 — 2026-10-01</h2>
-              <p>Trust management and documentation refresh.</p>
+              <h2 id="summit-linux" data-i18n="chl.grpSummit">Summit Linux</h2>
+              <p data-i18n="chl.noRelease">there no release yet... :(</p>
+              <h2 id="picu" data-i18n="chl.grpPicu">picu package manager</h2>
+              <p data-i18n="chl.noRelease">there no release yet... :(</p>
+              <h2 id="website" data-i18n="chl.grpSite">Summit Linux website</h2>
               <ul>
-                <li>
-                  <code>picu trust</code> key rotation with threshold 2 (old +
-                  new key) and revoked certificates list.
+                <li data-i18n="chl.site.010">stable-v0.1.0 website created</li>
+                <li data-i18n="chl.site.020">
+                  unstable-v0.2.0 website UI updated for a bit
                 </li>
-                <li>
-                  Repository index expiry checks (<code>ExpireDate</code>) on
-                  every sync.
+                <li data-i18n="chl.site.030">
+                  stable-v0.3.0 fixed some bugs from v0.2.0
                 </li>
-                <li>
-                  Site refresh: wiki TOC, FAQ, status page and breadcrumbs
-                  across all pages.
-                </li>
-                <li>
-                  Official mirror with signed
-                  <code>repo.index.json</code> — coming soon (not available
-                  yet).
-                </li>
-              </ul>
-              <div class="terminal" translate="no">
-                <div class="terminal-bar">
-                  <span></span><span></span><span></span>
-                </div>
-                <pre translate="no">
-$ picu update
-[ OK ] index signature valid, expires 2026-12-31
-[ OK ] system up to date</pre>
-              </div>
-              <h2 id="v0-1">v0.1.0 — 2026-08-12</h2>
-              <p>Initial concept release.</p>
-              <ul>
-                <li>
-                  LFS-based base system plan and staged implementation roadmap.
-                </li>
-                <li>
-                  picu MVP: <code>sync</code>, <code>add</code>,
-                  <code>update</code>, <code>find</code>,
-                  <code>info</code> against a trusted index.
-                </li>
-                <li>
-                  Site skeleton: home, about, download, picu and wiki stub
-                  pages.
+                <li data-i18n="chl.site.040">
+                  unstable-v0.4.0 huge UI update, but it have a lot of bugs
                 </li>
               </ul>
               <div class="comments">
                 <a
+                  class="discuss-plain"
                   href="https://github.com/Summit-picu/summit-picu.github.io/issues"
                   target="_blank"
                   rel="noopener"
-                  >Discuss on GitHub</a
+                  ><svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
+                  </svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a
                 >
               </div>
             </div>
@@ -386,7 +394,7 @@ $ picu update
           <a data-i18n="nav.news" href="news-eng.html">News</a>
           <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
           <a data-i18n="nav.status" href="status-eng.html">Status</a>
-          <a href="changelog-eng.html">Changelog</a>
+          <a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -401,7 +409,7 @@ $ picu update
             rel="noopener"
             >GitHub</a
           >
-          · <span>Discord (soon)</span> · <span>Telegram (soon)</span>
+          · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span>
         </div>
       </div>
       <div class="copyright">

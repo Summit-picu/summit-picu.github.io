@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 <style media="print">.header,.footer,.snow-overlay,.mountains,.navbar,.sidebar,.toc,.actions,.comments,.lang-dropdown,.nav-toggle{display:none!important}.content-layout,.page{display:block!important}.article{max-width:100%!important}</style>
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
@@ -30,9 +31,9 @@
 <a data-i18n="nav.download" href="download-eng.html">Download</a>
 <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
 <a data-i18n="nav.news" href="news-eng.html">News</a>
-<a href="wiki-eng.html" class="active">Wiki</a>
+<a href="wiki-eng.html" class="active" data-i18n="nav.wiki">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -74,57 +75,58 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#what-is" aria-current="true">What is Summit Linux</a>
+<li class="active"><a href="#what-is" aria-current="true" data-i18n="wiki.secWhat">What is Summit Linux</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#installation">Installation</a>
+<li><a href="#installation" data-i18n="wiki.secInstall">Installation</a>
 </li>
-<li><a href="#quickstart">Quick start</a>
+<li><a href="#quickstart" data-i18n="wiki.secQuick">Quick start</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#commands">Commands</a>
+<li><a href="#commands" data-i18n="wiki.secCommands">Commands</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#mirrors">Repositories and mirrors</a>
+<li><a href="#mirrors" data-i18n="wiki.secMirrors">Repositories and mirrors</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#faq">FAQ</a>
+<li><a href="#faq" data-i18n="wiki.secFaq">FAQ</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#links">Links</a>
+<li><a href="#links" data-i18n="wiki.secLinks">Links</a>
 <ul class="tree-l2">
 </ul>
 </li>
 </ul>
 </aside>
 <div class="article">
+<div class="wiki-search-wrap"><input class="wiki-search" type="search" data-i18n-ph="search.wikiPlaceholder" data-i18n-aria="search.label" placeholder="Search wiki…" aria-label="Search wiki" /><div class="search-results" hidden></div></div>
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index.html">Home</a> / <span data-i18n="nav.wiki">Wiki</span></nav>
-<h1>Summit Linux Wiki</h1>
+<h1 data-i18n="wiki.title">Summit Linux Wiki</h1>
 <nav class="toc"><strong data-i18n="toc.title">Contents</strong><ul>
-<li><a href="#what-is">What is Summit Linux</a></li>
-<li><a href="#installation">Installation</a></li>
-<li><a href="#quickstart">Quick start</a></li>
-<li><a href="#commands">Commands</a></li>
-<li><a href="#mirrors">Repositories and mirrors</a></li>
-<li><a href="#faq">FAQ</a></li>
-<li><a href="#links">Links</a></li>
+<li><a href="#what-is" data-i18n="wiki.secWhat">What is Summit Linux</a></li>
+<li><a href="#installation" data-i18n="wiki.secInstall">Installation</a></li>
+<li><a href="#quickstart" data-i18n="wiki.secQuick">Quick start</a></li>
+<li><a href="#commands" data-i18n="wiki.secCommands">Commands</a></li>
+<li><a href="#mirrors" data-i18n="wiki.secMirrors">Repositories and mirrors</a></li>
+<li><a href="#faq" data-i18n="wiki.secFaq">FAQ</a></li>
+<li><a href="#links" data-i18n="wiki.secLinks">Links</a></li>
 </ul></nav>
-<p>Community documentation for Summit Linux and the picu package manager: concepts, commands, repositories and answers.</p>
+<p data-i18n="wiki.lead">Community documentation for Summit Linux and the picu package manager: concepts, commands, repositories and answers.</p>
 <div class="actions">
 <a class="button button-secondary" href="#" onclick="window.print()" data-i18n="btn.downloadPdf">Download PDF</a>
 </div>
-<h2 id="what-is">What is Summit Linux</h2>
-<p>Summit Linux is an independent Linux distribution built from source following Linux From Scratch principles: transparent components, controlled builds and minimal software.</p>
-<div class="callout"><strong>Philosophy:</strong> transparency instead of magic, a recipe instead of a black box.</div>
-<h2 id="installation">Installation</h2>
-<div class="callout"><strong>This section is in developing — coming soon.</strong></div>
-<h2 id="quickstart">Quick start</h2>
-<p>Daily workflow in three commands: sync indexes, install a package, upgrade the system.</p>
+<h2 id="what-is" data-i18n="wiki.secWhat">What is Summit Linux</h2>
+<p data-i18n="wiki.whatText">Summit Linux is an independent Linux distribution built from source following Linux From Scratch principles: transparent components, controlled builds and minimal software.</p>
+<div class="callout"><strong data-i18n="wiki.philoLabel">Philosophy:</strong> <span data-i18n="wiki.philoText">transparency instead of magic, a recipe instead of a black box.</span></div>
+<h2 id="installation" data-i18n="wiki.secInstall">Installation</h2>
+<div class="callout"><strong data-i18n="wiki.installNote">This section is in developing — coming soon.</strong></div>
+<h2 id="quickstart" data-i18n="wiki.secQuick">Quick start</h2>
+<p data-i18n="wiki.quickText">Daily workflow in three commands: sync indexes, install a package, upgrade the system.</p>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
 <pre translate="no">$ picu sync
@@ -135,31 +137,31 @@ $ picu add vim
 $ picu update
 [ OK ] system up to date</pre>
 </div>
-<h2 id="commands">Commands</h2>
-<p>picu manages repositories, build recipes, binary packages, signatures, trust stores and the package database.</p>
+<h2 id="commands" data-i18n="wiki.secCommands">Commands</h2>
+<p data-i18n="wiki.cmdText">picu manages repositories, build recipes, binary packages, signatures, trust stores and the package database.</p>
 <ul>
-<li><code>picu sync</code> &mdash; fetch repository indexes and verify signatures.</li>
-<li><code>picu add &lt;pkg&gt;</code> &mdash; install a package from a trusted mirror.</li>
-<li><code>picu cook &lt;recipe&gt;</code> &mdash; build a package from source in isolation.</li>
-<li><code>picu cut &lt;pkg&gt;</code> &mdash; remove a package and clean up untracked leftovers.</li>
-<li><code>picu find &lt;query&gt;</code> &mdash; search repository indexes for packages.</li>
-<li><code>picu list</code> &mdash; show installed packages.</li>
-<li><code>picu info &lt;pkg&gt;</code> &mdash; show version, recipe and mirror details.</li>
-<li><code>picu update</code> &mdash; upgrade installed packages to the latest trusted versions.</li>
-<li><code>picu rebase &lt;recipe&gt;</code> &mdash; rebuild a local recipe against the current base.</li>
-<li><code>picu trust list</code> &mdash; show trusted keys and revoked certificates.</li>
+<li><code>picu sync</code> <span data-i18n="wiki.cmdSync">— fetch repository indexes and verify signatures.</span></li>
+<li><code>picu add &lt;pkg&gt;</code> <span data-i18n="wiki.cmdAdd">— install a package from a trusted mirror.</span></li>
+<li><code>picu cook &lt;recipe&gt;</code> <span data-i18n="wiki.cmdCook">— build a package from source in isolation.</span></li>
+<li><code>picu cut &lt;pkg&gt;</code> <span data-i18n="wiki.cmdCut">— remove a package and clean up untracked leftovers.</span></li>
+<li><code>picu find &lt;query&gt;</code> <span data-i18n="wiki.cmdFind">— search repository indexes for packages.</span></li>
+<li><code>picu list</code> <span data-i18n="wiki.cmdList">— show installed packages.</span></li>
+<li><code>picu info &lt;pkg&gt;</code> <span data-i18n="wiki.cmdInfo">— show version, recipe and mirror details.</span></li>
+<li><code>picu update</code> <span data-i18n="wiki.cmdUpdate">— upgrade installed packages to the latest trusted versions.</span></li>
+<li><code>picu rebase &lt;recipe&gt;</code> <span data-i18n="wiki.cmdRebase">— rebuild a local recipe against the current base.</span></li>
+<li><code>picu trust list</code> <span data-i18n="wiki.cmdTrust">— show trusted keys and revoked certificates.</span></li>
 </ul>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
 <pre translate="no">$ picu cook ./recipes/vim.toml
 [ OK ] isolated build finished</pre>
 </div>
-<h2 id="mirrors">Repositories and mirrors</h2>
+<h2 id="mirrors" data-i18n="wiki.secMirrors">Repositories and mirrors</h2>
 <table class="table">
 <tr><th data-i18n="mir.col.mirror">Mirror</th><th data-i18n="mir.col.type">Type</th><th data-i18n="mir.col.url">URL</th><th data-i18n="mir.col.status">Status</th></tr>
 <tr><td data-i18n="mir.official">Official mirror</td><td data-i18n="mir.signedPlanned">Signed index (planned)</td><td data-i18n="mir.officialUrl"><code>mirror.summit-linux.org</code> (coming soon — not live yet)</td><td data-i18n="mir.comingSoon">Coming soon</td></tr>
 <tr><td data-i18n="mir.community">Community mirror</td><td data-i18n="mir.signed">Signed index</td><td data-i18n="mir.noCommunity">— (no community mirrors yet)</td><td data-i18n="mir.comingSoon">Coming soon</td></tr>
-<tr><td data-i18n="mir.local">Local build</td><td>picu cook</td><td data-i18n="mir.none">—</td><td data-i18n="mir.available">Available</td></tr>
+<tr><td data-i18n="mir.local">Local build</td><td data-i18n="mir.cook">picu cook</td><td data-i18n="mir.none">—</td><td data-i18n="mir.available">Available</td></tr>
 </table>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
@@ -170,41 +172,41 @@ $ picu update
 index = "repo.index.json"
 trusted = true</pre>
 </div>
-<div class="callout"><strong>Community mirrors:</strong> they require explicit trust &mdash; never enable an untrusted mirror with unsafe flags on a production system.</div>
-<h2 id="faq">FAQ</h2>
-<details class="faq"><summary>Is Summit Linux ready for daily use?</summary>
-<p>The project is a working concept with a staged implementation plan; follow the News page for releases.</p>
+<div class="callout"><strong data-i18n="wiki.mirrorsNoteLabel">Community mirrors:</strong> <span data-i18n="wiki.mirrorsNoteText">they require explicit trust — never enable an untrusted mirror with unsafe flags on a production system.</span></div>
+<h2 id="faq" data-i18n="wiki.secFaq">FAQ</h2>
+<details class="faq"><summary data-i18n="wiki.faq1q">Is Summit Linux ready for daily use?</summary>
+<p data-i18n="wiki.faq1a">The project is a working concept with a staged implementation plan; follow the News page for releases.</p>
 </details>
-<details class="faq"><summary>How is picu different from other package managers?</summary>
-<p>picu combines source recipes and binary packages with cryptographic verification of every repository index.</p>
+<details class="faq"><summary data-i18n="wiki.faq2q">How is picu different from other package managers?</summary>
+<p data-i18n="wiki.faq2a">picu combines source recipes and binary packages with cryptographic verification of every repository index.</p>
 </details>
-<details class="faq"><summary>Which init system does Summit use?</summary>
-<p>OpenRC / sysvinit with an optional runit setup.</p>
+<details class="faq"><summary data-i18n="wiki.faq3q">Which init system does Summit use?</summary>
+<p data-i18n="wiki.faq3a">OpenRC / sysvinit with an optional runit setup.</p>
 </details>
-<details class="faq"><summary>How do I verify downloads?</summary>
-<p>Releases will be checksummed and repository indexes will be signed; see the Download page for details.</p>
+<details class="faq"><summary data-i18n="wiki.faq4q">How do I verify downloads?</summary>
+<p data-i18n="wiki.faq4a">Releases will be checksummed and repository indexes will be signed; see the Download page for details.</p>
 </details>
-<details class="faq"><summary>Can I build packages from source?</summary>
-<p>Yes &mdash; use <code>picu cook</code> with a recipe file for an isolated, reproducible build.</p>
+<details class="faq"><summary data-i18n="wiki.faq5q">Can I build packages from source?</summary>
+<p data-i18n="wiki.faq5a">Yes — use <code>picu cook</code> with a recipe file for an isolated, reproducible build.</p>
 </details>
-<details class="faq"><summary>Where is the full documentation?</summary>
-<p>In the <a href="https://github.com/Summit-picu/Markdown-files-and-info" target="_blank" rel="noopener">Markdown-files-and-info</a> repository and on the <a href="download-eng.html">Download</a> page.</p>
+<details class="faq"><summary data-i18n="wiki.faq6q">Where is the full documentation?</summary>
+<p data-i18n="wiki.faq6a">In the <a href="https://github.com/Summit-picu/Markdown-files-and-info" target="_blank" rel="noopener">Markdown-files-and-info</a> repository and on the <a href="download-eng.html">Download</a> page.</p>
 </details>
-<details class="faq"><summary>Which picu commands will I use most?</summary>
-<p><code>picu sync</code>, <code>picu add</code>, <code>picu update</code>, <code>picu find</code> and <code>picu info</code> for daily work; <code>picu cook</code> and <code>picu cut</code> for source builds; <code>picu trust</code> for key management.</p>
+<details class="faq"><summary data-i18n="wiki.faq7q">Which picu commands will I use most?</summary>
+<p data-i18n="wiki.faq7a"><code>picu sync</code>, <code>picu add</code>, <code>picu update</code>, <code>picu find</code> and <code>picu info</code> for daily work; <code>picu cook</code> and <code>picu cut</code> for source builds; <code>picu trust</code> for key management.</p>
 </details>
-<details class="faq"><summary>How do I add a community mirror?</summary>
-<p>Add its description to <code>/etc/picu/mirrors.d/</code> and grant it explicit trust &mdash; community mirrors are never trusted by default.</p>
+<details class="faq"><summary data-i18n="wiki.faq8q">How do I add a community mirror?</summary>
+<p data-i18n="wiki.faq8a">Add its description to <code>/etc/picu/mirrors.d/</code> and grant it explicit trust — community mirrors are never trusted by default.</p>
 </details>
-<details class="faq"><summary>What if a signature check fails?</summary>
-<p>Do not install anything: re-run <code>picu sync</code>, check the index expiry date and your trusted keys, then report the mirror.</p>
+<details class="faq"><summary data-i18n="wiki.faq9q">What if a signature check fails?</summary>
+<p data-i18n="wiki.faq9a">Do not install anything: re-run <code>picu sync</code>, check the index expiry date and your trusted keys, then report the mirror.</p>
 </details>
-<h2 id="links">Links</h2>
+<h2 id="links" data-i18n="wiki.secLinks">Links</h2>
 <ul>
-<li><a href="download-eng.html">Download Summit Linux</a></li>
-<li><a href="https://github.com/Summit-picu/Markdown-files-and-info" target="_blank" rel="noopener">Markdown-files-and-info docs repo</a></li>
+<li><a href="download-eng.html" data-i18n="wiki.linksDownload">Download Summit Linux</a></li>
+<li><a href="https://github.com/Summit-picu/Markdown-files-and-info" target="_blank" rel="noopener" data-i18n="wiki.linksDocs">Markdown-files-and-info docs repo</a></li>
 </ul>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -221,14 +223,15 @@ trusted = true</pre>
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (soon)</span> · <span>Telegram (soon)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux &amp; picu · Independent open-source project</span></div>
 </footer>
 <script src="js/main.js"></script>
 <script src="js/i18n.js"></script>
+<script src="js/wiki-search.js"></script>
 </body>
 </html>

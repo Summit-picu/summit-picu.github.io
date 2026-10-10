@@ -13,6 +13,7 @@
 <link rel="manifest" href="site.webmanifest"/>
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
+<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
 </head><body>
 <div aria-hidden="true" class="snow-overlay"></div>
 <div class="mountains mtn-3">
@@ -27,11 +28,11 @@
 <a data-i18n="nav.home" href="index.html">Home</a>
 <a data-i18n="nav.about" href="about-eng.html">About</a>
 <a data-i18n="nav.download" href="download-eng.html">Download</a>
-<a href="picu-eng.html" class="active">picu</a>
+<a href="picu-eng.html" class="active" data-i18n="nav.picu">picu</a>
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
 <div class="lang-dropdown">
@@ -73,23 +74,23 @@
 <div class="content-layout">
 <aside class="sidebar">
 <ul class="tree-l1">
-<li class="active"><a href="#commands" aria-current="true">Core commands</a>
+<li class="active"><a href="#commands" aria-current="true" data-i18n="pc.sec.commands">Core commands</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#source">Source builds</a>
+<li><a href="#source" data-i18n="pc.sec.source">Source builds</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#binary">Binary packages</a>
+<li><a href="#binary" data-i18n="pc.sec.binary">Binary packages</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#trust">Trust</a>
+<li><a href="#trust" data-i18n="pc.sec.trust">Trust</a>
 <ul class="tree-l2">
 </ul>
 </li>
-<li><a href="#example">Example</a>
+<li><a href="#example" data-i18n="pc.sec.example">Example</a>
 <ul class="tree-l2">
 </ul>
 </li>
@@ -99,19 +100,19 @@
 <nav class="breadcrumbs"><a data-i18n="crumb.home" href="index.html">Home</a> / <span data-i18n="nav.picu">picu</span></nav>
 <h1>picu</h1>
 <nav class="toc"><strong data-i18n="toc.title">Contents</strong><ul>
-<li><a href="#commands">Core commands</a></li>
-<li><a href="#source">Source builds</a></li>
-<li><a href="#binary">Binary packages</a></li>
-<li><a href="#trust">Trust</a></li>
-<li><a href="#example">Example</a></li>
+<li><a href="#commands" data-i18n="pc.sec.commands">Core commands</a></li>
+<li><a href="#source" data-i18n="pc.sec.source">Source builds</a></li>
+<li><a href="#binary" data-i18n="pc.sec.binary">Binary packages</a></li>
+<li><a href="#trust" data-i18n="pc.sec.trust">Trust</a></li>
+<li><a href="#example" data-i18n="pc.sec.example">Example</a></li>
 </ul></nav>
 <img class="picu-logo" src="assets/picu.svg" alt="picu"/>
-<p>picu is the package manager at the core of Summit Linux. It handles source builds, binary packages, repositories, signatures and package metadata.</p>
+<p data-i18n="pc.intro">picu is the package manager at the core of Summit Linux. It handles source builds, binary packages, repositories, signatures and package metadata.</p>
 <div class="actions">
 <a class="button button-primary" href="https://github.com/Summit-picu/Picu" target="_blank" rel="noopener" data-i18n="btn.sourceCode">Source code</a>
 <a class="button button-secondary" href="https://github.com/Summit-picu" target="_blank" rel="noopener" data-i18n="btn.github">GitHub</a>
 </div>
-<h2 id="commands">Core commands</h2>
+<h2 id="commands" data-i18n="pc.sec.commands">Core commands</h2>
 <pre translate="no">picu add &lt;pkg&gt;
 picu cook &lt;pkg&gt;
 picu cut &lt;pkg&gt;
@@ -123,13 +124,13 @@ picu info &lt;pkg&gt;
 picu update
 picu trust
 picu help</pre>
-<h2 id="source">Source builds</h2>
-<p>Packages are described using declarative recipes <code>.picu</code>.</p>
-<h2 id="binary">Binary packages</h2>
-<p>picu can install signed binary archives after checking their hashes and signatures.</p>
-<h2 id="trust">Trust</h2>
-<div class="callout"><strong>Unsafe repositories are blocked by default.</strong><div class="callout-body">Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>.</div></div>
-<h2 id="example">Example</h2>
+<h2 id="source" data-i18n="pc.sec.source">Source builds</h2>
+<p data-i18n="pc.sourceP">Packages are described using declarative recipes <code>.picu</code>.</p>
+<h2 id="binary" data-i18n="pc.sec.binary">Binary packages</h2>
+<p data-i18n="pc.binaryP">picu can install signed binary archives after checking their hashes and signatures.</p>
+<h2 id="trust" data-i18n="pc.sec.trust">Trust</h2>
+<div class="callout"><strong data-i18n="pc.trustLabel">Unsafe repositories are blocked by default.</strong><div class="callout-body" data-i18n="pc.trustText">Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>.</div></div>
+<h2 id="example" data-i18n="pc.sec.example">Example</h2>
 <div class="terminal" translate="no">
 <div class="terminal-bar"><span></span><span></span><span></span></div>
 <pre translate="no">$ picu find Vim Vim
@@ -144,7 +145,7 @@ Type: Src &amp; Bin $ picu add Vim
 [ .. ] installing Vim
 [ OK ] installation completed</pre>
 </div>
-<div class="comments"><a href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener">Discuss on GitHub</a></div>
+<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
 </div>
 </div>
 </div>
@@ -161,10 +162,10 @@ Type: Src &amp; Bin $ picu add Vim
 <a data-i18n="nav.news" href="news-eng.html">News</a>
 <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
 <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html">Changelog</a>
+<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
 <a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
 </div>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span>Discord (soon)</span> · <span>Telegram (soon)</span></div>
+<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span></div>
 </div>
 <div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">Summit Linux &amp; picu · Independent open-source project</span></div>
 </footer>

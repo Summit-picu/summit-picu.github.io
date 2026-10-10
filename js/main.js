@@ -469,6 +469,49 @@
 		return "light";
 	}
 
+	function swapIcons(theme) {
+		// Dark SVG swap: img.inline-icon[src$='.svg'] without -dark toggles to
+		// *-dark.svg in dark theme and back in light. Files are created by
+		// another agent — if a *-dark.svg is missing, Image() onerror keeps
+		// the old src and the CSS filter fallback still inverts the icon.
+		try {
+			const dark = theme === "dark";
+			const imgs = document.querySelectorAll('img.inline-icon[src$=".svg"]');
+			imgs.forEach((img) => {
+				const current = img.getAttribute("src") || "";
+				if (!current) return;
+				if (!img.dataset.lightSrc) {
+					if (/-dark\.svg(?=[?#]|$)/i.test(current)) {
+						img.dataset.lightSrc = current.replace(
+							/-dark\.svg(?=[?#]|$)/i,
+							".svg",
+						);
+					} else {
+						img.dataset.lightSrc = current;
+					}
+				}
+				const lightSrc = img.dataset.lightSrc;
+				if (dark) {
+					if (/-dark\.svg(?=[?#]|$)/i.test(current)) return;
+					const candidate = lightSrc.replace(/\.svg(?=[?#]|$)/i, "-dark.svg");
+					if (candidate === current) return;
+					const probe = new Image();
+					probe.onload = () => {
+						if (img.isConnected) img.setAttribute("src", candidate);
+					};
+					probe.onerror = () => {
+						/* missing *-dark.svg — CSS filter fallback covers it */
+					};
+					probe.src = candidate;
+				} else {
+					if (current !== lightSrc) img.setAttribute("src", lightSrc);
+				}
+			});
+		} catch (error) {
+			/* icon swap unavailable */
+		}
+	}
+
 	function applyTheme(theme, animate = true) {
 		const next = theme === "dark" ? "dark" : "light";
 		const root = document.documentElement;
@@ -482,6 +525,7 @@
 			}, 450);
 		}
 		syncThemeToggle(next);
+		swapIcons(next);
 		try {
 			window.localStorage.setItem(THEME_KEY, next);
 		} catch (error) {
@@ -506,12 +550,15 @@
 
 	function toggleTheme() {
 		const current = document.documentElement.getAttribute("data-theme");
-		applyTheme(current === "dark" ? "light" : "dark", true);
+		const next = current === "dark" ? "light" : "dark";
+		applyTheme(next, true);
+		swapIcons(next);
 	}
 
 	function setupThemeToggle() {
 		// Apply stored/OS theme ASAP (no forced light on first visit).
 		applyTheme(getPreferredTheme(), false);
+		swapIcons(document.documentElement.getAttribute("data-theme"));
 
 		let button = document.querySelector(".theme-toggle");
 		if (!button) {
