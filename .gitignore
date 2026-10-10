@@ -11,6 +11,7 @@
 # editors / agents
 .idea/
 .vscode/
+# yea we using ai :(
 .opencode/
 .claude/
 
@@ -28,3 +29,7 @@ Thumbs.db
 
 # logs
 *.log
+
+# debug versions
+halloween/
+newyear/
