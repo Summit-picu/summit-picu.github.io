@@ -2056,6 +2056,74 @@ html[data-theme="light"] .preloader {
   border-left: 3px solid var(--accent);
   font-weight: 700;
 }
+/* 21c. Collapsible tree (Vue TreeItem): toggle buttons + nested level. */
+.tree-row {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.tree-row > a {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.tree-toggle {
+  flex: 0 0 auto;
+  border: 0;
+  background: transparent;
+  color: var(--muted-light);
+  cursor: pointer;
+  padding: 10px 9px;
+  font-size: 0.68rem;
+  line-height: 1;
+  border-radius: 7px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+.tree-toggle:hover {
+  color: var(--blue);
+  background: var(--blue-soft);
+}
+.tree-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.tree-toggle .tree-caret {
+  display: inline-block;
+  transition: transform 0.2s var(--ease);
+}
+.tree-toggle[aria-expanded="true"] .tree-caret {
+  transform: rotate(90deg);
+}
+.sidebar ul.tree-l1,
+.sidebar ul.tree-l2 {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar ul.tree-l2 {
+  padding-left: 16px;
+}
+.sidebar ul.tree-l2 a {
+  font-size: 0.82rem;
+}
+/* 21d. Footer report link: quiet outline button in the footer tone. */
+.footer-report {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 10px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  transition:
+    color 0.2s var(--ease),
+    border-color 0.2s var(--ease);
+}
+.footer-report:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+}
 /* 21e. Центрирование (только если класс явно не .left): обнуление skew/сдвигов. */
 .hero-content:not(.left),
 .heading:not(.left),
@@ -5170,4 +5238,11 @@ html[data-theme="dark"] .discuss-plain {
 html[data-theme="dark"] .discuss-plain:hover {
   text-decoration: underline;
   opacity: 0.85;
+}
+
+/* ============ Vue chrome i18n =========================================== */
+/* Hide #app until the Vue chrome (header/nav/footer) is mounted; body copy
+   stays hardcoded EN in markup for SEO and is unaffected. */
+[v-cloak] {
+  display: none;
 }

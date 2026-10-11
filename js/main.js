@@ -772,15 +772,24 @@
 	}
 
 	function setupShortcuts() {
-		const suffix = window.location.pathname.includes("-ru")
-			? "-ru.html"
-			: "-eng.html";
+		// Clean names + ?lang=: current language comes from the query string
+		// first, then the persisted summit-lang choice (Chrome-first i18n).
+		const params = new URLSearchParams(window.location.search);
+		const stored = (() => {
+			try {
+				return window.localStorage.getItem("summit-lang");
+			} catch (error) {
+				return null;
+			}
+		})();
+		const lang = params.get("lang") === "ru" || stored === "ru" ? "ru" : "en";
+		const suffix = `?lang=${lang}`;
 		const routes = {
-			h: "index.html",
-			d: `download${suffix}`,
-			p: `picu${suffix}`,
-			n: `news${suffix}`,
-			w: `wiki${suffix}`,
+			h: `index.html${suffix}`,
+			d: `download.html${suffix}`,
+			p: `picu-new.html${suffix}`,
+			n: `news.html${suffix}`,
+			w: `wiki.html${suffix}`,
 		};
 
 		let pendingG = false;

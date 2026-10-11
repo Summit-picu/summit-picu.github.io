@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Summit Linux changelog: Summit Linux, picu and website release history."
+    />
+    <meta property="og:title" content="Changelog · Summit Linux" />
+    <meta
+      property="og:description"
+      content="Summit Linux changelog: Summit Linux, picu and website release history."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/summit.svg" />
+    <title>Changelog · Summit Linux</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#0d1f31" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/summit.svg">
+    <style media="print">
+      .header,
+      .footer,
+      .snow-overlay,
+      .mountains,
+      .navbar,
+      .sidebar,
+      .toc,
+      .actions,
+      .comments,
+      .lang-dropdown,
+      .nav-toggle {
+        display: none !important;
+      }
+      .content-layout,
+      .page {
+        display: block !important;
+      }
+      .article {
+        max-width: 100% !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div aria-hidden="true" class="snow-overlay"></div>
+    <div class="mountains mtn-1">
+      <div class="mountain back"></div>
+      <div class="mountain mid"></div>
+      <div class="mountain front"></div>
+    </div>
+    <div id="app" v-cloak>
+<header class="header">
+      <nav class="navbar">
+        <a class="brand" href="index.html"
+          ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
+        >
+        <div class="nav">
+          <a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
+          <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+          <a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
+          <a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
+          <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+          <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+          <a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
+          <a href="changelog.html" class="active" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+        <div class="lang-dropdown">
+          <button
+            class="lang-btn"
+            type="button"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <img class="lang-flag" src="assets/flags/en.svg" alt="" /><span
+              >EN</span
+            >
+          </button>
+          <ul class="lang-list" role="menu">
+            <li>
+              <a
+                class="lang-item is-active"
+                href="changelog.html"
+                aria-current="true"
+                ><img class="lang-flag" src="assets/flags/en.svg" alt="" /><span
+                  >English</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html?lang=ru"
+                ><img class="lang-flag" src="assets/flags/ru.svg" alt="" /><span
+                  >Русский</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="uk"
+                ><img class="lang-flag" src="assets/flags/uk.svg" alt="" /><span
+                  >Українська</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="zh"
+                ><img class="lang-flag" src="assets/flags/zh.svg" alt="" /><span
+                  >中文</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="ja"
+                ><img class="lang-flag" src="assets/flags/ja.svg" alt="" /><span
+                  >日本語</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="de"
+                ><img class="lang-flag" src="assets/flags/de.svg" alt="" /><span
+                  >Deutsch</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="fr"
+                ><img class="lang-flag" src="assets/flags/fr.svg" alt="" /><span
+                  >Français</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="pl"
+                ><img class="lang-flag" src="assets/flags/pl.svg" alt="" /><span
+                  >Polski</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="es"
+                ><img class="lang-flag" src="assets/flags/es.svg" alt="" /><span
+                  >Español</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="pt"
+                ><img class="lang-flag" src="assets/flags/pt.svg" alt="" /><span
+                  >Português</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="it"
+                ><img class="lang-flag" src="assets/flags/it.svg" alt="" /><span
+                  >Italiano</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="tr"
+                ><img class="lang-flag" src="assets/flags/tr.svg" alt="" /><span
+                  >Türkçe</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="ar"
+                ><img class="lang-flag" src="assets/flags/ar.svg" alt="" /><span
+                  >العربية</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="hi"
+                ><img class="lang-flag" src="assets/flags/hi.svg" alt="" /><span
+                  >हिन्दी</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="bn"
+                ><img class="lang-flag" src="assets/flags/bn.svg" alt="" /><span
+                  >বাংলা</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="id"
+                ><img class="lang-flag" src="assets/flags/id.svg" alt="" /><span
+                  >Bahasa Indonesia</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="vi"
+                ><img class="lang-flag" src="assets/flags/vi.svg" alt="" /><span
+                  >Tiếng Việt</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="ko"
+                ><img class="lang-flag" src="assets/flags/ko.svg" alt="" /><span
+                  >한국어</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="nl"
+                ><img class="lang-flag" src="assets/flags/nl.svg" alt="" /><span
+                  >Nederlands</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="sv"
+                ><img class="lang-flag" src="assets/flags/sv.svg" alt="" /><span
+                  >Svenska</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="cs"
+                ><img class="lang-flag" src="assets/flags/cs.svg" alt="" /><span
+                  >Čeština</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="ro"
+                ><img class="lang-flag" src="assets/flags/ro.svg" alt="" /><span
+                  >Română</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="hu"
+                ><img class="lang-flag" src="assets/flags/hu.svg" alt="" /><span
+                  >Magyar</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="el"
+                ><img class="lang-flag" src="assets/flags/el.svg" alt="" /><span
+                  >Ελληνικά</span
+                ></a
+              >
+            </li>
+            <li>
+              <a class="lang-item" href="changelog.html" data-lang="kk"
+                ><img class="lang-flag" src="assets/flags/kk.svg" alt="" /><span
+                  >Қазақша</span
+                ></a
+              >
+            </li>
+          </ul>
+        </div>
+        <button
+          class="nav-toggle"
+          type="button"
+          aria-label="Open menu"
+          data-i18n-aria="aria.navToggle"
+          aria-expanded="false"
+        >
+          <span></span>
+        </button>
+      </nav>
+    </header>
+    <main>
+      <section class="content">
+        <div class="page">
+          <div class="content-layout">
+            <aside class="sidebar">
+<ul class="tree-l1">
+<tree-item v-for="node in tree" :key="node.href" :item="node" :page="pageKey"></tree-item>
+</ul>
+</aside>
+            <div class="article">
+              <nav class="breadcrumbs"><a href="index.html">{{ t('crumb.home') }}</a> / <span>{{ crumbLabel }}</span></nav>
+              <h1 data-i18n="nav.changelog">Changelog</h1>
+              <nav class="toc"><strong>{{ t('toc.title') }}</strong><ul><li v-for="n in flatToc" :key="n.href"><a :href="n.href" @click="setActive(n.href)">{{ t(n.i18n) }}</a></li></ul></nav>
+              <p data-i18n="chl.lead">
+                Release history of Summit Linux, the picu package manager and
+                this website.
+              </p>
+              <div class="actions">
+                <a
+                  class="button button-secondary"
+                  href="#"
+                  onclick="window.print()"
+                  data-i18n="btn.downloadPdf"
+                  >Download PDF</a
+                >
+              </div>
+              <h2 id="summit-linux" data-i18n="chl.grpSummit">Summit Linux</h2>
+              <p data-i18n="chl.noRelease">there no release yet... :(</p>
+              <h2 id="picu" data-i18n="chl.grpPicu">picu package manager</h2>
+              <p data-i18n="chl.noRelease">there no release yet... :(</p>
+              <h2 id="website" data-i18n="chl.grpSite">Summit Linux website</h2>
+              <ul>
+                <li data-i18n="chl.site.010">stable-v0.1.0 website created</li>
+                <li data-i18n="chl.site.020">
+                  unstable-v0.2.0 website UI updated for a bit
+                </li>
+                <li data-i18n="chl.site.030">
+                  stable-v0.3.0 fixed some bugs from v0.2.0
+                </li>
+                <li data-i18n="chl.site.040">
+                  unstable-v0.4.0 huge UI update, but it have a lot of bugs
+                </li>
+              </ul>
+              <div class="comments">
+                <a
+                  class="discuss-plain"
+                  href="https://github.com/Summit-picu/summit-picu.github.io/issues"
+                  target="_blank"
+                  rel="noopener"
+                  ><svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    aria-hidden="true"
+                  >
+                    <path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path>
+                  </svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="footer">
+      <div class="footer-inner">
+        <a class="footer-brand" href="index.html"
+          ><img alt="" src="assets/summit.svg" />Summit Linux</a
+        >
+        <div class="footer-links">
+          <a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
+          <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+          <a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
+          <a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
+          <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+          <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+          <a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
+          <a href="changelog.html" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+        </div>
+<a class="footer-report" href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue" target="_blank" rel="noopener">{{ t('common.report') }}</a>
+        <div class="social">
+          <a
+            href="https://github.com/Summit-picu"
+            target="_blank"
+            rel="noopener"
+            >GitHub</a
+          >
+          · <span data-i18n="social.discord">{{ t('social.discord') }}</span> · <span data-i18n="social.telegram">{{ t('social.telegram') }}</span>
+        </div>
+      </div>
+      <div class="copyright">
+        <span class="version">v0.3.0 · 2026-10</span> ·
+        <span data-i18n="foot.note"
+          >{{ t('foot.note') }}</span
+        >
+      </div>
+    </footer>
+</div><!-- /#app -->
+    <script type="text/x-template" id="tree-item-template">
+<li :class="{ active: isActive }">
+<div class="tree-row">
+<a :href="item.href" :class="{ active: isCurrent }" :aria-current="isCurrent ? 'true' : null" @click="onNav">{{ label }}</a>
+<button v-if="hasChildren" class="tree-toggle" type="button" @click="toggle" @keydown="onKey" :aria-expanded="open ? 'true' : 'false'" :aria-label="label"><span class="tree-caret" aria-hidden="true">▸</span></button>
+</div>
+<ul v-if="hasChildren" v-show="open" class="tree-l2">
+<tree-item v-for="child in item.children" :key="child.href" :item="child" :page="page"></tree-item>
+</ul>
+</li>
+</script>
+<script defer src="js/vendor/vue.global.prod.js"></script>
+    <script defer src="js/app.js"></script>
+<script defer src="assets/js/i18n.js"></script>
+<script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+  </body>
+</html>

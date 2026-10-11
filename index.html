@@ -20,7 +20,8 @@
 <meta name="theme-color" content="#0d1f31"/>
 <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
 <link rel="icon" type="image/svg+xml" href="assets/summit.svg">
-  </head>
+  <style media="print">.header,.footer,.snow-overlay,.mountains,.navbar,.sidebar,.toc,.actions,.comments,.lang-dropdown,.nav-toggle{display:none!important}.content-layout,.page{display:block!important}.article{max-width:100%!important}</style>
+</head>
   <body>
     <div aria-hidden="true" class="snow-overlay"></div>
     <div class="mountains mtn-3">
@@ -28,20 +29,21 @@
       <div class="mountain mid"></div>
       <div class="mountain front"></div>
     </div>
-    <header class="header">
+    <div id="app" v-cloak>
+<header class="header">
       <nav class="navbar">
         <a class="brand" href="index.html"
           ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
         >
         <div class="nav">
-          <a href="index.html" class="active" data-i18n="nav.home">Home</a>
-          <a data-i18n="nav.about" href="about-eng.html">About</a>
-          <a data-i18n="nav.download" href="download-eng.html">Download</a>
-          <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
-          <a data-i18n="nav.news" href="news-eng.html">News</a>
-          <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
-          <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
+          <a href="index.html" class="active" data-i18n="nav.home">{{ t('nav.home') }}</a>
+          <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+          <a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
+          <a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
+          <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+          <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+          <a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
+<a href="changelog.html" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -72,7 +74,7 @@
               >
             </li>
             <li>
-              <a class="lang-item" href="index-ru.html"
+              <a class="lang-item" href="index.html?lang=ru"
                 ><img class="lang-flag" src="assets/flags/ru.svg" alt="" /><span
                   >Русский</span
                 ></a
@@ -255,7 +257,7 @@
     <main>
     <div class="banner" id="news-banner" role="note">
       <span data-i18n="banner.text">Latest: picu 0.3.0 — trust rotation. Signed mirrors coming soon.</span>
-      <a href="news-eng.html#latest" data-i18n="banner.link">Read news</a>
+      <a href="news.html#latest" data-i18n="banner.link">Read news</a>
       <button type="button" class="banner-close" data-banner-close aria-label="Dismiss" data-i18n-aria="banner.dismiss">×</button>
     </div>
     <script>
@@ -289,13 +291,13 @@
             <div class="actions">
               <a
                 class="button button-primary"
-                href="download-eng.html"
+                href="download.html"
                 data-i18n="btn.download"
                 >Download</a
               >
               <a
                 class="button button-secondary"
-                href="picu-eng.html"
+                href="picu-new.html"
                 data-i18n="btn.meetPicu"
                 >Meet picu</a
               >
@@ -314,9 +316,9 @@
           <div class="callout">
             <strong data-i18n="idx.calloutLabel">Coming soon:</strong>
             <span data-i18n="idx.calloutText">signed mirrors, <code>picu trust</code> key rotation and refreshed site. See</span>
-            <a href="news-eng.html" data-i18n="nav.news">News</a>
+            <a href="news.html" data-i18n="nav.news">News</a>
             <span data-i18n="idx.calloutAnd">and</span>
-            <a href="wiki-eng.html" data-i18n="nav.wiki">Wiki</a>.
+            <a href="wiki.html" data-i18n="nav.wiki">Wiki</a>.
           </div>
         </div>
       </section>
@@ -493,13 +495,13 @@ $ picu add vim
           <div class="actions">
             <a
               class="button button-primary"
-              href="wiki-eng.html"
+              href="wiki.html"
               data-i18n="btn.openWiki"
               >Open Wiki</a
             >
             <a
               class="button button-secondary"
-              href="picu-eng.html"
+              href="picu-new.html"
               data-i18n="btn.picuGuide"
               >picu guide</a
             >
@@ -520,13 +522,13 @@ $ picu add vim
             <div class="actions">
               <a
                 class="button button-primary"
-                href="about-eng.html"
+                href="about.html"
                 data-i18n="btn.aboutProject"
                 >About the project</a
               >
               <a
                 class="button button-secondary"
-                href="status-eng.html"
+                href="status.html"
                 data-i18n="btn.systemStatus"
                 >System status</a
               >
@@ -550,14 +552,14 @@ $ picu add vim
           ><img alt="" src="assets/summit.svg" />Summit Linux</a
         >
         <div class="footer-links">
-          <a data-i18n="nav.home" href="index.html">Home</a>
-          <a data-i18n="nav.about" href="about-eng.html">About</a>
-          <a data-i18n="nav.download" href="download-eng.html">Download</a>
-          <a data-i18n="nav.picu" href="picu-eng.html">picu</a>
-          <a data-i18n="nav.news" href="news-eng.html">News</a>
-          <a data-i18n="nav.wiki" href="wiki-eng.html">Wiki</a>
-          <a data-i18n="nav.status" href="status-eng.html">Status</a>
-<a href="changelog-eng.html" data-i18n="nav.changelog">Changelog</a>
+          <a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
+          <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+          <a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
+          <a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
+          <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+          <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+          <a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
+<a href="changelog.html" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
@@ -565,23 +567,28 @@ $ picu add vim
             >GitHub</a
           >
         </div>
+<a class="footer-report" href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue" target="_blank" rel="noopener">{{ t('common.report') }}</a>
         <div class="social">
           <a
             href="https://github.com/Summit-picu"
             target="_blank"
             rel="noopener"
             >GitHub</a
-          > · <span data-i18n="social.discord">Discord (soon)</span> · <span data-i18n="social.telegram">Telegram (soon)</span>
+          > · <span data-i18n="social.discord">{{ t('social.discord') }}</span> · <span data-i18n="social.telegram">{{ t('social.telegram') }}</span>
         </div>
       </div>
       <div class="copyright">
         <span class="version">v0.3.0 · 2026-10</span> ·
         <span data-i18n="foot.note"
-          >Summit Linux &amp; picu · Independent open-source project</span
+          >{{ t('foot.note') }}</span
         >
       </div>
     </footer>
-    <script src="js/main.js"></script>
+</div><!-- /#app -->
+    <script defer src="js/vendor/vue.global.prod.js"></script>
+    <script defer src="js/app.js"></script>
+<script defer src="assets/js/i18n.js"></script>
+<script src="js/main.js"></script>
     <script src="js/i18n.js"></script>
   </body>
 </html>
