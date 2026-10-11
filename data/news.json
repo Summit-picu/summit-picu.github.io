@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": "stable-v0-6-1",
+      "date": "2026-10-11",
+      "published": true,
+      "en": {
+        "title": "stable-v0.6.1: site features",
+        "excerpt": "Download and status pages expanded on top of the Vue build, shared translation dictionaries.",
+        "body": "Download and status pages expanded on top of the Vue build, shared translation dictionaries."
+      },
+      "ru": {
+        "title": "stable-v0.6.1: возможности сайта",
+        "excerpt": "Страницы скачивания и статуса расширены поверх Vue-сборки, общие словари переводов.",
+        "body": "Страницы скачивания и статуса расширены поверх Vue-сборки, общие словари переводов."
+      }
+    },
+    {
+      "id": "stable-v0-6-0",
+      "date": "2026-10-11",
+      "published": true,
+      "en": {
+        "title": "stable-v0.6.0: Vue migration",
+        "excerpt": "Vue app shell, single-file pages and unified English/Russian dictionaries.",
+        "body": "Vue app shell, single-file pages and unified English/Russian dictionaries."
+      },
+      "ru": {
+        "title": "stable-v0.6.0: переход на Vue",
+        "excerpt": "Vue-оболочка, однофайловые страницы и единые словари английского и русского.",
+        "body": "Vue-оболочка, однофайловые страницы и единые словари английского и русского."
+      }
+    },
+    {
+      "id": "ui-v0-4-0-v0-5-1",
+      "date": "2026-10-10",
+      "published": true,
+      "en": {
+        "title": "UI updates: v0.4.0 – v0.5.1",
+        "excerpt": "Two huge UI updates followed by a locale cleanup of duplicated page files.",
+        "body": "Two huge UI updates followed by a locale cleanup of duplicated page files."
+      },
+      "ru": {
+        "title": "Обновления интерфейса: v0.4.0 – v0.5.1",
+        "excerpt": "Два крупных обновления интерфейса и чистка дублей файлов локалей.",
+        "body": "Два крупных обновления интерфейса и чистка дублей файлов локалей."
+      }
+    }
+  ]
+}

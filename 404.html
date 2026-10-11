@@ -4,6 +4,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Page not found — Summit Linux." />
+    <meta name="robots" content="noindex,follow" />
+    <link rel="canonical" href="https://summit-picu.github.io/404.html" />
     <meta property="og:title" content="404 · Summit Linux" />
     <meta property="og:description" content="Page not found — Summit Linux." />
     <meta property="og:type" content="website" />
@@ -14,8 +16,29 @@
     <meta name="theme-color" content="#0d1f31" />
     <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
     <link rel="icon" type="image/svg+xml" href="assets/summit.svg" />
-  <style media="print">.header,.footer,.snow-overlay,.mountains,.navbar,.sidebar,.toc,.actions,.comments,.lang-dropdown,.nav-toggle{display:none!important}.content-layout,.page{display:block!important}.article{max-width:100%!important}</style>
-</head>
+    <style media="print">
+      .header,
+      .footer,
+      .snow-overlay,
+      .mountains,
+      .navbar,
+      .sidebar,
+      .toc,
+      .actions,
+      .comments,
+      .lang-dropdown,
+      .nav-toggle {
+        display: none !important;
+      }
+      .content-layout,
+      .page {
+        display: block !important;
+      }
+      .article {
+        max-width: 100% !important;
+      }
+    </style>
+  </head>
   <body>
     <div aria-hidden="true" class="snow-overlay"></div>
     <div class="mountains mtn-1">
@@ -23,7 +46,7 @@
       <div class="mountain mid"></div>
       <div class="mountain front"></div>
     </div>
-    <div id="app" v-cloak>
+    <div id="app">
       <header class="header">
         <nav class="navbar">
           <a class="brand" href="index.html"
@@ -76,7 +99,7 @@
                 >
               </li>
               <li>
-                <a class="lang-item" href="index.html?lang=ru"
+                <a class="lang-item" href="404.html?lang=ru"
                   ><img
                     class="lang-flag"
                     src="assets/flags/ru.svg"
@@ -316,18 +339,55 @@
               </p>
               <div class="actions">
                 <a
+                  id="home-btn"
                   class="button button-primary"
                   href="index.html"
-                  data-i18n="err.btnEn"
-                  >Home (EN)</a
-                >
-                <a
-                  class="button button-secondary"
-                  href="index.html?lang=ru"
-                  data-i18n="err.btnRu"
-                  >Главная (RU)</a
+                  data-i18n="err.btnHome"
+                  >Home</a
                 >
               </div>
+              <nav class="suggestions" aria-label="Popular pages">
+                <p data-i18n="err.suggestTitle">Popular pages:</p>
+                <ul>
+                  <li>
+                    <a href="index.html" data-i18n="nav.home">Home</a>
+                  </li>
+                  <li>
+                    <a href="download.html" data-i18n="nav.download"
+                      >Download</a
+                    >
+                  </li>
+                  <li>
+                    <a href="wiki.html" data-i18n="nav.wiki">Wiki</a>
+                  </li>
+                  <li>
+                    <a href="status.html" data-i18n="nav.status">Status</a>
+                  </li>
+                  <li>
+                    <a href="changelog.html" data-i18n="nav.changelog"
+                      >Changelog</a
+                    >
+                  </li>
+                </ul>
+                <div class="site-search">
+                  <input
+                    id="err-search"
+                    class="wiki-search"
+                    v-model="errSearch"
+                    type="search"
+                    :placeholder="t('err.searchPh')"
+                    :aria-label="t('err.searchPh')"
+                  />
+                  <ul class="search-results" v-if="errSearch.trim().length">
+                    <li v-for="r in siteResults" :key="r.page + r.href">
+                      <a :href="r.page + r.href">{{ r.label }}</a>
+                    </li>
+                    <li class="search-empty" v-if="!siteResults.length">
+                      {{ t('search.empty') }}
+                    </li>
+                  </ul>
+                </div>
+              </nav>
               <div class="comments">
                 <a
                   class="discuss-plain"
@@ -379,7 +439,13 @@
               >GitHub</a
             >
           </div>
-<a class="footer-report" href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue" target="_blank" rel="noopener">{{ t('common.report') }}</a>
+          <a
+            class="footer-report"
+            href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue"
+            target="_blank"
+            rel="noopener"
+            >{{ t('common.report') }}</a
+          >
           <div class="social">
             <a
               href="https://github.com/Summit-picu"
@@ -427,18 +493,97 @@
         };
         var path = "/";
         var file = "";
+        var incomingSearch = "";
+        var target, tUrl, inParams, out, el, lang, q, stored, n, homeBtn;
         try {
           path = window.location.pathname || "/";
           file = path.split("/").pop().split("?")[0].toLowerCase();
         } catch (e) {
           /* ignore */
         }
+        try {
+          incomingSearch = window.location.search || "";
+        } catch (e) {
+          incomingSearch = "";
+        }
         if (file && REDIRECTS[file]) {
-          window.location.replace(REDIRECTS[file]);
+          target = REDIRECTS[file];
+          try {
+            // Preserve incoming query (?lang= and extras): incoming wins.
+            tUrl = new URL(target, window.location.href);
+            inParams = new URLSearchParams(incomingSearch);
+            inParams.forEach(function (value, key) {
+              tUrl.searchParams.set(key, value);
+            });
+            out =
+              tUrl.pathname.split("/").pop() + (tUrl.search ? tUrl.search : "");
+            if (window.location.hash) out += window.location.hash;
+            window.location.replace(out);
+          } catch (e) {
+            window.location.replace(target + (incomingSearch || ""));
+          }
           return;
         }
-        var el = document.getElementById("missing-path");
+        el = document.getElementById("missing-path");
+        // XSS-safe: textContent only, never innerHTML.
         if (el) el.textContent = path;
+        // Single back-button follows current lang:
+        // ?lang= > localStorage "summit-lang" > navigator.language, EN fallback.
+        try {
+          lang = "en";
+          q = null;
+          try {
+            q = new URLSearchParams(window.location.search).get("lang");
+          } catch (e) {
+            q = null;
+          }
+          if (q === "en" || q === "ru") {
+            lang = q;
+          } else {
+            stored = null;
+            try {
+              stored = window.localStorage.getItem("summit-lang");
+            } catch (e) {
+              stored = null;
+            }
+            if (stored === "en" || stored === "ru") {
+              lang = stored;
+            } else {
+              try {
+                n = String(
+                  (window.navigator && window.navigator.language) || "en",
+                )
+                  .slice(0, 2)
+                  .toLowerCase();
+                if (n === "ru") lang = "ru";
+              } catch (e) {
+                /* EN fallback */
+              }
+            }
+          }
+          homeBtn = document.getElementById("home-btn");
+          if (homeBtn) {
+            if (lang === "ru") {
+              homeBtn.setAttribute("href", "index.html?lang=ru");
+              // Only override text when the i18n dict has not filled it yet
+              // (keeps data-i18n="err.btnHome" as the source of truth).
+              if (
+                !homeBtn.getAttribute("data-i18n-applied") &&
+                homeBtn.textContent.trim() === "Home"
+              )
+                homeBtn.textContent = "Главная";
+            } else {
+              homeBtn.setAttribute("href", "index.html");
+              if (
+                !homeBtn.getAttribute("data-i18n-applied") &&
+                homeBtn.textContent.trim() === "Главная"
+              )
+                homeBtn.textContent = "Home";
+            }
+          }
+        } catch (e) {
+          /* ignore — default EN button stays */
+        }
       })();
     </script>
   </body>

@@ -100,6 +100,9 @@
 			missing: "missing:",
 			btnEn: "Home (EN)",
 			btnRu: "Главная (RU)",
+			btnHome: "Back to home",
+			suggestTitle: "Popular pages:",
+			searchPh: "Search site…",
 		},
 		banner: {
 			text: "Latest: picu 0.3.0 — trust rotation. Signed mirrors coming soon.",
@@ -237,6 +240,7 @@
 			secQuick: "Quick start",
 			secCommands: "Commands",
 			secMirrors: "Repositories and mirrors",
+			secMulti: "Multiple inits and variants on one system",
 			secFaq: "FAQ",
 			secLinks: "Links",
 		},
@@ -261,6 +265,53 @@
 			"sec.binary": "Binary packages",
 			"sec.trust": "Trust",
 			"sec.example": "Example",
+			cmdSearchPh: "Filter commands…",
+			noMatch: "No commands match your filter.",
+			related: "Related:",
+			copy: "Copy",
+			copied: "copied ✓",
+			copyCodeAria: "Copy code to clipboard",
+			exampleT: "Example",
+			outputT: "Sample output",
+			more: "Show example",
+			less: "Hide",
+			verStable: "Stable",
+			verUnstable: "Unstable",
+			verNoteU:
+				"Unstable builds may print extra lines; commands stay the same.",
+			cheatsheet: "Cheatsheet",
+			cheatTitle: "picu cheatsheet",
+			close: "Close",
+			since: "since",
+			trustMoreT: "How trust works",
+			trustP1:
+				"picu trusts keys, not files. A package installs only if its index entry carries a signature from a key you trusted on purpose.",
+			trustP2:
+				"Every sync checks three things: the signature is real, the index has not expired, and the version is not older than what you have — no quiet downgrades.",
+			trustP3:
+				"Mirrors are treated as strangers: even the official mirror installs nothing without a valid signature. Community mirrors need your explicit trust first.",
+			trustP4:
+				"Keys can be replaced without reinstalling: old keys retire to a block-list, new keys take over, and picu tells you when it happens.",
+			cmd: {
+				add: { desc: "Install a package from a trusted mirror." },
+				cook: { desc: "Build a package from its recipe in isolation." },
+				cut: { desc: "Remove an installed package." },
+				find: { desc: "Search repository indexes for packages." },
+				sync: { desc: "Refresh repository indexes and check signatures." },
+				rebase: {
+					desc: "Switch the system to a different mirror or release.",
+				},
+				list: { desc: "Show installed packages." },
+				info: { desc: "Show version, recipe and mirror details." },
+				update: {
+					desc: "Upgrade installed packages to trusted versions.",
+				},
+				trust: {
+					desc: "Manage trusted keys and rotate them.",
+					un: "Key rotation arrived in 0.3.0 — unstable extends it with automatic expiry checks.",
+				},
+				help: { desc: "Show help for any command." },
+			},
 		},
 		news: { "sec.latest": "Latest", "sec.archive": "Archive" },
 		st: {
@@ -274,6 +325,11 @@
 			grpSummit: "Summit Linux",
 			grpPicu: "picu package manager",
 			grpSite: "Summit Linux website",
+			rel061t: "stable-v0.6.1 — 2026-10-11",
+			rel060t: "stable-v0.6.0 — 2026-10-11",
+			rel05xt: "debug-unstable-v0.5.0 → v0.5.1 — 2026-10-10",
+			rel040t: "unstable-v0.4.0 — 2026-10-10",
+			rel001t: "0.1 — 2026-09-02, initial upload era 2026-09-19/20",
 		},
 		social: { discord: "Discord (soon)", telegram: "Telegram (soon)" },
 	};
@@ -291,6 +347,7 @@
 			{ href: "#quickstart", i18n: "wiki.secQuick" },
 			{ href: "#commands", i18n: "wiki.secCommands" },
 			{ href: "#mirrors", i18n: "wiki.secMirrors" },
+			{ href: "#multi-init", i18n: "wiki.secMulti" },
 			{ href: "#faq", i18n: "wiki.secFaq" },
 			{ href: "#links", i18n: "wiki.secLinks" },
 		],
@@ -337,7 +394,17 @@
 		changelog: [
 			{ href: "#summit-linux", i18n: "chl.grpSummit" },
 			{ href: "#picu", i18n: "chl.grpPicu" },
-			{ href: "#website", i18n: "chl.grpSite" },
+			{
+				href: "#website",
+				i18n: "chl.grpSite",
+				children: [
+					{ href: "#site-0-6-1", i18n: "chl.rel061t" },
+					{ href: "#site-0-6-0", i18n: "chl.rel060t" },
+					{ href: "#site-0-5-x", i18n: "chl.rel05xt" },
+					{ href: "#site-0-4-0", i18n: "chl.rel040t" },
+					{ href: "#site-0-1", i18n: "chl.rel001t" },
+				],
+			},
 		],
 	};
 	var TREE_PAGES = {
@@ -361,6 +428,104 @@
 	};
 	window.__summitTrees = SUMMIT_TREES;
 
+	// ---- picu command catalogue (picu-new.html / picu.html only).
+	// Usage/example/output strings are code and never translated; the
+	// short descriptions resolve via pc.cmd.<id>.desc at render time.
+	var PICU_COMMANDS = [
+		{
+			id: "add",
+			usage: "picu add <pkg>",
+			example: "picu add Vim",
+			output:
+				"[ OK ] finding in mirror\n[ OK ] checking version\n[ ? ] install? [Y/n] Y\n[ OK ] installation completed",
+			related: ["find", "info", "update"],
+			since: "0.1.0",
+		},
+		{
+			id: "cook",
+			usage: "picu cook <pkg>",
+			example: "picu cook hello-2.12",
+			output:
+				"[ OK ] recipe loaded\n[ .. ] building in isolation\n[ OK ] package ready",
+			related: ["add", "info"],
+			since: "0.1.0",
+		},
+		{
+			id: "cut",
+			usage: "picu cut <pkg>",
+			example: "picu cut hello",
+			output: "[ ? ] remove hello-2.12? [Y/n] Y\n[ OK ] removed",
+			related: ["list", "add"],
+			since: "0.1.0",
+		},
+		{
+			id: "find",
+			usage: "picu find <query>",
+			example: "picu find editor",
+			output: "Vim — Vi improved code editor\nNano — small text editor",
+			related: ["add", "info"],
+			since: "0.1.0",
+		},
+		{
+			id: "sync",
+			usage: "picu sync",
+			example: "picu sync",
+			output: "[ OK ] index verified (signed)\n[ OK ] 3 mirrors in sync",
+			related: ["update", "trust"],
+			since: "0.1.0",
+		},
+		{
+			id: "rebase",
+			usage: "picu rebase <release>",
+			example: "picu rebase stable",
+			output: "[ OK ] mirror verified\n[ OK ] release pinned: stable",
+			related: ["sync", "update"],
+			since: "0.2.0",
+		},
+		{
+			id: "list",
+			usage: "picu list",
+			example: "picu list",
+			output: "Vim 23.12\nNano 8.0",
+			related: ["info", "cut"],
+			since: "0.1.0",
+		},
+		{
+			id: "info",
+			usage: "picu info <pkg>",
+			example: "picu info Vim",
+			output: "Version: 23.12\nMirror: Summit Official\nRecipe: vim.picu",
+			related: ["find", "add"],
+			since: "0.1.0",
+		},
+		{
+			id: "update",
+			usage: "picu update",
+			example: "picu update",
+			output: "[ OK ] 2 updates installed\n[ OK ] system is current",
+			related: ["sync", "list"],
+			since: "0.1.0",
+		},
+		{
+			id: "trust",
+			usage: "picu trust [--rotate]",
+			example: "picu trust --rotate",
+			output: "[ OK ] new key accepted\n[ OK ] old key retired",
+			related: ["sync", "rebase"],
+			since: "0.3.0",
+			unKey: "pc.cmd.trust.un",
+		},
+		{
+			id: "help",
+			usage: "picu help [command]",
+			example: "picu help add",
+			output: "Usage: picu add <pkg>\nInstall a package from a trusted mirror.",
+			related: ["find"],
+			since: "0.1.0",
+		},
+	];
+	window.__summitPicuCommands = PICU_COMMANDS;
+
 	function detectTreePage() {
 		try {
 			var file = (window.location.pathname || "/")
@@ -383,6 +548,17 @@
 	}
 
 	var treeStateCache = {};
+
+	// picu: enhance Vue-rendered copy terminals via the shared main.js
+	// pattern (no-op until main.js loads and exposes the hook).
+	function refreshCopyButtons() {
+		try {
+			if (typeof window.SummitCopyTerminals === "function")
+				window.SummitCopyTerminals();
+		} catch (e) {
+			/* ignore */
+		}
+	}
 
 	function loadTreeState(page) {
 		if (!page) return {};
@@ -588,6 +764,16 @@
 						activeHref: getHash(),
 						crumbRoot:
 							treePage && CRUMB_ROOT[treePage] ? CRUMB_ROOT[treePage] : null,
+						// picu features (picu-new.html / picu.html only).
+						cmdQuery: "",
+						openCmd: null,
+						verTab: "stable",
+						cheatOpen: false,
+						cheatReturnFocus: null,
+						ver: { stable: "0.3.0", unstable: "0.4.0-dev" },
+						picuCmds: PICU_COMMANDS,
+						// 404: site search query.
+						errSearch: "",
 					};
 				},
 				computed: {
@@ -604,6 +790,45 @@
 						if (this.crumbRoot) return this.t(this.crumbRoot);
 						return "";
 					},
+					// picu: live command filter (name + usage, code only).
+					filteredCmds: function () {
+						var q = String(this.cmdQuery || "")
+							.trim()
+							.toLowerCase();
+						if (!q) return this.picuCmds;
+						return this.picuCmds.filter(function (c) {
+							return (
+								String(c.id).toLowerCase().indexOf(q) !== -1 ||
+								String(c.usage).toLowerCase().indexOf(q) !== -1
+							);
+						});
+					},
+					// picu: version tab label with the loaded numbers.
+					verTabLabel: function () {
+						return this.verTab === "stable"
+							? this.t("pc.verStable") + " " + this.ver.stable
+							: this.t("pc.verUnstable") + " " + this.ver.unstable;
+					},
+					// 404: site-wide search across every tree page.
+					siteResults: function () {
+						var q = String(this.errSearch || "")
+							.trim()
+							.toLowerCase();
+						if (!q) return [];
+						var self = this,
+							out = [];
+						Object.keys(TREE_PAGES).forEach(function (file) {
+							if (file === "picu.html") return; // legacy orphan, same tree as picu-new
+							var nodes = flattenTree(SUMMIT_TREES[TREE_PAGES[file]] || []);
+							nodes.forEach(function (n) {
+								if (!n || !n.href) return;
+								var label = self.t(n.i18n);
+								if ((label + " " + n.href).toLowerCase().indexOf(q) !== -1)
+									out.push({ page: file, href: n.href, label: label });
+							});
+						});
+						return out.slice(0, 8);
+					},
 				},
 				methods: {
 					t: function (k) {
@@ -615,6 +840,96 @@
 					setActive: function (href) {
 						this.activeHref = href || "";
 					},
+					// picu: accordion (one open at a time).
+					toggleCmd: function (id) {
+						this.openCmd = this.openCmd === id ? null : id;
+					},
+					// picu: related-command shortcut (filter + expand).
+					focusCmd: function (id) {
+						this.cmdQuery = id;
+						this.openCmd = id;
+					},
+					// picu: version tabs.
+					setVerTab: function (tab) {
+						if (tab === "stable" || tab === "unstable") this.verTab = tab;
+					},
+					// picu: cheatsheet modal (focus trap like news dialog).
+					openCheat: function () {
+						try {
+							this.cheatReturnFocus = document.activeElement || null;
+						} catch (e) {
+							this.cheatReturnFocus = null;
+						}
+						this.cheatOpen = true;
+						try {
+							document.body.classList.add("modal-open");
+						} catch (e) {
+							/* ignore */
+						}
+						var self = this;
+						try {
+							window.setTimeout(function () {
+								try {
+									var dlg = document.getElementById("pcu-cheat-dialog");
+									if (dlg) {
+										var btn = dlg.querySelector("[data-pcu-cheat-close]");
+										(btn || dlg).focus();
+									}
+								} catch (e) {
+									/* ignore */
+								}
+							}, 30);
+						} catch (e) {
+							/* ignore */
+						}
+					},
+					closeCheat: function () {
+						this.cheatOpen = false;
+						try {
+							document.body.classList.remove("modal-open");
+						} catch (e) {
+							/* ignore */
+						}
+						try {
+							if (this.cheatReturnFocus && this.cheatReturnFocus.focus)
+								this.cheatReturnFocus.focus();
+						} catch (e) {
+							/* ignore */
+						}
+						this.cheatReturnFocus = null;
+					},
+					cheatTrap: function (ev) {
+						if (!this.cheatOpen || !ev || ev.key !== "Tab") return;
+						var dlg = null;
+						try {
+							dlg = document.getElementById("pcu-cheat-dialog");
+						} catch (e) {
+							dlg = null;
+						}
+						if (!dlg) return;
+						var items = null;
+						try {
+							items = dlg.querySelectorAll(
+								'button, [href], input, [tabindex]:not([tabindex="-1"])',
+							);
+						} catch (e) {
+							items = null;
+						}
+						if (!items || !items.length) return;
+						var first = items[0];
+						var last = items[items.length - 1];
+						try {
+							if (ev.shiftKey && document.activeElement === first) {
+								ev.preventDefault();
+								last.focus();
+							} else if (!ev.shiftKey && document.activeElement === last) {
+								ev.preventDefault();
+								first.focus();
+							}
+						} catch (e) {
+							/* ignore */
+						}
+					},
 				},
 				mounted: function () {
 					var self = this;
@@ -625,6 +940,49 @@
 					} catch (e) {
 						/* ignore */
 					}
+					// picu: Escape closes the cheatsheet; version badge
+					// numbers come from data/version.json (fallback kept).
+					try {
+						document.addEventListener("keydown", function (ev) {
+							if (ev && ev.key === "Escape" && self.cheatOpen)
+								self.closeCheat();
+						});
+					} catch (e) {
+						/* ignore */
+					}
+					if (self.pageKey === "picu") {
+						try {
+							window
+								.fetch("data/version.json", { cache: "force-cache" })
+								.then(function (res) {
+									if (!res.ok) throw new Error("version http");
+									return res.json();
+								})
+								.then(function (json) {
+									if (
+										json &&
+										json.picu &&
+										(json.picu.stable || json.picu.unstable)
+									) {
+										self.ver = {
+											stable: json.picu.stable || self.ver.stable,
+											unstable: json.picu.unstable || self.ver.unstable,
+										};
+									}
+								})
+								.catch(function () {
+									/* offline — fallback stays */
+								});
+						} catch (e) {
+							/* ignore */
+						}
+					}
+					refreshCopyButtons();
+				},
+				updated: function () {
+					// picu: enhance Vue-rendered copy terminals (cheap:
+					// already-enhanced blocks are skipped).
+					if (this.pageKey === "picu") refreshCopyButtons();
 				},
 			});
 			// Recursive collapsible node (official vuejs/core classic tree
@@ -893,6 +1251,13 @@
 			});
 		}
 		measureShort();
+		// Heights shift as fonts/images settle — re-measure on load too.
+		try {
+			if (window.addEventListener)
+				window.addEventListener("load", measureShort);
+		} catch (e) {
+			/* ignore */
+		}
 		try {
 			if (window.addEventListener)
 				window.addEventListener("resize", measureShort, {
@@ -1049,16 +1414,17 @@
 						return;
 					}
 					// Fast paths (feel instant): an unambiguous clean-leave
-					// exit with one section left, or a single strong normal
-					// candidate — commit now. Tied/ambiguous frames (esp.
-					// tiny sections) keep the short dwell instead.
+					// exit with one section left, or a single normal
+					// candidate — commit now (entry was already ratio-gated,
+					// so a lone section is never a mistake). Lone SHORT
+					// sections still dwell: they flicker, ties need settling.
 					var visCount = 0;
 					for (var vi = 0; vi < targets.length; vi++) {
 						if (inBand[targets[vi].href]) visCount++;
 					}
 					var cand = targetByHref(cur);
-					var strong = cand && !cand.short && (bandRatio[cur] || 0) >= 0.35;
-					if ((left && visCount === 1) || (visCount === 1 && strong)) {
+					var loneNormal = visCount === 1 && cand && !cand.short;
+					if ((left && visCount === 1) || loneNormal) {
 						cancelPending();
 						pending = cur;
 						applyCurrent(cur);

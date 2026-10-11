@@ -154,6 +154,9 @@
 			"hero.lead":
 				"Independent Linux distribution based on LFS, focused on transparency, stability, minimal overhead, and complete control over the system.",
 			"err.lead": "page not found",
+			"err.btnHome": "Back to home",
+			"err.suggestTitle": "Popular pages:",
+			"err.searchPh": "Search site…",
 			"banner.text":
 				"Latest: picu 0.3.0 — trust rotation. Signed mirrors coming soon.",
 			"banner.link": "Read news",
@@ -494,6 +497,9 @@
 			"dl.title": "Download Summit Linux",
 			"err.btnEn": "Home (EN)",
 			"err.btnRu": "Главная (RU)",
+			"err.btnHome": "На главную",
+			"err.suggestTitle": "Популярные страницы:",
+			"err.searchPh": "Поиск по сайту…",
 			"news.c1d":
 				"Download and status pages expanded on top of the Vue build, shared translation dictionaries.",
 			"news.c1t": "stable-v0.6.1: site features",
@@ -520,6 +526,47 @@
 			"pc.trustLabel": "Unsafe repositories are blocked by default.",
 			"pc.trustText":
 				"Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>.",
+			"pc.cmdSearchPh": "Filter commands…",
+			"pc.noMatch": "No commands match your filter.",
+			"pc.related": "Related:",
+			"pc.copy": "Copy",
+			"pc.copied": "copied ✓",
+			"pc.copyCodeAria": "Copy code to clipboard",
+			"pc.exampleT": "Example",
+			"pc.outputT": "Sample output",
+			"pc.more": "Show example",
+			"pc.less": "Hide",
+			"pc.verStable": "Stable",
+			"pc.verUnstable": "Unstable",
+			"pc.verNoteU":
+				"Unstable builds may print extra lines; commands stay the same.",
+			"pc.cheatsheet": "Cheatsheet",
+			"pc.cheatTitle": "picu cheatsheet",
+			"pc.close": "Close",
+			"pc.since": "since",
+			"pc.trustMoreT": "How trust works",
+			"pc.trustP1":
+				"picu trusts keys, not files. A package installs only if its index entry carries a signature from a key you trusted on purpose.",
+			"pc.trustP2":
+				"Every sync checks three things: the signature is real, the index has not expired, and the version is not older than what you have — no quiet downgrades.",
+			"pc.trustP3":
+				"Mirrors are treated as strangers: even the official mirror installs nothing without a valid signature. Community mirrors need your explicit trust first.",
+			"pc.trustP4":
+				"Keys can be replaced without reinstalling: old keys retire to a block-list, new keys take over, and picu tells you when it happens.",
+			"pc.cmd.add.desc": "Install a package from a trusted mirror.",
+			"pc.cmd.cook.desc": "Build a package from its recipe in isolation.",
+			"pc.cmd.cut.desc": "Remove an installed package.",
+			"pc.cmd.find.desc": "Search repository indexes for packages.",
+			"pc.cmd.sync.desc": "Refresh repository indexes and check signatures.",
+			"pc.cmd.rebase.desc":
+				"Switch the system to a different mirror or release.",
+			"pc.cmd.list.desc": "Show installed packages.",
+			"pc.cmd.info.desc": "Show version, recipe and mirror details.",
+			"pc.cmd.update.desc": "Upgrade installed packages to trusted versions.",
+			"pc.cmd.trust.desc": "Manage trusted keys and rotate them.",
+			"pc.cmd.help.desc": "Show help for any command.",
+			"pc.cmd.trust.un":
+				"Key rotation arrived in 0.3.0 — unstable extends it with automatic expiry checks.",
 			"st.card.ci": "Builds and checks for site and docs.",
 			"st.card.mirrors": "Official mirror index and signatures — coming soon.",
 			"st.card.registry":
@@ -956,6 +1003,47 @@
 			"pc.trustLabel": "Небезопасные репозитории заблокированы по умолчанию.",
 			"pc.trustText":
 				"Для установки из небезопасного зеркала требуется явный флаг <code>--allow-unsafe</code>.",
+			"pc.cmdSearchPh": "Фильтр команд…",
+			"pc.noMatch": "Команды не найдены.",
+			"pc.related": "Похожие:",
+			"pc.copy": "Копировать",
+			"pc.copied": "скопировано ✓",
+			"pc.copyCodeAria": "Скопировать код",
+			"pc.exampleT": "Пример",
+			"pc.outputT": "Пример вывода",
+			"pc.more": "Показать пример",
+			"pc.less": "Скрыть",
+			"pc.verStable": "Стабильная",
+			"pc.verUnstable": "Нестабильная",
+			"pc.verNoteU":
+				"Нестабильные сборки могут печатать лишние строки; команды те же.",
+			"pc.cheatsheet": "Шпаргалка",
+			"pc.cheatTitle": "Шпаргалка picu",
+			"pc.close": "Закрыть",
+			"pc.since": "с версии",
+			"pc.trustMoreT": "Как работает доверие",
+			"pc.trustP1":
+				"picu доверяет ключам, а не файлам. Пакет ставится, только если запись о нём подписана ключом, которому вы доверяете сознательно.",
+			"pc.trustP2":
+				"Каждая синхронизация проверяет три вещи: подпись настоящая, срок индекса не вышел, версия не старше установленной — тихого отката не будет.",
+			"pc.trustP3":
+				"Зеркала считаются чужими: даже официальное зеркало ничего не установит без верной подписи. Зеркалам сообщества нужно ваше явное доверие.",
+			"pc.trustP4":
+				"Ключи можно менять без переустановки: старые уходят в чёрный список, новые подхватывают работу, и picu сообщает об этом.",
+			"pc.cmd.add.desc": "Установить пакет из доверенного зеркала.",
+			"pc.cmd.cook.desc": "Собрать пакет по рецепту в изоляции.",
+			"pc.cmd.cut.desc": "Удалить установленный пакет.",
+			"pc.cmd.find.desc": "Искать пакеты в индексах репозиториев.",
+			"pc.cmd.sync.desc": "Обновить индексы репозиториев и проверить подписи.",
+			"pc.cmd.rebase.desc": "Переключить систему на другое зеркало или выпуск.",
+			"pc.cmd.list.desc": "Показать установленные пакеты.",
+			"pc.cmd.info.desc": "Показать версию, рецепт и зеркало пакета.",
+			"pc.cmd.update.desc":
+				"Обновить установленные пакеты до доверенных версий.",
+			"pc.cmd.trust.desc": "Управлять доверенными ключами и их ротацией.",
+			"pc.cmd.help.desc": "Показать справку по любой команде.",
+			"pc.cmd.trust.un":
+				"Ротация ключей появилась в 0.3.0 — нестабильная версия добавит автоматические проверки срока.",
 			"st.card.ci": "Сборки и проверки сайта и документов.",
 			"st.card.mirrors": "Официальное зеркало: индекс и подписи — скоро.",
 			"st.card.registry": "Индекс пакетов repo.index.json и рецепты — скоро.",

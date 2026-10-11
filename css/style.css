@@ -1133,20 +1133,21 @@ img {
     opacity: 0;
   }
 }
-/* Copy button is injected by JS only on .terminal[data-copy]. */
+/* Copy button is injected by JS only on .terminal[data-copy].
+   The button lives inside .terminal-bar (topbar row), in normal flow,
+   so it can never overlap terminal content at any width. */
 .copy-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  padding: 6px 12px;
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.08);
-  color: #d7e8f0;
-  font: inherit;
-  font-size: 0.72rem;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 5px 12px;
+  border: 1px solid #2b4a5d;
+  border-radius: 7px;
+  background: #0d2433;
+  color: #7fd8e8;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.7rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
   cursor: pointer;
   transition:
     background 0.2s var(--ease),
@@ -1154,8 +1155,9 @@ img {
     transform 0.2s var(--ease);
 }
 .copy-btn:hover {
-  background: rgba(255, 255, 255, 0.16);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: #234e64;
+  border-color: #7fd8e8;
+  color: #d7e8f0;
   transform: translateY(-1px);
 }
 .copy-btn:focus-visible {
@@ -5643,4 +5645,669 @@ details.faq summary {
   transition:
     opacity 0.8s ease,
     transform 0.8s var(--ease);
+}
+
+/* ============ 23. PICU FEATURES (picu-new.html / picu.html) =============== */
+/* Command toolbar: version badge + stable/unstable tabs + cheatsheet. */
+.pcu-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin: 18px 0 6px;
+}
+.pcu-ver {
+  display: inline-block;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+}
+.pcu-tabs {
+  display: inline-flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.pcu-tabs button {
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition:
+    background 0.24s var(--ease),
+    color 0.24s var(--ease);
+}
+.pcu-tabs button:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.pcu-tabs button.is-active {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.pcu-cheat-btn {
+  margin-left: auto;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--blue);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    border-color 0.24s var(--ease),
+    background 0.24s var(--ease);
+}
+.pcu-cheat-btn:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+.pcu-note {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+/* Command search (live filter; input itself stays instant). */
+.pcu-search {
+  margin: 12px 0 4px;
+}
+.pcu-search input {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+}
+.pcu-search input:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 1px;
+}
+.pcu-empty {
+  margin: 14px 0;
+  padding: 16px 18px;
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  color: var(--muted);
+  text-align: center;
+}
+/* Command cards. */
+.pcu-cmd {
+  margin: 16px 0;
+  padding: 18px 20px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.pcu-cmd-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 12px;
+}
+.pcu-usage {
+  font-size: 0.95rem;
+  color: var(--code-fg);
+  background: var(--code-bg);
+  border-radius: 8px;
+  padding: 3px 9px;
+}
+.pcu-since {
+  margin-left: auto;
+  color: var(--muted-light);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.pcu-desc {
+  margin: 8px 0 0;
+}
+.pcu-term {
+  margin-top: 12px;
+}
+/* Expandable example (same motion family as .tree-l2). */
+.pcu-acc-btn {
+  margin-top: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface);
+  color: var(--blue);
+  font: inherit;
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition:
+    background 0.24s var(--ease),
+    border-color 0.24s var(--ease);
+}
+.pcu-acc-btn:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+.pcu-acc {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transform: translateY(-5px);
+  overflow: hidden;
+  visibility: hidden;
+  transition:
+    grid-template-rows 0.3s var(--ease),
+    opacity 0.26s ease,
+    transform 0.3s var(--ease),
+    visibility 0s linear 0.3s;
+}
+.pcu-acc.is-open {
+  grid-template-rows: 1fr;
+  opacity: 1;
+  transform: none;
+  visibility: visible;
+  transition:
+    grid-template-rows 0.3s var(--ease),
+    opacity 0.26s ease,
+    transform 0.3s var(--ease),
+    visibility 0s;
+}
+.pcu-acc-inner {
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+  padding-top: 4px;
+}
+.pcu-out-t {
+  margin: 14px 0 0;
+  color: var(--blue);
+  font-size: 0.82rem;
+}
+/* Related-command shortcuts. */
+.pcu-rel {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+.pcu-rel-link {
+  border: 0;
+  background: transparent;
+  padding: 2px 3px;
+  cursor: pointer;
+  color: var(--code-fg);
+  font: inherit;
+  border-radius: 6px;
+  transition:
+    background 0.22s var(--ease),
+    color 0.22s var(--ease);
+}
+.pcu-rel-link:hover {
+  background: var(--blue-soft);
+  color: var(--blue);
+}
+.pcu-trust-t {
+  margin: 22px 0 6px;
+  color: var(--blue);
+  font-size: 1rem;
+}
+/* Cheatsheet modal (news-dialog behavior: backdrop click, Escape, trap). */
+.pcu-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(13, 36, 51, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.26s var(--ease),
+    visibility 0s linear 0.26s;
+}
+.pcu-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.26s var(--ease),
+    visibility 0s;
+}
+.pcu-dialog {
+  width: min(760px, calc(100vw - 40px));
+  max-height: min(88vh, 900px);
+  overflow: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 4vw, 36px);
+  box-shadow: 0 24px 60px rgba(16, 35, 50, 0.2);
+  transform: translateY(10px) scale(0.99);
+  transition: transform 0.26s var(--ease);
+}
+.pcu-modal.open .pcu-dialog {
+  transform: none;
+}
+.pcu-dialog-close {
+  float: right;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #fff;
+  color: var(--blue);
+  border: 1px solid var(--border);
+  transition:
+    background 0.22s var(--ease),
+    border-color 0.22s var(--ease);
+}
+.pcu-dialog-close:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+.pcu-cheat-table td {
+  vertical-align: top;
+}
+@media (prefers-reduced-motion: reduce) {
+  .pcu-acc,
+  .pcu-acc.is-open,
+  .pcu-modal,
+  .pcu-modal.open,
+  .pcu-dialog,
+  .pcu-tabs button,
+  .pcu-cheat-btn,
+  .pcu-acc-btn,
+  .pcu-rel-link,
+  .pcu-dialog-close {
+    transition: none !important;
+  }
+  .pcu-acc {
+    transform: none;
+  }
+}
+
+/* ============ 24. 404 POLISH (scoped: .suggestions/.missing-path/site-search
+   exist only on 404.html, so these rules cannot leak elsewhere) ============ */
+/* Missing-path line + muted code pill (JS keeps textContent-only, XSS-safe). */
+.missing-path {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+#missing-path {
+  display: inline-block;
+  max-width: 100%;
+  padding: 3px 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--code-bg);
+  color: var(--code-fg);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  overflow-wrap: anywhere;
+}
+/* Popular-pages card: centered callout background using site tokens. */
+.suggestions {
+  width: min(560px, 100%);
+  margin: 28px auto 0;
+  padding: 20px 22px 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 10px;
+  box-shadow: 0 10px 25px rgba(30, 85, 113, 0.05);
+  text-align: center;
+}
+.suggestions > p {
+  margin: 0;
+  color: var(--blue);
+  font-weight: 700;
+}
+/* Scoped list reset: kills the stray bullet dot without touching
+   list styles anywhere else on the site. */
+.suggestions ul {
+  list-style: none;
+}
+.suggestions > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 14px 0 0;
+  padding: 0;
+}
+.suggestions > ul li {
+  margin: 0;
+  padding: 0;
+}
+.suggestions > ul a {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--blue);
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition:
+    background 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    transform 0.22s var(--ease);
+}
+.suggestions > ul a:hover {
+  background: var(--blue-soft);
+  border-color: var(--accent);
+  transform: translateY(-1px);
+}
+/* 404 search: positioning context for the dropdown; the input itself
+   reuses the .wiki-search site component (class added in markup). */
+.suggestions .site-search {
+  position: relative;
+  width: min(420px, 100%);
+  margin: 18px auto 0;
+  text-align: left;
+}
+.suggestions .site-search .wiki-search {
+  width: 100%;
+  margin: 0;
+}
+.suggestions .site-search .search-results {
+  text-align: left;
+}
+/* Discuss link under the card: keep centered like the rest of the hero. */
+.hero-content .suggestions ~ .comments {
+  margin-top: 22px;
+  text-align: center;
+}
+
+/* ==========================================================================
+   PACK9 (designer append-block): terminal copy lives in the topbar + 404
+   polish (suggestions card, 404 search, missing-path code). Appends only —
+   older blocks untouched. Wins by source order.
+   ========================================================================== */
+/* ---- P9-1. TERMINAL COPY: native topbar element, never over code --------- */
+/* Topbar is the flex row (dots left, copy right). In-flow button can never
+   cover the <pre> on any viewport — no absolute positioning involved. */
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.terminal-bar .copy-btn {
+  position: static;
+  top: auto;
+  right: auto;
+  flex: 0 0 auto;
+  margin-left: auto;
+  padding: 4px 10px;
+  border: 1px solid #2a4a5f;
+  border-radius: 6px;
+  background: #1a3446;
+  color: #c4dde9;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  white-space: nowrap;
+  cursor: pointer;
+  transform: none;
+  transition:
+    background 0.2s var(--ease),
+    border-color 0.2s var(--ease),
+    color 0.2s var(--ease);
+}
+.terminal-bar .copy-btn:hover {
+  background: #24465c;
+  border-color: #3a6076;
+  color: #e8f1f6;
+  transform: none;
+}
+.terminal-bar .copy-btn:active {
+  transform: scale(0.97);
+}
+.terminal-bar .copy-btn:focus-visible {
+  outline: 2px solid #7fd8e8;
+  outline-offset: 2px;
+}
+/* Pre-snippet fallback: the base .copy-btn is in-flow (static, no absolute),
+   so even a root-appended button renders below the <pre> and can never
+   cover code — no headroom reservation needed on bar-less terminals. */
+/* ---- P9-2. 404: popular-pages card (kills stray bullets) ------------------ */
+.hero .suggestions {
+  width: min(560px, 100%);
+  margin: 28px auto 0;
+  padding: 20px 22px;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 6px 20px rgba(30, 85, 113, 0.07);
+  text-align: center;
+}
+.suggestions p {
+  margin: 0 0 12px;
+  color: var(--blue);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+.suggestions ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+.suggestions ul li {
+  margin: 0;
+  padding: 0;
+}
+.suggestions ul li::marker {
+  content: none;
+}
+.suggestions ul a {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--blue);
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition:
+    background 0.22s var(--ease),
+    border-color 0.22s var(--ease),
+    color 0.22s var(--ease);
+}
+.suggestions ul a:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+/* ---- P9-3. 404: search mirrors .wiki-search ------------------------------- */
+.suggestions .site-search {
+  position: relative;
+  margin-top: 14px;
+}
+.suggestions .site-search input[type="search"] {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 10px 14px 10px 38px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fff
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3E%3Ccircle cx='7' cy='7' r='5' fill='none' stroke='%23718391' stroke-width='2'/%3E%3Cpath d='M11 11l3 3' stroke='%23718391' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E")
+    no-repeat 12px 50%;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+.suggestions .site-search input[type="search"]::placeholder {
+  color: var(--muted-light);
+  opacity: 1;
+}
+.suggestions .site-search input[type="search"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(47, 159, 214, 0.18);
+}
+.suggestions .site-search ul {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  right: 0;
+  z-index: 200;
+  display: block;
+  max-height: 320px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(16, 35, 50, 0.16);
+  text-align: left;
+}
+.suggestions .site-search ul li {
+  margin: 0;
+  padding: 0;
+}
+.suggestions .site-search ul a {
+  display: block;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 400;
+}
+.suggestions .site-search ul a:hover {
+  background: var(--blue-soft);
+  border-color: transparent;
+}
+/* Empty-results row (plain <li> without a link): quiet centered note. */
+.suggestions .site-search ul li:not(:has(a)) {
+  padding: 14px 12px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  text-align: center;
+}
+/* ---- P9-4. 404: missing-path code chip ------------------------------------ */
+.missing-path {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.missing-path code,
+code#missing-path {
+  padding: 2px 8px;
+  background: var(--code-bg);
+  border-radius: 5px;
+  color: var(--code-fg);
+  font-family: "SFMono-Regular", Consolas, monospace;
+  font-size: 0.88em;
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+/* ---- P9-5. 404: dark theme mirrors ---------------------------------------- */
+html[data-theme="dark"] .hero .suggestions {
+  background: #162836;
+  border-color: #2b4356;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+html[data-theme="dark"] .suggestions p {
+  color: #c4dde9;
+}
+html[data-theme="dark"] .suggestions ul a {
+  background: #1c3243;
+  border-color: #2b4356;
+  color: #c4dde9;
+}
+html[data-theme="dark"] .suggestions ul a:hover {
+  background: #1e3446;
+  border-color: #4aa8cf;
+}
+html[data-theme="dark"] .suggestions .site-search input[type="search"] {
+  background-color: #1c3243;
+  border-color: #2b4356;
+  color: #d7e5ed;
+}
+html[data-theme="dark"]
+  .suggestions
+  .site-search
+  input[type="search"]::placeholder {
+  color: #7b93a3;
+}
+html[data-theme="dark"] .suggestions .site-search input[type="search"]:focus {
+  border-color: #4aa8cf;
+  box-shadow: 0 0 0 3px rgba(74, 168, 207, 0.25);
+}
+html[data-theme="dark"] .suggestions .site-search ul {
+  background: #162836;
+  border-color: #2b4356;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5);
+}
+html[data-theme="dark"] .suggestions .site-search ul a {
+  background: transparent;
+  border-color: transparent;
+  color: #d7e5ed;
+}
+html[data-theme="dark"] .suggestions .site-search ul a:hover {
+  background: #1e3446;
+}
+html[data-theme="dark"] .terminal-bar .copy-btn {
+  border-color: #2b4356;
+  background: #1e3446;
+  color: #c4dde9;
+}
+html[data-theme="dark"] .terminal-bar .copy-btn:hover {
+  background: #27485f;
+  border-color: #4aa8cf;
+  color: #e9f3fa;
+}
+/* ---- P9-6. 404 + topbar: small screens ------------------------------------ */
+@media (max-width: 760px) {
+  .hero .suggestions {
+    padding: 16px;
+  }
+  .suggestions .site-search input[type="search"] {
+    padding: 9px 12px 9px 36px;
+    font-size: 0.85rem;
+  }
+  .suggestions .site-search ul {
+    max-height: 46vh;
+  }
+  .terminal-bar .copy-btn {
+    padding: 3px 8px;
+    font-size: 0.64rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .terminal-bar .copy-btn,
+  .suggestions ul a {
+    transition: none !important;
+  }
 }

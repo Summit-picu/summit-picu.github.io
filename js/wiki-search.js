@@ -20,13 +20,17 @@
 	"use strict";
 
 	const esc = (s) =>
-		String(s).replace(/[&<>"']/g, (c) => ({
-			"&": "&amp;",
-			"<": "&lt;",
-			">": "&gt;",
-			'"': "&quot;",
-			"'": "&#39;",
-		}[c]));
+		String(s).replace(
+			/[&<>"']/g,
+			(c) =>
+				({
+					"&": "&amp;",
+					"<": "&lt;",
+					">": "&gt;",
+					'"': "&quot;",
+					"'": "&#39;",
+				})[c],
+		);
 
 	const hi = (text, q) => {
 		if (!q) return esc(text);
@@ -75,6 +79,9 @@
 		let input = wrap ? wrap.querySelector("input.wiki-search") : null;
 		let box = wrap ? wrap.querySelector("div.search-results") : null;
 		if (!input || !box) return;
+		// Screen readers announce result updates (markup also carries
+		// aria-live="polite"; set here too for robustness).
+		box.setAttribute("aria-live", "polite");
 
 		// Build index from headings (skip anything inside pre/code).
 		const heads = Array.from(article.querySelectorAll("h2, h3")).filter(
@@ -82,7 +89,12 @@
 		);
 		const index = heads.map((h) => {
 			if (!h.id) h.id = slugify(h.textContent);
-			return { id: h.id, el: h, title: h.textContent.trim().replace(/\s+/g, " "), snippet: snippetFor(h) };
+			return {
+				id: h.id,
+				el: h,
+				title: h.textContent.trim().replace(/\s+/g, " "),
+				snippet: snippetFor(h),
+			};
 		});
 
 		let active = -1;
@@ -152,7 +164,11 @@
 				.join("");
 		};
 
-		input.addEventListener("input", () => render(input.value));
+		let debounceTimer = 0;
+		input.addEventListener("input", () => {
+			window.clearTimeout(debounceTimer);
+			debounceTimer = window.setTimeout(() => render(input.value), 200);
+		});
 		input.addEventListener("keydown", (e) => {
 			if (e.key === "Escape") {
 				input.value = "";
@@ -186,15 +202,31 @@
 		});
 		document.addEventListener("click", (e) => {
 			if (!wrap.contains(e.target)) hide();
-			else if (input.value.trim().length >= 2 && box.hidden) render(input.value);
+			else if (input.value.trim().length >= 2 && box.hidden)
+				render(input.value);
+		});
+	}
+
+	// Print button (wiki.html #wiki-print-btn): previously an inline
+	// onclick="window.print()"; bound here so markup stays CSP-clean.
+	// Kept in this file to avoid touching shared js/main.js.
+	function bindPrintButton() {
+		const btn = document.getElementById("wiki-print-btn");
+		if (!btn || btn.dataset.printBound === "1") return;
+		btn.dataset.printBound = "1";
+		btn.addEventListener("click", (e) => {
+			e.preventDefault();
+			window.print();
 		});
 	}
 
 	if (document.readyState === "loading") {
-		document.addEventListener("DOMContentLoaded", () =>
-			document.querySelectorAll(".article").forEach(init),
-		);
+		document.addEventListener("DOMContentLoaded", () => {
+			document.querySelectorAll(".article").forEach(init);
+			bindPrintButton();
+		});
 	} else {
 		document.querySelectorAll(".article").forEach(init);
+		bindPrintButton();
 	}
 })();

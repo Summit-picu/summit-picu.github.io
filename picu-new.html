@@ -1,116 +1,557 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<meta name="description" content="picu package manager: source recipes, binary packages, signed mirrors and trust model."/>
-<meta property="og:title" content="picu · Summit Linux"/>
-<meta property="og:description" content="picu package manager: source recipes, binary packages, signed mirrors and trust model."/>
-<meta property="og:type" content="website"/>
-<meta property="og:image" content="assets/summit.svg"/>
-<title>picu · Summit Linux</title>
-<link rel="stylesheet" href="css/style.css"/>
-<link rel="manifest" href="site.webmanifest"/>
-<meta name="theme-color" content="#0d1f31"/>
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png"/>
-<link rel="icon" type="image/svg+xml" href="assets/summit.svg">
-<style media="print">.header,.footer,.snow-overlay,.mountains,.navbar,.sidebar,.toc,.actions,.comments,.lang-dropdown,.nav-toggle{display:none!important}.content-layout,.page{display:block!important}.article{max-width:100%!important}</style>
-</head><body>
-<div aria-hidden="true" class="snow-overlay"></div>
-<div class="mountains mtn-3">
-<div class="mountain back"></div>
-<div class="mountain mid"></div>
-<div class="mountain front"></div>
-</div>
-<div id="app" v-cloak>
-<header class="header">
-<nav class="navbar">
-<a class="brand" href="index.html"><img alt="Summit Linux" src="assets/summit.svg"/>Summit Linux</a>
-<div class="nav">
-<a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
-<a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
-<a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
-<a href="picu-new.html" class="active" data-i18n="nav.picu">{{ t('nav.picu') }}</a>
-<a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
-<a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
-<a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
-<a href="changelog.html" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
-<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
-</div>
-<div class="lang-dropdown">
-<button class="lang-btn" type="button" aria-haspopup="true" aria-expanded="false"><img class="lang-flag" src="assets/flags/en.svg" alt=""/><span>EN</span></button>
-<ul class="lang-list" role="menu">
-<li><a class="lang-item is-active" href="picu-new.html?lang=en" aria-current="true"><img class="lang-flag" src="assets/flags/en.svg" alt=""/><span>English</span></a></li>
-<li><a class="lang-item" href="picu-new.html?lang=ru"><img class="lang-flag" src="assets/flags/ru.svg" alt=""/><span>Русский</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="uk"><img class="lang-flag" src="assets/flags/uk.svg" alt=""/><span>Українська</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="zh"><img class="lang-flag" src="assets/flags/zh.svg" alt=""/><span>中文</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="ja"><img class="lang-flag" src="assets/flags/ja.svg" alt=""/><span>日本語</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="de"><img class="lang-flag" src="assets/flags/de.svg" alt=""/><span>Deutsch</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="fr"><img class="lang-flag" src="assets/flags/fr.svg" alt=""/><span>Français</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="pl"><img class="lang-flag" src="assets/flags/pl.svg" alt=""/><span>Polski</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="es"><img class="lang-flag" src="assets/flags/es.svg" alt=""/><span>Español</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="pt"><img class="lang-flag" src="assets/flags/pt.svg" alt=""/><span>Português</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="it"><img class="lang-flag" src="assets/flags/it.svg" alt=""/><span>Italiano</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="tr"><img class="lang-flag" src="assets/flags/tr.svg" alt=""/><span>Türkçe</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="ar"><img class="lang-flag" src="assets/flags/ar.svg" alt=""/><span>العربية</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="hi"><img class="lang-flag" src="assets/flags/hi.svg" alt=""/><span>हिन्दी</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="bn"><img class="lang-flag" src="assets/flags/bn.svg" alt=""/><span>বাংলা</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="id"><img class="lang-flag" src="assets/flags/id.svg" alt=""/><span>Bahasa Indonesia</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="vi"><img class="lang-flag" src="assets/flags/vi.svg" alt=""/><span>Tiếng Việt</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="ko"><img class="lang-flag" src="assets/flags/ko.svg" alt=""/><span>한국어</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="nl"><img class="lang-flag" src="assets/flags/nl.svg" alt=""/><span>Nederlands</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="sv"><img class="lang-flag" src="assets/flags/sv.svg" alt=""/><span>Svenska</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="cs"><img class="lang-flag" src="assets/flags/cs.svg" alt=""/><span>Čeština</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="ro"><img class="lang-flag" src="assets/flags/ro.svg" alt=""/><span>Română</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="hu"><img class="lang-flag" src="assets/flags/hu.svg" alt=""/><span>Magyar</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="el"><img class="lang-flag" src="assets/flags/el.svg" alt=""/><span>Ελληνικά</span></a></li>
-<li><a class="lang-item" href="picu-new.html" data-lang="kk"><img class="lang-flag" src="assets/flags/kk.svg" alt=""/><span>Қазақша</span></a></li>
-</ul>
-</div>
-<button class="nav-toggle" type="button" aria-label="Open menu" data-i18n-aria="aria.navToggle" aria-expanded="false"><span></span></button>
-</nav>
-</header>
-<main>
-<section class="content">
-<div class="page">
-<div class="content-layout">
-<aside class="sidebar">
-<ul class="tree-l1">
-<tree-item v-for="node in tree" :key="node.href" :item="node" :page="pageKey"></tree-item>
-</ul>
-</aside>
-<div class="article">
-<nav class="breadcrumbs"><a href="index.html">{{ t('crumb.home') }}</a> / <span>{{ crumbLabel }}</span></nav>
-<h1>picu</h1>
-<nav class="toc"><strong>{{ t('toc.title') }}</strong><ul><li v-for="n in flatToc" :key="n.href"><a :href="n.href" @click="setActive(n.href)">{{ t(n.i18n) }}</a></li></ul></nav>
-<img class="picu-logo" src="assets/picu.svg" alt="picu"/>
-<p data-i18n="pc.intro">picu is the package manager at the core of Summit Linux. It handles source builds, binary packages, repositories, signatures and package metadata.</p>
-<div class="actions">
-<a class="button button-primary" href="https://github.com/Summit-picu/Picu" target="_blank" rel="noopener" data-i18n="btn.sourceCode">Source code</a>
-<a class="button button-secondary" href="https://github.com/Summit-picu" target="_blank" rel="noopener" data-i18n="btn.github">GitHub</a>
-</div>
-<h2 id="commands" data-i18n="pc.sec.commands">Core commands</h2>
-<pre translate="no">picu add &lt;pkg&gt;
-picu cook &lt;pkg&gt;
-picu cut &lt;pkg&gt;
-picu find &lt;query&gt;
-picu sync
-picu rebase
-picu list
-picu info &lt;pkg&gt;
-picu update
-picu trust
-picu help</pre>
-<h2 id="source" data-i18n="pc.sec.source">Source builds</h2>
-<p data-i18n="pc.sourceP">Packages are described using declarative recipes <code>.picu</code>.</p>
-<h2 id="binary" data-i18n="pc.sec.binary">Binary packages</h2>
-<p data-i18n="pc.binaryP">picu can install signed binary archives after checking their hashes and signatures.</p>
-<h2 id="trust" data-i18n="pc.sec.trust">Trust</h2>
-<div class="callout"><strong data-i18n="pc.trustLabel">Unsafe repositories are blocked by default.</strong><div class="callout-body" data-i18n="pc.trustText">Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>.</div></div>
-<h2 id="example" data-i18n="pc.sec.example">Example</h2>
-<div class="terminal" translate="no">
-<div class="terminal-bar"><span></span><span></span><span></span></div>
-<pre translate="no">$ picu find Vim Vim
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="picu package manager: source recipes, binary packages, signed mirrors and trust model."
+    />
+    <meta property="og:title" content="picu · Summit Linux" />
+    <meta
+      property="og:description"
+      content="picu package manager: source recipes, binary packages, signed mirrors and trust model."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/summit.svg" />
+    <title>picu · Summit Linux</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="manifest" href="site.webmanifest" />
+    <meta name="theme-color" content="#0d1f31" />
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+    <link rel="icon" type="image/svg+xml" href="assets/summit.svg" />
+    <style media="print">
+      .header,
+      .footer,
+      .snow-overlay,
+      .mountains,
+      .navbar,
+      .sidebar,
+      .toc,
+      .actions,
+      .comments,
+      .lang-dropdown,
+      .nav-toggle {
+        display: none !important;
+      }
+      .content-layout,
+      .page {
+        display: block !important;
+      }
+      .article {
+        max-width: 100% !important;
+      }
+      .pcu-toolbar,
+      .pcu-search,
+      .pcu-tabs,
+      .pcu-modal,
+      .copy-btn {
+        display: none !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div aria-hidden="true" class="snow-overlay"></div>
+    <div class="mountains mtn-3">
+      <div class="mountain back"></div>
+      <div class="mountain mid"></div>
+      <div class="mountain front"></div>
+    </div>
+    <div id="app" v-cloak>
+      <header class="header">
+        <nav class="navbar">
+          <a class="brand" href="index.html"
+            ><img alt="Summit Linux" src="assets/summit.svg" />Summit Linux</a
+          >
+          <div class="nav">
+            <a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
+            <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+            <a data-i18n="nav.download" href="download.html"
+              >{{ t('nav.download') }}</a
+            >
+            <a href="picu-new.html" class="active" data-i18n="nav.picu"
+              >{{ t('nav.picu') }}</a
+            >
+            <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+            <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+            <a data-i18n="nav.status" href="status.html"
+              >{{ t('nav.status') }}</a
+            >
+            <a href="changelog.html" data-i18n="nav.changelog"
+              >{{ t('nav.changelog') }}</a
+            >
+            <a
+              href="https://github.com/Summit-picu"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+          </div>
+          <div class="lang-dropdown">
+            <button
+              class="lang-btn"
+              type="button"
+              aria-haspopup="true"
+              aria-expanded="false"
+            >
+              <img class="lang-flag" src="assets/flags/en.svg" alt="" /><span
+                >EN</span
+              >
+            </button>
+            <ul class="lang-list" role="menu">
+              <li>
+                <a
+                  class="lang-item is-active"
+                  href="picu-new.html?lang=en"
+                  aria-current="true"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/en.svg"
+                    alt=""
+                  /><span>English</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html?lang=ru"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/ru.svg"
+                    alt=""
+                  /><span>Русский</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="uk"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/uk.svg"
+                    alt=""
+                  /><span>Українська</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="zh"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/zh.svg"
+                    alt=""
+                  /><span>中文</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="ja"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/ja.svg"
+                    alt=""
+                  /><span>日本語</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="de"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/de.svg"
+                    alt=""
+                  /><span>Deutsch</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="fr"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/fr.svg"
+                    alt=""
+                  /><span>Français</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="pl"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/pl.svg"
+                    alt=""
+                  /><span>Polski</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="es"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/es.svg"
+                    alt=""
+                  /><span>Español</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="pt"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/pt.svg"
+                    alt=""
+                  /><span>Português</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="it"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/it.svg"
+                    alt=""
+                  /><span>Italiano</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="tr"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/tr.svg"
+                    alt=""
+                  /><span>Türkçe</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="ar"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/ar.svg"
+                    alt=""
+                  /><span>العربية</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="hi"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/hi.svg"
+                    alt=""
+                  /><span>हिन्दी</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="bn"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/bn.svg"
+                    alt=""
+                  /><span>বাংলা</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="id"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/id.svg"
+                    alt=""
+                  /><span>Bahasa Indonesia</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="vi"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/vi.svg"
+                    alt=""
+                  /><span>Tiếng Việt</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="ko"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/ko.svg"
+                    alt=""
+                  /><span>한국어</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="nl"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/nl.svg"
+                    alt=""
+                  /><span>Nederlands</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="sv"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/sv.svg"
+                    alt=""
+                  /><span>Svenska</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="cs"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/cs.svg"
+                    alt=""
+                  /><span>Čeština</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="ro"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/ro.svg"
+                    alt=""
+                  /><span>Română</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="hu"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/hu.svg"
+                    alt=""
+                  /><span>Magyar</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="el"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/el.svg"
+                    alt=""
+                  /><span>Ελληνικά</span></a
+                >
+              </li>
+              <li>
+                <a class="lang-item" href="picu-new.html" data-lang="kk"
+                  ><img
+                    class="lang-flag"
+                    src="assets/flags/kk.svg"
+                    alt=""
+                  /><span>Қазақша</span></a
+                >
+              </li>
+            </ul>
+          </div>
+          <button
+            class="nav-toggle"
+            type="button"
+            aria-label="Open menu"
+            data-i18n-aria="aria.navToggle"
+            aria-expanded="false"
+          >
+            <span></span>
+          </button>
+        </nav>
+      </header>
+      <main>
+        <section class="content">
+          <div class="page">
+            <div class="content-layout">
+              <aside class="sidebar">
+                <ul class="tree-l1">
+                  <tree-item
+                    v-for="node in tree"
+                    :key="node.href"
+                    :item="node"
+                    :page="pageKey"
+                  ></tree-item>
+                </ul>
+              </aside>
+              <div class="article">
+                <nav class="breadcrumbs">
+                  <a href="index.html">{{ t('crumb.home') }}</a> /
+                  <span>{{ crumbLabel }}</span>
+                </nav>
+                <h1>picu</h1>
+                <nav class="toc">
+                  <strong>{{ t('toc.title') }}</strong>
+                  <ul>
+                    <li v-for="n in flatToc" :key="n.href">
+                      <a :href="n.href" @click="setActive(n.href)"
+                        >{{ t(n.i18n) }}</a
+                      >
+                    </li>
+                  </ul>
+                </nav>
+                <img class="picu-logo" src="assets/picu.svg" alt="picu" />
+                <p data-i18n="pc.intro">
+                  picu is the package manager at the core of Summit Linux. It
+                  handles source builds, binary packages, repositories,
+                  signatures and package metadata.
+                </p>
+                <div class="actions">
+                  <a
+                    class="button button-primary"
+                    href="https://github.com/Summit-picu/Picu"
+                    target="_blank"
+                    rel="noopener"
+                    data-i18n="btn.sourceCode"
+                    >Source code</a
+                  >
+                  <a
+                    class="button button-secondary"
+                    href="https://github.com/Summit-picu"
+                    target="_blank"
+                    rel="noopener"
+                    data-i18n="btn.github"
+                    >GitHub</a
+                  >
+                </div>
+                <h2 id="commands" data-i18n="pc.sec.commands">Core commands</h2>
+                <div class="pcu-toolbar">
+                  <span class="pcu-ver" translate="no"
+                    >picu {{ ver.stable }}</span
+                  >
+                  <div class="pcu-tabs" role="tablist">
+                    <button
+                      type="button"
+                      role="tab"
+                      :class="{ 'is-active': verTab === 'stable' }"
+                      :aria-selected="verTab === 'stable' ? 'true' : 'false'"
+                      @click="setVerTab('stable')"
+                    >
+                      {{ t('pc.verStable') }} {{ ver.stable }}
+                    </button>
+                    <button
+                      type="button"
+                      role="tab"
+                      :class="{ 'is-active': verTab === 'unstable' }"
+                      :aria-selected="verTab === 'unstable' ? 'true' : 'false'"
+                      @click="setVerTab('unstable')"
+                    >
+                      {{ t('pc.verUnstable') }} {{ ver.unstable }}
+                    </button>
+                  </div>
+                  <button
+                    class="pcu-cheat-btn"
+                    type="button"
+                    @click="openCheat"
+                    data-i18n="pc.cheatsheet"
+                  >
+                    {{ t('pc.cheatsheet') }}
+                  </button>
+                </div>
+                <p
+                  class="pcu-note"
+                  v-if="verTab === 'unstable'"
+                  data-i18n="pc.verNoteU"
+                >
+                  {{ t('pc.verNoteU') }}
+                </p>
+                <div class="pcu-search">
+                  <input
+                    v-model="cmdQuery"
+                    type="search"
+                    autocomplete="off"
+                    :placeholder="t('pc.cmdSearchPh')"
+                    :aria-label="t('pc.cmdSearchPh')"
+                  />
+                </div>
+                <div
+                  class="pcu-empty"
+                  v-if="!filteredCmds.length"
+                  data-i18n="pc.noMatch"
+                >
+                  {{ t('pc.noMatch') }}
+                </div>
+                <article class="pcu-cmd" v-for="c in filteredCmds" :key="c.id">
+                  <div class="pcu-cmd-head">
+                    <code class="pcu-usage" translate="no">{{ c.usage }}</code>
+                    <span class="pcu-since"
+                      >{{ t('pc.since') }} {{ c.since }}</span
+                    >
+                  </div>
+                  <p class="pcu-desc">{{ t('pc.cmd.' + c.id + '.desc') }}</p>
+                  <p class="pcu-note" v-if="verTab === 'unstable' && c.unKey">
+                    {{ t(c.unKey) }}
+                  </p>
+                  <div
+                    class="terminal pcu-term"
+                    data-copy
+                    :data-copy-label="t('pc.copy')"
+                    :data-copy-done="t('pc.copied')"
+                    :data-copy-aria="t('pc.copyCodeAria')"
+                  >
+                    <pre translate="no">{{ c.usage }}</pre>
+                  </div>
+                  <button
+                    class="pcu-acc-btn"
+                    type="button"
+                    @click="toggleCmd(c.id)"
+                    :aria-expanded="openCmd === c.id ? 'true' : 'false'"
+                  >
+                    {{ openCmd === c.id ? t('pc.less') : t('pc.more') }} · {{
+                    t('pc.exampleT') }}
+                  </button>
+                  <div class="pcu-acc" :class="{ 'is-open': openCmd === c.id }">
+                    <div class="pcu-acc-inner">
+                      <div
+                        class="terminal"
+                        data-copy
+                        :data-copy-label="t('pc.copy')"
+                        :data-copy-done="t('pc.copied')"
+                        :data-copy-aria="t('pc.copyCodeAria')"
+                      >
+                        <pre translate="no">{{ c.example }}</pre>
+                      </div>
+                      <h4 class="pcu-out-t" data-i18n="pc.outputT">
+                        {{ t('pc.outputT') }}
+                      </h4>
+                      <div
+                        class="terminal"
+                        data-copy
+                        :data-copy-label="t('pc.copy')"
+                        :data-copy-done="t('pc.copied')"
+                        :data-copy-aria="t('pc.copyCodeAria')"
+                      >
+                        <pre translate="no">{{ c.output }}</pre>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="pcu-rel">
+                    <span data-i18n="pc.related">{{ t('pc.related') }}</span>
+                    <button
+                      v-for="r in c.related"
+                      :key="r"
+                      type="button"
+                      class="pcu-rel-link"
+                      @click="focusCmd(r)"
+                    >
+                      <code translate="no">{{ r }}</code>
+                    </button>
+                  </p>
+                </article>
+                <h2 id="source" data-i18n="pc.sec.source">Source builds</h2>
+                <p data-i18n="pc.sourceP">
+                  Packages are described using declarative recipes
+                  <code>.picu</code>.
+                </p>
+                <h2 id="binary" data-i18n="pc.sec.binary">Binary packages</h2>
+                <p data-i18n="pc.binaryP">
+                  picu can install signed binary archives after checking their
+                  hashes and signatures.
+                </p>
+                <h2 id="trust" data-i18n="pc.sec.trust">Trust</h2>
+                <div class="callout">
+                  <strong data-i18n="pc.trustLabel"
+                    >Unsafe repositories are blocked by default.</strong
+                  >
+                  <div class="callout-body" data-i18n="pc.trustText">
+                    Installing from an unsafe mirror requires an explicit flag
+                    <code>--allow-unsafe</code>.
+                  </div>
+                </div>
+                <h3 class="pcu-trust-t" data-i18n="pc.trustMoreT">
+                  {{ t('pc.trustMoreT') }}
+                </h3>
+                <p data-i18n="pc.trustP1">{{ t('pc.trustP1') }}</p>
+                <p data-i18n="pc.trustP2">{{ t('pc.trustP2') }}</p>
+                <p data-i18n="pc.trustP3">{{ t('pc.trustP3') }}</p>
+                <p data-i18n="pc.trustP4">{{ t('pc.trustP4') }}</p>
+                <h2 id="example" data-i18n="pc.sec.example">Example</h2>
+                <div class="terminal" translate="no">
+                  <div class="terminal-bar">
+                    <span></span><span></span><span></span>
+                  </div>
+                  <pre translate="no">
+$ picu find Vim Vim
 Comment: Vi improved code editor
 Mirror: Summit Official
 Versions: 0.1 1.0 13.12 23.12
@@ -121,48 +562,133 @@ Type: Src &amp; Bin $ picu add Vim
 [ ? ] install? [Y/n] Y
 [ .. ] installing Vim
 [ OK ] installation completed</pre>
-</div>
-<div class="comments"><a class="discuss-plain" href="https://github.com/Summit-picu/summit-picu.github.io/issues" target="_blank" rel="noopener"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"></path></svg> <span data-i18n="common.discuss">Discuss on GitHub</span></a></div>
-</div>
-</div>
-</div>
-</section>
-</main>
-<footer class="footer">
-<div class="footer-inner">
-<a class="footer-brand" href="index.html"><img alt="" src="assets/summit.svg"/>Summit Linux</a>
-<div class="footer-links">
-<a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
-<a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
-<a data-i18n="nav.download" href="download.html">{{ t('nav.download') }}</a>
-<a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
-<a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
-<a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
-<a data-i18n="nav.status" href="status.html">{{ t('nav.status') }}</a>
-<a href="changelog.html" data-i18n="nav.changelog">{{ t('nav.changelog') }}</a>
-<a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a>
-</div>
-<a class="footer-report" href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue" target="_blank" rel="noopener">{{ t('common.report') }}</a>
-<div class="social"><a href="https://github.com/Summit-picu" target="_blank" rel="noopener">GitHub</a> · <span data-i18n="social.discord">{{ t('social.discord') }}</span> · <span data-i18n="social.telegram">{{ t('social.telegram') }}</span></div>
-</div>
-<div class="copyright"><span class="version">v0.3.0 · 2026-10</span> · <span data-i18n="foot.note">{{ t('foot.note') }}</span></div>
-</footer>
-</div><!-- /#app -->
-<script type="text/x-template" id="tree-item-template">
-<li :class="{ active: isActive }">
-<div class="tree-row">
-<a :href="item.href" :class="{ active: isCurrent }" :aria-current="isCurrent ? 'true' : null" @click="onNav">{{ label }}</a>
-<button v-if="hasChildren" class="tree-toggle" type="button" @click="toggle" @keydown="onKey" :aria-expanded="open ? 'true' : 'false'" :aria-label="label"><span class="tree-caret" aria-hidden="true">▸</span></button>
-</div>
-<ul v-if="hasChildren" :class="{ 'is-open': open }" class="tree-l2">
-<tree-item v-for="child in item.children" :key="child.href" :item="child" :page="page"></tree-item>
-</ul>
-</li>
-</script>
-<script defer src="js/vendor/vue.global.prod.js"></script>
+                </div>
+                <div class="comments">
+                  <a
+                    class="discuss-plain"
+                    href="https://github.com/Summit-picu/summit-picu.github.io/issues"
+                    target="_blank"
+                    rel="noopener"
+                    ><svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      aria-hidden="true"
+                    >
+                      <path
+                        d="M10.226 17.284c-2.965-.36-5.054-2.493-5.054-5.256 0-1.123.404-2.336 1.078-3.144-.292-.741-.247-2.314.09-2.965.898-.112 2.111.36 2.83 1.01.853-.269 1.752-.404 2.853-.404 1.1 0 1.999.135 2.807.382.696-.629 1.932-1.1 2.83-.988.315.606.36 2.179.067 2.942.72.854 1.101 2 1.101 3.167 0 2.763-2.089 4.852-5.098 5.234.763.494 1.28 1.572 1.28 2.807v2.336c0 .674.561 1.056 1.235.786 4.066-1.55 7.255-5.615 7.255-10.646C23.5 6.188 18.334 1 11.978 1 5.62 1 .5 6.188.5 12.545c0 4.986 3.167 9.12 7.435 10.669.606.225 1.19-.18 1.19-.786V20.63a2.9 2.9 0 0 1-1.078.224c-1.483 0-2.359-.808-2.987-2.313-.247-.607-.517-.966-1.034-1.033-.27-.023-.359-.135-.359-.27 0-.27.45-.471.898-.471.652 0 1.213.404 1.797 1.235.45.651.921.943 1.483.943.561 0 .92-.202 1.437-.719.382-.381.674-.718.944-.943"
+                      ></path>
+                    </svg>
+                    <span data-i18n="common.discuss">Discuss on GitHub</span></a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+      <footer class="footer">
+        <div class="footer-inner">
+          <a class="footer-brand" href="index.html"
+            ><img alt="" src="assets/summit.svg" />Summit Linux</a
+          >
+          <div class="footer-links">
+            <a data-i18n="nav.home" href="index.html">{{ t('nav.home') }}</a>
+            <a data-i18n="nav.about" href="about.html">{{ t('nav.about') }}</a>
+            <a data-i18n="nav.download" href="download.html"
+              >{{ t('nav.download') }}</a
+            >
+            <a data-i18n="nav.picu" href="picu-new.html">{{ t('nav.picu') }}</a>
+            <a data-i18n="nav.news" href="news.html">{{ t('nav.news') }}</a>
+            <a data-i18n="nav.wiki" href="wiki.html">{{ t('nav.wiki') }}</a>
+            <a data-i18n="nav.status" href="status.html"
+              >{{ t('nav.status') }}</a
+            >
+            <a href="changelog.html" data-i18n="nav.changelog"
+              >{{ t('nav.changelog') }}</a
+            >
+            <a
+              href="https://github.com/Summit-picu"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+          </div>
+          <a
+            class="footer-report"
+            href="https://github.com/Summit-picu/summit-picu.github.io/issues/new?q=is%3Aissue"
+            target="_blank"
+            rel="noopener"
+            >{{ t('common.report') }}</a
+          >
+          <div class="social">
+            <a
+              href="https://github.com/Summit-picu"
+              target="_blank"
+              rel="noopener"
+              >GitHub</a
+            >
+            ·
+            <span data-i18n="social.discord">{{ t('social.discord') }}</span> ·
+            <span data-i18n="social.telegram">{{ t('social.telegram') }}</span>
+          </div>
+        </div>
+        <div class="copyright">
+          <span class="version">v0.3.0 · 2026-10</span> ·
+          <span data-i18n="foot.note">{{ t('foot.note') }}</span>
+        </div>
+      </footer>
+      <div
+        class="pcu-modal"
+        :class="{ open: cheatOpen }"
+        @click.self="closeCheat"
+        @keydown="cheatTrap"
+      >
+        <div
+          id="pcu-cheat-dialog"
+          class="pcu-dialog"
+          role="dialog"
+          aria-modal="true"
+          :aria-hidden="cheatOpen ? 'false' : 'true'"
+          tabindex="-1"
+        >
+          <button
+            class="pcu-dialog-close"
+            type="button"
+            data-pcu-cheat-close
+            @click="closeCheat"
+            :aria-label="t('pc.close')"
+            data-i18n="pc.close"
+          >
+            × {{ t('pc.close') }}
+          </button>
+          <h2 data-i18n="pc.cheatTitle">{{ t('pc.cheatTitle') }}</h2>
+          <table class="table pcu-cheat-table">
+            <tr v-for="c in picuCmds" :key="c.id">
+              <td><code translate="no">{{ c.usage }}</code></td>
+              <td>{{ t('pc.cmd.' + c.id + '.desc') }}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- /#app -->
+    <script type="text/x-template" id="tree-item-template">
+      <li :class="{ active: isActive }">
+      <div class="tree-row">
+      <a :href="item.href" :class="{ active: isCurrent }" :aria-current="isCurrent ? 'true' : null" @click="onNav">{{ label }}</a>
+      <button v-if="hasChildren" class="tree-toggle" type="button" @click="toggle" @keydown="onKey" :aria-expanded="open ? 'true' : 'false'" :aria-label="label"><span class="tree-caret" aria-hidden="true">▸</span></button>
+      </div>
+      <ul v-if="hasChildren" :class="{ 'is-open': open }" class="tree-l2">
+      <tree-item v-for="child in item.children" :key="child.href" :item="child" :page="page"></tree-item>
+      </ul>
+      </li>
+    </script>
+    <script defer src="js/vendor/vue.global.prod.js"></script>
     <script defer src="js/app.js"></script>
-<script defer src="assets/js/i18n.js"></script>
-<script src="js/main.js"></script>
-<script src="js/i18n.js"></script>
-</body>
+    <script defer src="assets/js/i18n.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/i18n.js"></script>
+  </body>
 </html>

@@ -723,11 +723,16 @@
 		document.querySelectorAll(".terminal[data-copy]").forEach((terminal) => {
 			if (terminal.querySelector(".copy-btn")) return;
 
+			// T-keyed labels (Vue pages pass :data-copy-* bindings); same
+			// timing/behavior as before when the attributes are absent.
+			const idleLabel = terminal.dataset.copyLabel || "Copy";
+			const doneLabel = terminal.dataset.copyDone || "copied ✓";
+			const ariaLabel = terminal.dataset.copyAria || "Copy code to clipboard";
 			const button = document.createElement("button");
 			button.type = "button";
 			button.className = "copy-btn";
-			button.textContent = "Copy";
-			button.setAttribute("aria-label", "Copy code to clipboard");
+			button.textContent = idleLabel;
+			button.setAttribute("aria-label", ariaLabel);
 			button.addEventListener("click", async () => {
 				const pre = terminal.querySelector("pre");
 				const text = pre ? pre.innerText : terminal.innerText;
@@ -746,15 +751,29 @@
 					document.execCommand("copy");
 					area.remove();
 				}
-				button.textContent = "copied ✓";
+				button.textContent = terminal.dataset.copyDone || doneLabel;
 				showCopyToast();
 				window.setTimeout(() => {
-					button.textContent = "Copy";
+					button.textContent = terminal.dataset.copyLabel || idleLabel;
 				}, 1600);
 			});
-			terminal.append(button);
+			// Mount inside the terminal topbar so the button sits in the
+			// header row and can never overlap terminal content. Blocks
+			// without a bar (Vue-rendered picu commands) get a minimal
+			// dots row matching the static terminal aesthetic.
+			let bar = terminal.querySelector(".terminal-bar");
+			if (!bar) {
+				bar = document.createElement("div");
+				bar.className = "terminal-bar";
+				for (let i = 0; i < 3; i++) bar.append(document.createElement("span"));
+				terminal.prepend(bar);
+			}
+			bar.append(button);
 		});
 	}
+	// Re-runnable hook for Vue-rendered terminals (picu page); skips
+	// already-enhanced blocks, so repeated calls stay cheap.
+	window.SummitCopyTerminals = copyTerminal;
 
 	function setupFaq() {
 		const items = document.querySelectorAll("details.faq");
@@ -790,6 +809,8 @@
 			p: `picu-new.html${suffix}`,
 			n: `news.html${suffix}`,
 			w: `wiki.html${suffix}`,
+			s: `status.html${suffix}`,
+			c: `changelog.html${suffix}`,
 		};
 
 		let pendingG = false;

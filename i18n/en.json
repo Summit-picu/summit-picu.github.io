@@ -74,7 +74,10 @@
     "lead": "page not found",
     "missing": "missing:",
     "btnEn": "Home (EN)",
-    "btnRu": "Главная (RU)"
+    "btnRu": "Главная (RU)",
+    "btnHome": "Back to home",
+    "suggestTitle": "Popular pages:",
+    "searchPh": "Search site…"
   },
   "banner": {
     "text": "Latest: picu 0.3.0 — trust rotation. Signed mirrors coming soon.",
@@ -108,7 +111,8 @@
     "noCommunity": "— (no community mirrors yet)",
     "none": "—",
     "comingSoon": "Coming soon",
-    "available": "Available"
+    "available": "Available",
+    "empty": "No mirrors listed yet."
   },
   "mir2": {
     "crumb": "Mirror",
@@ -214,7 +218,8 @@
   },
   "common": {
     "discuss": "Discuss on GitHub",
-    "report": "Report website bug & feature request"
+    "report": "Report website bug & feature request",
+    "editPage": "Edit this page on GitHub"
   },
   "chl": {
     "lead": "Release history of Summit Linux, the picu package manager and this website.",
@@ -222,22 +227,27 @@
     "grpSummit": "Summit Linux",
     "grpPicu": "picu package manager",
     "grpSite": "Summit Linux website",
-    "noRelease": "there no release yet... :(",
-    "rel061t": "stable-v0.6.1 — 2026-10-11",
+    "noRelease": "No releases yet.",
+    "rel061t": "<span translate=\"no\">stable-v0.6.1</span> — <time datetime=\"2026-10-11\">2026-10-11</time>",
     "rel061d": "Site features on top of the Vue build: download and status pages expanded, shared translation dictionaries.",
-    "rel060t": "stable-v0.6.0 — 2026-10-11",
+    "rel060t": "<span translate=\"no\">stable-v0.6.0</span> — <time datetime=\"2026-10-11\">2026-10-11</time>",
     "rel060d": "Vue migration and optimization: Vue app shell, single-file pages, unified English/Russian dictionaries.",
-    "rel05xt": "debug-unstable-v0.5.0 → v0.5.1 — 2026-10-10",
+    "rel05xt": "<span translate=\"no\">debug-unstable-v0.5.0 → v0.5.1</span> — <time datetime=\"2026-10-10\">2026-10-10</time>",
     "rel050d": "Second huge UI update: flags, pages and assets refreshed across the site.",
     "rel051d": "Small follow-up update: duplicated locale page files removed, translation handling consolidated.",
-    "rel040t": "unstable-v0.4.0 — 2026-10-10",
+    "rel040t": "<span translate=\"no\">unstable-v0.4.0</span> — <time datetime=\"2026-10-10\">2026-10-10</time>",
     "rel040d": "Huge UI update: new pages, flag icons and full-site restyle.",
-    "rel001t": "0.1 — 2026-09-02, initial upload era 2026-09-19/20",
+    "rel001t": "<span translate=\"no\">0.1</span> — <time datetime=\"2026-09-02\">2026-09-02</time>, initial upload era <time datetime=\"2026-09-19\">2026-09-19</time>/<time datetime=\"2026-09-20\">2026-09-20</time>",
     "rel001d": "First website draft, then the initial site upload: base pages, styles and scripts published.",
     "site.010": "stable-v0.1.0 website created",
     "site.020": "unstable-v0.2.0 website UI updated for a bit",
     "site.030": "stable-v0.3.0 fixed some bugs from v0.2.0",
-    "site.040": "unstable-v0.4.0 huge UI update, but it have a lot of bugs"
+    "site.040": "unstable-v0.4.0 huge UI update, but it have a lot of bugs",
+    "archive": "Older releases",
+    "compare": "Compare tags on GitHub",
+    "filterLabel": "Filter releases by version",
+    "filterPh": "e.g. 0.6.1",
+    "noMatch": "No releases match your filter."
   },
   "social": {
     "discord": "Discord (soon)",
@@ -292,6 +302,7 @@
   },
   "wiki": {
     "title": "Summit Linux Wiki",
+    "updatedLabel": "Last updated:",
     "lead": "Community documentation for Summit Linux and the picu package manager: concepts, commands, repositories and answers.",
     "secWhat": "What is Summit Linux",
     "secInstall": "Installation",
@@ -415,7 +426,11 @@
     "c3t": "UI updates: v0.4.0 – v0.5.1",
     "intro": "Project updates and notes.",
     "sec.archive": "Archive",
-    "sec.latest": "Latest"
+    "sec.latest": "Latest",
+    "loading": "Loading…",
+    "empty": "No news yet.",
+    "loadError": "Could not load the news feed.",
+    "retry": "Retry"
   },
   "pc": {
     "binaryP": "picu can install signed binary archives after checking their hashes and signatures.",
@@ -427,7 +442,41 @@
     "sec.trust": "Trust",
     "sourceP": "Packages are described using declarative recipes <code>.picu</code>.",
     "trustLabel": "Unsafe repositories are blocked by default.",
-    "trustText": "Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>."
+    "trustText": "Installing from an unsafe mirror requires an explicit flag <code>--allow-unsafe</code>.",
+    "cmdSearchPh": "Filter commands…",
+    "noMatch": "No commands match your filter.",
+    "related": "Related:",
+    "copy": "Copy",
+    "copied": "copied ✓",
+    "copyCodeAria": "Copy code to clipboard",
+    "exampleT": "Example",
+    "outputT": "Sample output",
+    "more": "Show example",
+    "less": "Hide",
+    "verStable": "Stable",
+    "verUnstable": "Unstable",
+    "verNoteU": "Unstable builds may print extra lines; commands stay the same.",
+    "cheatsheet": "Cheatsheet",
+    "cheatTitle": "picu cheatsheet",
+    "close": "Close",
+    "since": "since",
+    "trustMoreT": "How trust works",
+    "trustP1": "picu trusts keys, not files. A package installs only if its index entry carries a signature from a key you trusted on purpose.",
+    "trustP2": "Every sync checks three things: the signature is real, the index has not expired, and the version is not older than what you have — no quiet downgrades.",
+    "trustP3": "Mirrors are treated as strangers: even the official mirror installs nothing without a valid signature. Community mirrors need your explicit trust first.",
+    "trustP4": "Keys can be replaced without reinstalling: old keys retire to a block-list, new keys take over, and picu tells you when it happens.",
+    "cmd.add.desc": "Install a package from a trusted mirror.",
+    "cmd.cook.desc": "Build a package from its recipe in isolation.",
+    "cmd.cut.desc": "Remove an installed package.",
+    "cmd.find.desc": "Search repository indexes for packages.",
+    "cmd.sync.desc": "Refresh repository indexes and check signatures.",
+    "cmd.rebase.desc": "Switch the system to a different mirror or release.",
+    "cmd.list.desc": "Show installed packages.",
+    "cmd.info.desc": "Show version, recipe and mirror details.",
+    "cmd.update.desc": "Upgrade installed packages to trusted versions.",
+    "cmd.trust.desc": "Manage trusted keys and rotate them.",
+    "cmd.help.desc": "Show help for any command.",
+    "cmd.trust.un": "Key rotation arrived in 0.3.0 — unstable extends it with automatic expiry checks."
   },
   "st": {
     "card.ci": "Builds and checks for site and docs.",
@@ -444,6 +493,8 @@
     "sec.registry": "picu registry",
     "sec.site": "Site",
     "soon": "● Coming soon",
-    "title": "System status"
+    "title": "System status",
+    "lastChecked": "Last checked",
+    "version": "Version"
   }
 }
