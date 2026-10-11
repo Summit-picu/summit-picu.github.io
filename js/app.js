@@ -788,13 +788,15 @@
  *
  * De-aggressed IntersectionObserver: a slightly wider middle band
  * (rootMargin "-35% 0px -55% 0px", ~10% viewport) with ratio-gated
- * visibility (hairline 1px intersections are ignored) plus a ~200 ms
- * dwell — the highlight only switches when a section stays in the band.
- * Small-section gates: blocks shorter than 30% of the viewport need 35%
- * of themselves visible to count, displace a sticky current only at 60%
- * (clearly dominant), and dwell 280 ms. Ties resolve to the deepest
- * section in document order. Fast-scroll jitters never commit because
- * every switch re-validates after the dwell.
+ * visibility (hairline 1px intersections are ignored) plus a short
+ * ~100 ms dwell — the highlight follows quickly but tied/ambiguous
+ * frames still settle before committing. Unambiguous frames (clean-leave
+ * exit with one section left, or a single strong candidate) commit
+ * immediately. Small-section gates: blocks shorter than 30% of the
+ * viewport need 35% of themselves visible to count, displace a sticky
+ * current only at 60% (clearly dominant), and dwell 220 ms. Ties resolve
+ * to the deepest section in document order. In-page anchor clicks glide
+ * via html.anchor-smooth (never on page load with #hash).
  * On change the root activeHref updates (same path as hash sync, so
  * highlight + aria-current reuse existing logic) and the TreeItem watcher
  * opens + persists the ancestor branch. No collapsing: user-opened
@@ -855,8 +857,8 @@
 		var RATIO_ENTER = 0.05;
 		var RATIO_SHORT_ENTER = 0.35;
 		var RATIO_TAKEOVER = 0.6;
-		var DWELL_MS = 200;
-		var DWELL_SHORT_MS = 280;
+		var DWELL_MS = 100;
+		var DWELL_SHORT_MS = 220;
 		var SHORT_VH = 0.3;
 		var reduceMotion = false;
 		try {
@@ -959,10 +961,22 @@
 		// and tiny fast-scroll jitters.
 		var pending = null;
 		var dwellTimer = null;
+		function cancelPending() {
+			pending = null;
+			try {
+				if (dwellTimer) window.clearTimeout(dwellTimer);
+			} catch (e) {
+				/* ignore */
+			}
+			dwellTimer = null;
+		}
 		function schedule(cur) {
 			if (!cur) return;
 			try {
-				if (window.__summitApp && window.__summitApp.activeHref === cur) return;
+				if (window.__summitApp && window.__summitApp.activeHref === cur) {
+					cancelPending();
+					return;
+				}
 			} catch (e) {
 				/* ignore */
 			}
@@ -997,6 +1011,7 @@
 		try {
 			io = new IntersectionObserver(
 				function (entries) {
+					var left = false;
 					entries.forEach(function (en) {
 						var id = en.target && en.target.id ? en.target.id : "";
 						if (!id) return;
@@ -1010,6 +1025,7 @@
 						// blocks) vs clean-leave exit: hysteresis. Ratios are
 						// always tracked for the takeover check.
 						if (!en.isIntersecting) {
+							if (inBand["#" + id]) left = true;
 							inBand["#" + id] = false;
 							bandRatio["#" + id] = 0;
 						} else {
@@ -1021,7 +1037,34 @@
 								inBand["#" + id] = true;
 						}
 					});
-					schedule(pickCurrent());
+					var cur = pickCurrent();
+					var applied = appliedHref();
+					if (!cur || cur === applied) {
+						cancelPending();
+						return;
+					}
+					if (reduceMotion) {
+						pending = cur;
+						applyCurrent(cur);
+						return;
+					}
+					// Fast paths (feel instant): an unambiguous clean-leave
+					// exit with one section left, or a single strong normal
+					// candidate — commit now. Tied/ambiguous frames (esp.
+					// tiny sections) keep the short dwell instead.
+					var visCount = 0;
+					for (var vi = 0; vi < targets.length; vi++) {
+						if (inBand[targets[vi].href]) visCount++;
+					}
+					var cand = targetByHref(cur);
+					var strong = cand && !cand.short && (bandRatio[cur] || 0) >= 0.35;
+					if ((left && visCount === 1) || (visCount === 1 && strong)) {
+						cancelPending();
+						pending = cur;
+						applyCurrent(cur);
+						return;
+					}
+					schedule(cur);
 				},
 				{
 					rootMargin: "-35% 0px -55% 0px",
@@ -1038,5 +1081,50 @@
 				/* ignore */
 			}
 		});
+		// Smooth in-page anchor glide (tree/sidebar/TOC link jumps): enable
+		// smooth scrolling on real anchor clicks only — never on page load
+		// with #hash (the class starts absent). Scrollspy keeps committing
+		// through the glide and hash sync is untouched.
+		var smoothTimer = null;
+		function anchorSmoothOn() {
+			try {
+				document.documentElement.classList.add("anchor-smooth");
+			} catch (e) {
+				/* ignore */
+			}
+			try {
+				if (smoothTimer) window.clearTimeout(smoothTimer);
+			} catch (e) {
+				/* ignore */
+			}
+			try {
+				smoothTimer = window.setTimeout(function () {
+					try {
+						document.documentElement.classList.remove("anchor-smooth");
+					} catch (e) {
+						/* ignore */
+					}
+				}, 1200);
+			} catch (e) {
+				/* ignore */
+			}
+		}
+		try {
+			document.addEventListener(
+				"click",
+				function (ev) {
+					var el =
+						ev.target && ev.target.closest
+							? ev.target.closest('a[href^="#"]')
+							: null;
+					if (!el) return;
+					var href = el.getAttribute ? el.getAttribute("href") : "";
+					if (href && href.length > 1) anchorSmoothOn();
+				},
+				true,
+			);
+		} catch (e) {
+			/* ignore */
+		}
 	});
 })();

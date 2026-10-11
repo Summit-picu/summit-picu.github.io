@@ -141,6 +141,13 @@ index = "repo.index.json"
 trusted = true</pre>
 </div>
 <div class="callout"><strong data-i18n="wiki.mirrorsNoteLabel">Community mirrors:</strong> <span data-i18n="wiki.mirrorsNoteText">they require explicit trust — never enable an untrusted mirror with unsafe flags on a production system.</span></div>
+<h2 id="multi-init" data-i18n="wiki.secMulti">Multiple inits and variants on one system</h2>
+<p data-i18n="wiki.multiP1">One installation can boot several variants with different init systems and settings. The boot menu lists the variants, and each variant keeps its own files in a separate filesystem snapshot, so settings do not mix.</p>
+<ul>
+<li><code>variant A</code> <span data-i18n="wiki.multiA">— OpenRC on musl, with a home directory.</span></li>
+<li><code>variant B</code> <span data-i18n="wiki.multiB">— sysVinit on glibc, root only, kept as snapshot 2.</span></li>
+</ul>
+<p data-i18n="wiki.multiP2">Pick a variant in the boot menu. Snapshots keep each variant's configuration separate.</p>
 <h2 id="faq" data-i18n="wiki.secFaq">FAQ</h2>
 <details class="faq"><summary data-i18n="wiki.faq1q">Is Summit Linux ready for daily use?</summary>
 <p data-i18n="wiki.faq1a">The project is a working concept with a staged implementation plan; follow the News page for releases.</p>

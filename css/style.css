@@ -36,7 +36,14 @@
   --ease-soft: cubic-bezier(0.3, 1.25, 0.5, 1);
 }
 html {
-  scroll-behavior: smooth;
+  /* Instant by default (incl. page load with #hash). Smooth scrolling is
+     enabled only via .anchor-smooth, added on in-page anchor clicks. */
+  scroll-behavior: auto;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html.anchor-smooth {
+    scroll-behavior: smooth;
+  }
 }
 body {
   margin: 0;
@@ -2355,9 +2362,9 @@ html[data-theme="light"] .preloader {
   transform: none;
   visibility: visible;
   transition:
-    grid-template-rows 0.36s var(--ease-soft, var(--ease)),
-    opacity 0.3s ease,
-    transform 0.36s var(--ease-soft, var(--ease)),
+    grid-template-rows 0.38s var(--ease-soft, var(--ease)),
+    opacity 0.32s ease,
+    transform 0.38s var(--ease-soft, var(--ease)),
     visibility 0s;
 }
 .sidebar ul.tree-l2 > li {
@@ -2367,7 +2374,7 @@ html[data-theme="light"] .preloader {
 }
 /* Gentle stagger: child rows fade/rise in small steps while opening. */
 .sidebar ul.tree-l2.is-open > li {
-  animation: tree-item-in 0.24s var(--ease) backwards;
+  animation: tree-item-in 0.26s var(--ease) backwards;
 }
 .sidebar ul.tree-l2.is-open > li:nth-child(2) {
   animation-delay: 25ms;
@@ -2387,7 +2394,7 @@ html[data-theme="light"] .preloader {
 @keyframes tree-item-in {
   from {
     opacity: 0;
-    transform: translateY(-4px);
+    transform: translateY(-3px);
   }
   to {
     opacity: 1;
@@ -3893,10 +3900,9 @@ html[data-theme="dark"] .theme-toggle {
 .mountain.front {
   animation-duration: 32s;
 }
-/* ---- P5. MOTION polish: stagger-reveal, nav hover-lift, smooth anchors ------ */
-html {
-  scroll-behavior: smooth;
-}
+/* ---- P5. MOTION polish: stagger-reveal, nav hover-lift ---------------------- */
+/* (Smooth in-page anchor scrolling lives on html.anchor-smooth above, added
+   by JS on anchor clicks — never on page load.) */
 .navbar {
   position: relative;
 }

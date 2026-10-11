@@ -262,10 +262,29 @@
 			"common.report": "Report website bug & feature request",
 			"chl.lead":
 				"Release history of Summit Linux, the picu package manager and this website.",
+			"chl.note":
+				"Entries are grouped by date and theme from the git history, newest first.",
 			"chl.grpSummit": "Summit Linux",
 			"chl.grpPicu": "picu package manager",
 			"chl.grpSite": "Summit Linux website",
 			"chl.noRelease": "there no release yet... :(",
+			"chl.rel061t": "stable-v0.6.1 — 2026-10-11",
+			"chl.rel061d":
+				"Site features on top of the Vue build: download and status pages expanded, shared translation dictionaries.",
+			"chl.rel060t": "stable-v0.6.0 — 2026-10-11",
+			"chl.rel060d":
+				"Vue migration and optimization: Vue app shell, single-file pages, unified English/Russian dictionaries.",
+			"chl.rel05xt": "debug-unstable-v0.5.0 → v0.5.1 — 2026-10-10",
+			"chl.rel050d":
+				"Second huge UI update: flags, pages and assets refreshed across the site.",
+			"chl.rel051d":
+				"Small follow-up update: duplicated locale page files removed, translation handling consolidated.",
+			"chl.rel040t": "unstable-v0.4.0 — 2026-10-10",
+			"chl.rel040d":
+				"Huge UI update: new pages, flag icons and full-site restyle.",
+			"chl.rel001t": "0.1 — 2026-09-02, initial upload era 2026-09-19/20",
+			"chl.rel001d":
+				"First website draft, then the initial site upload: base pages, styles and scripts published.",
 			"chl.site.010": "stable-v0.1.0 website created",
 			"chl.site.020": "unstable-v0.2.0 website UI updated for a bit",
 			"chl.site.030": "stable-v0.3.0 fixed some bugs from v0.2.0",
@@ -360,6 +379,13 @@
 			"wiki.mirrorsNoteLabel": "Community mirrors:",
 			"wiki.mirrorsNoteText":
 				"they require explicit trust — never enable an untrusted mirror with unsafe flags on a production system.",
+			"wiki.secMulti": "Multiple inits and variants on one system",
+			"wiki.multiP1":
+				"One installation can boot several variants with different init systems and settings. The boot menu lists the variants, and each variant keeps its own files in a separate filesystem snapshot, so settings do not mix.",
+			"wiki.multiA": "— OpenRC on musl, with a home directory.",
+			"wiki.multiB": "— sysVinit on glibc, root only, kept as snapshot 2.",
+			"wiki.multiP2":
+				"Pick a variant in the boot menu. Snapshots keep each variant's configuration separate.",
 			"wiki.faq1q": "Is Summit Linux ready for daily use?",
 			"wiki.faq1a":
 				"The project is a working concept with a staged implementation plan; follow the News page for releases.",
@@ -469,14 +495,14 @@
 			"err.btnEn": "Home (EN)",
 			"err.btnRu": "Главная (RU)",
 			"news.c1d":
-				"Signed mirrors (coming soon), <code>picu trust</code> key rotation and index expiry checks.",
-			"news.c1t": "picu 0.3.0: trust rotation",
+				"Download and status pages expanded on top of the Vue build, shared translation dictionaries.",
+			"news.c1t": "stable-v0.6.1: site features",
 			"news.c2d":
-				"New Wiki TOC, FAQ, status page and breadcrumbs across the site.",
-			"news.c2t": "Site refresh v0.3.0",
+				"Vue app shell, single-file pages and unified English/Russian dictionaries.",
+			"news.c2t": "stable-v0.6.0: Vue migration",
 			"news.c3d":
-				"Official mirror will serve signed <code>repo.index.json</code> with expiry.",
-			"news.c3t": "Mirror signing — coming soon",
+				"Two huge UI updates followed by a locale cleanup of duplicated page files.",
+			"news.c3t": "UI updates: v0.4.0 – v0.5.1",
 			"news.intro": "Project updates and notes.",
 			"news.sec.archive": "Archive",
 			"news.sec.latest": "Latest",
@@ -672,10 +698,29 @@
 			"common.report": "Сообщить об ошибке сайта",
 			"chl.lead":
 				"История релизов Summit Linux, пакетного менеджера picu и этого сайта.",
+			"chl.note":
+				"Записи сгруппированы по дате и теме из истории git, сначала новые.",
 			"chl.grpSummit": "Summit Linux",
 			"chl.grpPicu": "менеджер пакетов picu",
 			"chl.grpSite": "Сайт Summit Linux",
 			"chl.noRelease": "Пока нет релизов... :(",
+			"chl.rel061t": "stable-v0.6.1 — 2026-10-11",
+			"chl.rel061d":
+				"Новые возможности сайта поверх Vue-сборки: расширены страницы скачивания и статуса, общие словари переводов.",
+			"chl.rel060t": "stable-v0.6.0 — 2026-10-11",
+			"chl.rel060d":
+				"Переход на Vue и оптимизация: Vue-оболочка, однофайловые страницы, единые словари английского и русского.",
+			"chl.rel05xt": "debug-unstable-v0.5.0 → v0.5.1 — 2026-10-10",
+			"chl.rel050d":
+				"Второе крупное обновление интерфейса: флаги, страницы и ресурсы обновлены по всему сайту.",
+			"chl.rel051d":
+				"Небольшое обновление следом: удалены дублированные файлы страниц локалей, переводы собраны в одном месте.",
+			"chl.rel040t": "unstable-v0.4.0 — 2026-10-10",
+			"chl.rel040d":
+				"Крупное обновление интерфейса: новые страницы, иконки флагов и новый стиль всего сайта.",
+			"chl.rel001t": "0.1 — 2026-09-02, первая загрузка 2026-09-19/20",
+			"chl.rel001d":
+				"Первый черновик сайта, затем первая загрузка: опубликованы базовые страницы, стили и скрипты.",
 			"chl.site.010": "stable-v0.1.0 сайт создан",
 			"chl.site.020": "unstable-v0.2.0 интерфейс сайта немного обновлён",
 			"chl.site.030": "stable-v0.3.0 исправлены некоторые баги из v0.2.0",
@@ -771,6 +816,13 @@
 			"wiki.mirrorsNoteLabel": "Зеркала сообщества:",
 			"wiki.mirrorsNoteText":
 				"требуют явного доверия — не подключайте недоверенное зеркало с небезопасными флагами на рабочей системе.",
+			"wiki.secMulti": "Несколько init и вариантов на одной системе",
+			"wiki.multiP1":
+				"Одна установка может загружать несколько вариантов с разными init-системами и настройками. Загрузочное меню показывает варианты, а каждый вариант хранит свои файлы в отдельном снимке файловой системы, поэтому настройки не смешиваются.",
+			"wiki.multiA": "— OpenRC на musl, с домашним каталогом.",
+			"wiki.multiB": "— sysVinit на glibc, только root, хранится как снимок 2.",
+			"wiki.multiP2":
+				"Выберите вариант в загрузочном меню. Снимки держат настройки каждого варианта отдельно.",
 			"wiki.faq1q": "Summit Linux готов для ежедневного использования?",
 			"wiki.faq1a":
 				"Проект — рабочая концепция с поэтапным планом реализации; следите за страницей новостей.",
@@ -879,14 +931,14 @@
 			"err.btnEn": "Home (EN)",
 			"err.btnRu": "Главная (RU)",
 			"news.c1d":
-				"Подписанные зеркала (скоро), ротация ключей <code>picu trust</code> и проверка срока индекса.",
-			"news.c1t": "picu 0.3.0: ротация доверия",
+				"Страницы скачивания и статуса расширены поверх Vue-сборки, общие словари переводов.",
+			"news.c1t": "stable-v0.6.1: возможности сайта",
 			"news.c2d":
-				"Оглавление вики, FAQ, статус-страница и хлебные крошки по сайту.",
-			"news.c2t": "Обновление сайта v0.3.0",
+				"Vue-оболочка, однофайловые страницы и единые словари английского и русского.",
+			"news.c2t": "stable-v0.6.0: переход на Vue",
 			"news.c3d":
-				"Официальное зеркало будет отдавать подписанный <code>repo.index.json</code> со сроком действия.",
-			"news.c3t": "Подпись зеркала — скоро",
+				"Два крупных обновления интерфейса и чистка дублей файлов локалей.",
+			"news.c3t": "Обновления интерфейса: v0.4.0 – v0.5.1",
 			"news.intro": "Обновления и заметки проекта.",
 			"news.sec.archive": "Архив",
 			"news.sec.latest": "Последнее",
