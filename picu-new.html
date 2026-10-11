@@ -154,7 +154,7 @@ Type: Src &amp; Bin $ picu add Vim
 <a :href="item.href" :class="{ active: isCurrent }" :aria-current="isCurrent ? 'true' : null" @click="onNav">{{ label }}</a>
 <button v-if="hasChildren" class="tree-toggle" type="button" @click="toggle" @keydown="onKey" :aria-expanded="open ? 'true' : 'false'" :aria-label="label"><span class="tree-caret" aria-hidden="true">▸</span></button>
 </div>
-<ul v-if="hasChildren" v-show="open" class="tree-l2">
+<ul v-if="hasChildren" :class="{ 'is-open': open }" class="tree-l2">
 <tree-item v-for="child in item.children" :key="child.href" :item="child" :page="page"></tree-item>
 </ul>
 </li>
