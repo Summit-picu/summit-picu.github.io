@@ -347,7 +347,16 @@
         <section class="content">
           <div class="page">
             <div class="content-layout">
-              <aside class="sidebar">
+              <button
+                class="wiki-drawer-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="wiki-sidebar"
+              >
+                <span class="wiki-drawer-icon" aria-hidden="true">▾</span
+                ><span>Contents</span>
+              </button>
+              <aside class="sidebar" id="wiki-sidebar">
                 <ul class="tree-l1">
                   <tree-item
                     v-for="node in tree"

@@ -616,11 +616,24 @@
 		swapIcons(document.documentElement.getAttribute("data-theme"));
 
 		let button = document.querySelector(".theme-toggle");
+		// Spec: the toggle parks next to the language switcher (right side
+		// of .navbar, before .lang-dropdown) — never inside the collapsible
+		// .nav tabs menu, so it stays visible on desktop and narrow alike.
+		const navbar =
+			document.querySelector(".navbar") ?? document.querySelector(".header");
+		const langDrop = document.querySelector(".lang-dropdown");
+		const parkButton = (btn) => {
+			if (
+				navbar &&
+				langDrop &&
+				navbar.contains(langDrop) &&
+				btn.nextElementSibling !== langDrop
+			) {
+				navbar.insertBefore(btn, langDrop);
+			}
+		};
 		if (!button) {
-			// Spec: the toggle lives inside .nav (fallback: .navbar).
-			const host =
-				document.querySelector(".nav") ?? document.querySelector(".navbar");
-			if (!host) return;
+			if (!navbar) return;
 			button = document.createElement("button");
 			button.type = "button";
 			button.className = "theme-toggle";
@@ -630,7 +643,14 @@
 			icon.setAttribute("aria-hidden", "true");
 			icon.textContent = "☾";
 			button.append(icon);
-			host.append(button);
+			if (navbar && langDrop && navbar.contains(langDrop)) {
+				navbar.insertBefore(button, langDrop);
+			} else {
+				navbar.append(button);
+			}
+		} else {
+			// Relocate a toggle left inside .nav by an older build.
+			parkButton(button);
 		}
 		syncThemeToggle(document.documentElement.getAttribute("data-theme"));
 
@@ -935,7 +955,34 @@
 		const setOpen = (open) => {
 			sidebar.classList.toggle("is-open", open);
 			toggle.setAttribute("aria-expanded", String(open));
+			if (open) placeDrawer();
 		};
+
+		// Anchor the sheet to the pill (not a hardcoded topbar offset): the
+		// sticky pill sits in content flow near the page top and only sticks
+		// at 72px once scrolled, so only a live measurement keeps zero
+		// overlap in every scroll state. Inline styles beat the CSS fallback
+		// top; viewport-bounded, no scrolling performed (no page jump).
+		function placeDrawer() {
+			if (!sidebar.classList.contains("is-open")) return;
+			if (!(window.matchMedia?.("(max-width: 760px)").matches ?? false)) {
+				return;
+			}
+			try {
+				const rect = toggle.getBoundingClientRect();
+				const vh = Math.round(
+					window.visualViewport?.height ?? window.innerHeight ?? 640,
+				);
+				const top = Math.min(
+					Math.max(76, Math.round(rect.bottom + 8)),
+					Math.max(76, vh - 180),
+				);
+				sidebar.style.top = `${top}px`;
+				sidebar.style.maxHeight = `min(92vh, ${Math.max(160, vh - top - 12)}px)`;
+			} catch (error) {
+				/* CSS fallback top applies */
+			}
+		}
 
 		toggle.addEventListener("click", (event) => {
 			event.stopPropagation();
@@ -971,20 +1018,96 @@
 		});
 
 		// Leaving the mobile breakpoint resets the drawer (desktop is sticky).
+		// Inline anchor styles are cleared so the stylesheet owns desktop.
+		const clearAnchor = () => {
+			sidebar.style.top = "";
+			sidebar.style.maxHeight = "";
+		};
 		window.addEventListener(
 			"resize",
 			() => {
 				if (window.matchMedia?.("(min-width: 761px)").matches ?? false) {
 					setOpen(false);
+					clearAnchor();
+				} else {
+					placeDrawer();
 				}
 			},
 			{ passive: true },
 		);
+		// Pill slides between flow and stuck states while scrolling with the
+		// drawer open — re-anchor (measurement only, never scrolls the page).
+		window.addEventListener("scroll", placeDrawer, { passive: true });
+		try {
+			window.visualViewport?.addEventListener?.("resize", placeDrawer, {
+				passive: true,
+			});
+		} catch (error) {
+			/* visualViewport unavailable */
+		}
+	}
+
+	function setupSidebarScrollFx() {
+		// List scroll animation: rows clipped at the scroller edge fade/slide
+		// (CSS .io-dim), fully visible rows stay plain — both directions, the
+		// observer re-fires on reverse. Transform/opacity only: no reflow, no
+		// scroll jank. Skipped under reduced motion (CSS guard forces plain).
+		const bars = Array.from(
+			document.querySelectorAll(".content-layout .sidebar"),
+		).filter((element) => element?.isConnected);
+		if (!bars.length) return;
+		if (!("IntersectionObserver" in window)) return;
+		if (
+			window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ??
+			false
+		) {
+			return;
+		}
+
+		const seen = new WeakSet();
+		const makeObserver = (bar) =>
+			new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						entry.target.classList.toggle(
+							"io-dim",
+							entry.intersectionRatio < 0.95,
+						);
+					}
+				},
+				{ root: bar, threshold: [0, 0.95, 1] },
+			);
+
+		for (const bar of bars) {
+			const io = makeObserver(bar);
+			const watch = (root) => {
+				root.querySelectorAll("li").forEach((item) => {
+					if (seen.has(item)) return;
+					seen.add(item);
+					io.observe(item);
+				});
+			};
+			watch(bar);
+			// Vue renders the tree around mount; catch late rows without
+			// polling (tree expand/collapse re-fires the observer itself).
+			try {
+				new MutationObserver((mutations) => {
+					for (const mutation of mutations) {
+						for (const node of mutation.addedNodes ?? []) {
+							if (node instanceof HTMLElement) watch(node);
+						}
+					}
+				}).observe(bar, { childList: true, subtree: true });
+			} catch (error) {
+				/* late rows stay plain — animation is decorative */
+			}
+		}
 	}
 
 	document.addEventListener("DOMContentLoaded", () => {
 		setupMobileNavigation();
 		setupWikiDrawer();
+		setupSidebarScrollFx();
 		setupScrollReveal();
 		setupSmoothAnchors();
 		setupHeaderScrollState();

@@ -380,7 +380,10 @@ img {
 .lang-dropdown {
   position: relative;
   justify-self: end;
-  margin-left: auto;
+  /* No margin-left auto: the theme toggle parked immediately left of this
+     pill owns the flexible gap (its own margin-left auto), so the toggle
+     always sits tight against the pill with a fixed small gap. */
+  margin-left: 0;
   margin-right: 8px;
 }
 .lang-btn {
@@ -1905,9 +1908,57 @@ kbd,
     transform: rotate(360deg);
   }
 }
-/* Theme toggle removed — light theme only. Hidden even if injected by stale JS. */
-.theme-toggle,
-.theme-toggle-icon,
+/* Theme toggle: parked next to the language switcher (never inside the
+   collapsible .nav tabs menu). JS injects .theme-toggle before
+   .lang-dropdown so it stays visible on desktop and narrow alike. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  order: 0;
+  width: 38px;
+  height: 38px;
+  /* Flexible left margin absorbs navbar free space; fixed tight right gap
+     keeps the toggle glued to the language pill (never centered, never
+     far). P3 below repeats this at higher strength. */
+  margin-left: auto;
+  margin-right: 8px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--blue);
+  font-size: 1rem;
+  cursor: pointer;
+  transition:
+    border-color 0.25s var(--ease),
+    background 0.25s var(--ease),
+    transform 0.25s var(--ease);
+}
+.theme-toggle:hover {
+  background: var(--blue-soft);
+  border-color: var(--blue);
+}
+.theme-toggle:active {
+  transform: scale(0.94);
+}
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.theme-toggle-icon {
+  line-height: 1;
+}
+html[data-theme="dark"] .theme-toggle {
+  background: #1c3243;
+  border-color: #2b4356;
+  color: #c4dde9;
+}
+html[data-theme="dark"] .theme-toggle:hover {
+  background: #244052;
+  border-color: #4aa8cf;
+}
+/* Floating variant stays retired even if injected by stale code. */
 .theme-toggle--floating {
   display: none !important;
 }
@@ -3756,8 +3807,8 @@ html:not([data-theme]) .theme-toggle {
   gap: 6px;
   min-width: 38px;
   height: 38px;
-  margin-left: 4px;
-  margin-right: 2px;
+  margin-left: auto;
+  margin-right: 8px;
   padding: 0 10px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -6387,22 +6438,32 @@ html[data-theme="dark"] .content-modal {
     transform: scale(0.97);
   }
   .wiki-drawer-toggle .wiki-drawer-icon {
+    /* Swapped: closed shows ▴, open shows ▾ (glyph itself points down). */
+    transform: rotate(180deg);
     transition: transform 0.25s var(--ease);
   }
   .wiki-drawer-toggle[aria-expanded="true"] .wiki-drawer-icon {
-    transform: rotate(180deg);
+    transform: none;
   }
   /* Sidebar becomes a near-fullscreen top drawer sheet under the topbar.
      The toggle (z-index 95) stays above the sheet (z-index 90) so it can
-     always close it. Height budget uses the dvh viewport with vh fallback. */
+     always close it. Height budget uses the dvh viewport with vh fallback.
+     Final top is anchored live to the pill by setupWikiDrawer (placeDrawer);
+     the 128px below is only the no-JS fallback with the same pill math. */
   .content-layout .sidebar {
     position: fixed;
-    top: 76px;
+    /* 76px topbar + ~34px pill (sticky top 72px) + 12px pill margin + ~6px
+       gap: the sheet starts BELOW the mini pill, never overlapping it. */
+    top: 128px;
     left: 8px;
     right: 8px;
     z-index: 90;
-    max-height: min(92vh, calc(100vh - 88px));
-    max-height: min(92dvh, calc(100dvh - 88px));
+    /* Adaptive height: shrink to the items when few, cap + inner scroll
+       when many (overflow-y auto only ever scrolls on overflow). */
+    height: auto;
+    height: fit-content;
+    max-height: min(92vh, calc(100vh - 140px));
+    max-height: min(92dvh, calc(100dvh - 140px));
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     margin: 0;
@@ -6521,23 +6582,122 @@ html[data-theme="dark"] #wiki-sidebar::-webkit-scrollbar-thumb:hover {
   background: #3d5a72;
 }
 @media (max-width: 760px) {
+  /* Fixed-drawer trap fix: the scroll animation adds .reveal to
+     .content-layout, whose transform (even translateY(0) when visible)
+     would trap position:fixed and anchor the sheet to the content instead
+     of the viewport. Force none on narrow so the drawer always spawns
+     below the topbar over the current viewport. Opacity fade still runs. */
+  .content-layout.reveal {
+    transform: none;
+  }
   /* Drawer: near-fullscreen fixed overlay sheet; when expanded, the list
-     scrolls inside (finger swipe moves items, the box stays fixed), and
-     edge swipes chain into page scroll (overscroll auto, like desktop).
-     Geometry mirrors the U3 drawer rule (also covers #wiki-sidebar);
+     scrolls INDEPENDENTLY (overscroll contain: swiping items never moves
+     the page behind it). Desktop keeps edge-chaining (auto); narrow does
+     not. Geometry mirrors the U3 drawer rule (also covers #wiki-sidebar);
      visuals/transition still owned by U3. */
   .content-layout .sidebar,
   #wiki-sidebar {
     position: fixed;
-    top: 76px;
+    /* Below the mini pill (see U3 math): no overlap with the toggle. */
+    top: 128px;
     left: 8px;
     right: 8px;
-    max-height: min(92vh, calc(100vh - 88px));
-    max-height: min(92dvh, calc(100dvh - 88px));
+    height: auto;
+    height: fit-content;
+    max-height: min(92vh, calc(100vh - 140px));
+    max-height: min(92dvh, calc(100dvh - 140px));
     overflow-y: auto;
     overflow-x: hidden;
-    overscroll-behavior: auto;
+    overscroll-behavior: contain;
     -webkit-overflow-scrolling: touch;
     touch-action: pan-y;
+  }
+}
+/* ---- U7. TOPBAR on narrow: logo left with a small offset, theme toggle
+   stays a compact button next to the language switcher. ----------------- */
+@media (max-width: 760px) {
+  /* Rule 21e centers .brand (margin auto); on narrow the logo docks left
+     with only a small offset (navbar already pads 8px). Later + equal
+     specificity wins deterministically over 21e. */
+  .navbar > .brand {
+    margin-left: 0;
+    margin-right: auto;
+    justify-content: flex-start;
+    text-align: left;
+    padding-left: 2px;
+    padding-right: 4px;
+  }
+  .theme-toggle {
+    width: 34px;
+    height: 34px;
+    margin-right: 6px;
+    font-size: 0.92rem;
+  }
+  /* Same compact sizing at P3 strength (beats the desktop toggle rule).
+     margin-left 0: on narrow the brand's margin-right auto already absorbs
+     all free space, so the toggle/lang/burger pack tight right with the
+     toggle glued to the lang pill. */
+  html[data-theme="light"] .theme-toggle,
+  html[data-theme="dark"] .theme-toggle,
+  html:not([data-theme]) .theme-toggle {
+    min-width: 34px;
+    height: 34px;
+    margin-left: 0;
+    margin-right: 6px;
+    padding: 0 8px;
+  }
+}
+/* ---- U8. SIDEBAR LIST SCROLL FX (driven by setupSidebarScrollFx) ---------
+   Items fully in view are plain; edge-clipped rows gently fade/slide while
+   the list scrolls (both directions — the observer re-fires on reverse).
+   Transform-only motion: no layout, no scroll jank. No-JS default has no
+   .io-dim class, so the list is always fully readable. */
+.content-layout .sidebar li {
+  transition:
+    opacity 0.28s var(--ease),
+    transform 0.28s var(--ease);
+}
+.content-layout .sidebar li.io-dim {
+  opacity: 0.25;
+  transform: translateY(4px);
+}
+@media (prefers-reduced-motion: reduce) {
+  .content-layout .sidebar li {
+    transition: none;
+  }
+  .content-layout .sidebar li.io-dim {
+    opacity: 1;
+    transform: none;
+  }
+}
+/* ---- U9. DARK TABS-MENU (≤760px dropdown panel) + burger X fix ------------
+   The ≤760px .nav panel kept hardcoded light colors (white box in dark
+   theme). Max-strength selectors (panel + .nav-open state) so the dark
+   panel wins over every light pin regardless of order. The dark burger-bar
+   rule also outranks the open-state transparent middle bar, so the close
+   glyph rendered as × plus a stray bar (star-like): re-hide every middle
+   stroke (span and its shadow rows) at dark strength for a clean ×. */
+@media (max-width: 760px) {
+  html[data-theme="dark"] .header .navbar .nav,
+  html[data-theme="dark"] .nav.nav-open,
+  html[data-theme="dark"] .nav {
+    background: rgba(22, 40, 54, 0.98);
+    border-color: #2b4356;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.5);
+  }
+  html[data-theme="dark"] .nav a {
+    color: #d7e5ed;
+  }
+  html[data-theme="dark"] .nav a:hover,
+  html[data-theme="dark"] .nav a.active {
+    background: #1c3243;
+    color: #dcebf3;
+  }
+  /* Re-hide the middle bar at higher strength: clean ×, no star. */
+  html[data-theme="dark"] .header .navbar .nav-toggle.is-active span,
+  html[data-theme="dark"] .nav-toggle.is-active span {
+    background: transparent;
+    background-color: transparent;
+    box-shadow: none;
   }
 }
