@@ -466,7 +466,7 @@
           </div>
         </div>
         <div class="copyright">
-          <span class="version">v0.3.0 · 2026-10</span> ·
+          <span class="version" id="newsVersion">v0.3.0 · 2026-10</span> ·
           <span data-i18n="foot.note">{{ t('foot.note') }}</span>
         </div>
       </footer>
@@ -507,8 +507,42 @@
     </script>
     <script defer src="js/vendor/vue.global.prod.js"></script>
     <script defer src="js/app.js"></script>
-    <script src="js/supabase-config.js"></script>
-    <script src="js/markdown-viewer.js"></script>
-    <script src="js/news.js"></script>
+    <script defer src="js/supabase-config.js"></script>
+    <script defer src="js/markdown-viewer.js"></script>
+    <script defer src="js/news.js"></script>
+    <script defer>
+      // Footer version: single source of truth is data/version.json
+      // (same pattern as js/changelog.js#setupVersion).
+      (function () {
+        function injectNewsVersion() {
+          var el = document.getElementById("newsVersion");
+          if (!el) return;
+          window
+            .fetch("data/version.json", {
+              headers: { Accept: "application/json" },
+            })
+            .then(function (res) {
+              if (!res.ok) throw new Error("version.json: HTTP " + res.status);
+              return res.json();
+            })
+            .then(function (data) {
+              var site =
+                data && typeof data.site === "string" ? data.site.trim() : "";
+              var updated =
+                data && typeof data.updated === "string"
+                  ? data.updated.trim()
+                  : "";
+              var text = [site, updated].filter(Boolean).join(" · ");
+              if (text) el.textContent = text;
+            })
+            .catch(function () {
+              /* keep the static fallback text in the HTML */
+            });
+        }
+        if (document.readyState === "loading")
+          document.addEventListener("DOMContentLoaded", injectNewsVersion);
+        else injectNewsVersion();
+      })();
+    </script>
   </body>
 </html>

@@ -397,28 +397,8 @@
                 <h2 id="commands" data-i18n="pc.sec.commands">Core commands</h2>
                 <div class="pcu-toolbar">
                   <span class="pcu-ver" translate="no"
-                    >picu {{ ver.stable }}</span
+                    >picu {{ ver.planned }}</span
                   >
-                  <div class="pcu-tabs" role="tablist">
-                    <button
-                      type="button"
-                      role="tab"
-                      :class="{ 'is-active': verTab === 'stable' }"
-                      :aria-selected="verTab === 'stable' ? 'true' : 'false'"
-                      @click="setVerTab('stable')"
-                    >
-                      {{ t('pc.verStable') }} {{ ver.stable }}
-                    </button>
-                    <button
-                      type="button"
-                      role="tab"
-                      :class="{ 'is-active': verTab === 'unstable' }"
-                      :aria-selected="verTab === 'unstable' ? 'true' : 'false'"
-                      @click="setVerTab('unstable')"
-                    >
-                      {{ t('pc.verUnstable') }} {{ ver.unstable }}
-                    </button>
-                  </div>
                   <button
                     class="pcu-cheat-btn"
                     type="button"
@@ -428,13 +408,6 @@
                     {{ t('pc.cheatsheet') }}
                   </button>
                 </div>
-                <p
-                  class="pcu-note"
-                  v-if="verTab === 'unstable'"
-                  data-i18n="pc.verNoteU"
-                >
-                  {{ t('pc.verNoteU') }}
-                </p>
                 <div class="pcu-search">
                   <input
                     v-model="cmdQuery"
@@ -448,8 +421,11 @@
                   class="pcu-empty"
                   v-if="!filteredCmds.length"
                   data-i18n="pc.noMatch"
+                  role="status"
                 >
-                  {{ t('pc.noMatch') }}
+                  {{ t('pc.noMatch') }}<template v-if="cmdQuery">
+                    · “{{ cmdQuery.trim() }}”</template
+                  >
                 </div>
                 <article class="pcu-cmd" v-for="c in filteredCmds" :key="c.id">
                   <div class="pcu-cmd-head">
@@ -459,9 +435,6 @@
                     >
                   </div>
                   <p class="pcu-desc">{{ t('pc.cmd.' + c.id + '.desc') }}</p>
-                  <p class="pcu-note" v-if="verTab === 'unstable' && c.unKey">
-                    {{ t(c.unKey) }}
-                  </p>
                   <div
                     class="terminal pcu-term"
                     data-copy
@@ -551,11 +524,13 @@
                     <span></span><span></span><span></span>
                   </div>
                   <pre translate="no">
-$ picu find Vim Vim
+$ picu find Vim
+Vim
 Comment: Vi improved code editor
 Mirror: Summit Official
 Versions: 0.1 1.0 13.12 23.12
-Type: Src &amp; Bin $ picu add Vim
+Type: Src &amp; Bin
+$ picu add Vim
 [ OK ] finding in mirror
 [ OK ] checking version
 [ OK ] update available 23.12

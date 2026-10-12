@@ -63,7 +63,7 @@
 
 	function setupScrollReveal() {
 		const targets = document.querySelectorAll(
-			".card, .news-card, .heading, .hero-content, .article > *, .content-layout",
+			".card, .news-card, .heading, .hero-content, .content-layout",
 		);
 
 		if (!targets.length) return;
@@ -104,6 +104,25 @@
 			element.style.transitionDelay = `${Math.min(safeSlot, 5) * 60}ms`;
 			observer.observe(element);
 		});
+
+		// Fallback: if the observer never fires (background tab, slow start),
+		// reveal whatever is already in the viewport so wiki content is never
+		// stuck hidden. Below-the-fold keeps its scroll animation.
+		window.setTimeout(() => {
+			for (const element of targets) {
+				if (element.classList.contains("visible")) continue;
+				const rect = element.getBoundingClientRect?.();
+				if (!rect) continue;
+				if (rect.top < window.innerHeight && rect.bottom > 0) {
+					element.classList.add("visible");
+				}
+			}
+		}, 900);
+		// Absolute safety: never leave wiki article content invisible.
+		window.setTimeout(() => {
+			const stuck = document.querySelectorAll(".article .reveal:not(.visible)");
+			for (const element of stuck) element.classList.add("visible");
+		}, 2500);
 	}
 
 	function setupSmoothAnchors() {
@@ -273,7 +292,7 @@
 
 			ctx.clearRect(0, 0, width, height);
 
-			const pointerOnScreen = pointer.x > -9000 && !isCoarse;
+			const pointerOnScreen = pointer.x > -9000;
 
 			for (const flake of flakes) {
 				flake.phase += 0.008 + flake.speed * 0.004;
@@ -330,21 +349,57 @@
 			raf = requestAnimationFrame(step);
 		}
 
-		// Desktop only: pointer repulsion. Touch/coarse skipped (no scroll jank).
-		if (!isCoarse) {
-			window.addEventListener(
-				"pointermove",
-				(event) => {
-					pointer.x = event.clientX;
-					pointer.y = event.clientY;
-				},
-				{ passive: true },
-			);
-			document.addEventListener("pointerleave", () => {
-				pointer.x = -9999;
-				pointer.y = -9999;
-			});
-		}
+		// Pointer + touch repulsion (same RADIUS/force). Touch uses a passive
+		// listener with rAF-throttled coords so scrolling never janks.
+		window.addEventListener(
+			"pointermove",
+			(event) => {
+				pointer.x = event.clientX;
+				pointer.y = event.clientY;
+			},
+			{ passive: true },
+		);
+		document.addEventListener("pointerleave", () => {
+			pointer.x = -9999;
+			pointer.y = -9999;
+		});
+		let touchQueued = false;
+		let touchX = 0;
+		let touchY = 0;
+		let touchClear = 0;
+		window.addEventListener(
+			"touchmove",
+			(event) => {
+				const touch = event.touches?.[0];
+				if (!touch) return;
+				touchX = touch.clientX;
+				touchY = touch.clientY;
+				if (touchQueued) return;
+				touchQueued = true;
+				requestAnimationFrame(() => {
+					touchQueued = false;
+					pointer.x = touchX;
+					pointer.y = touchY;
+				});
+				window.clearTimeout(touchClear);
+				touchClear = window.setTimeout(() => {
+					pointer.x = -9999;
+					pointer.y = -9999;
+				}, 900);
+			},
+			{ passive: true },
+		);
+		window.addEventListener(
+			"touchend",
+			() => {
+				window.clearTimeout(touchClear);
+				touchClear = window.setTimeout(() => {
+					pointer.x = -9999;
+					pointer.y = -9999;
+				}, 350);
+			},
+			{ passive: true },
+		);
 		document.addEventListener("visibilitychange", () => {
 			if (document.hidden) {
 				running = false;
@@ -870,8 +925,66 @@
 		});
 	}
 
+	function setupWikiDrawer() {
+		const toggle = document.querySelector(".wiki-drawer-toggle");
+		const sidebar =
+			document.getElementById("wiki-sidebar") ??
+			document.querySelector(".content-layout .sidebar");
+		if (!toggle || !sidebar) return;
+
+		const setOpen = (open) => {
+			sidebar.classList.toggle("is-open", open);
+			toggle.setAttribute("aria-expanded", String(open));
+		};
+
+		toggle.addEventListener("click", (event) => {
+			event.stopPropagation();
+			setOpen(!sidebar.classList.contains("is-open"));
+		});
+
+		// Choosing a section navigates — collapse the drawer afterwards.
+		sidebar.querySelectorAll("a").forEach((link) => {
+			link.addEventListener("click", () => {
+				setOpen(false);
+			});
+		});
+
+		document.addEventListener("click", (event) => {
+			if (!sidebar.classList.contains("is-open")) return;
+			if (sidebar.contains(event.target) || toggle.contains(event.target)) {
+				return;
+			}
+			setOpen(false);
+		});
+
+		document.addEventListener("keydown", (event) => {
+			if (event.key !== "Escape") return;
+			if (!sidebar.classList.contains("is-open")) return;
+			setOpen(false);
+			// Return focus without moving the page (drawer opens/closes
+			// in place at the current viewport — never jumps to top).
+			try {
+				toggle.focus?.({ preventScroll: true });
+			} catch (error) {
+				toggle.focus?.();
+			}
+		});
+
+		// Leaving the mobile breakpoint resets the drawer (desktop is sticky).
+		window.addEventListener(
+			"resize",
+			() => {
+				if (window.matchMedia?.("(min-width: 761px)").matches ?? false) {
+					setOpen(false);
+				}
+			},
+			{ passive: true },
+		);
+	}
+
 	document.addEventListener("DOMContentLoaded", () => {
 		setupMobileNavigation();
+		setupWikiDrawer();
 		setupScrollReveal();
 		setupSmoothAnchors();
 		setupHeaderScrollState();

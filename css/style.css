@@ -1396,19 +1396,46 @@ img {
   padding: 40px 0;
 }
 .news-dialog,
-.content-dialog,
-.content-modal {
+.content-dialog {
   width: min(760px, calc(100vw - 40px));
   max-height: min(88vh, 900px);
   overflow: auto;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: clamp(20px, 4vw, 36px);
   box-shadow: 0 24px 60px rgba(16, 35, 50, 0.2);
+  transform: translateY(10px) scale(0.99);
+  transition: transform 0.26s var(--ease);
 }
+/* Overlay follows the .pcu-modal pattern: hidden by default, .open shows. */
 .content-modal {
+  position: fixed;
+  inset: 0;
   z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(13, 36, 51, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.26s var(--ease),
+    visibility 0s linear 0.26s;
+}
+.content-modal.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition:
+    opacity 0.26s var(--ease),
+    visibility 0s;
+}
+.content-modal.open .content-dialog,
+.content-modal.open .news-dialog {
+  transform: none;
 }
 .modal-open {
   overflow: hidden;
@@ -2686,40 +2713,8 @@ html[data-theme="dark"] .local-content-card {
 .snow-overlay {
   pointer-events: none;
 }
-/* ---- 2) TERMINAL: light (bg #f7fafc, dark code text, thin border). -------- */
-.terminal {
-  background: #f7fafc;
-  background-image: none;
-  border: 1px solid #dce5ea;
-  border-radius: 14px;
-  color: #1e344f;
-  box-shadow: 0 10px 28px rgba(30, 85, 113, 0.08);
-}
-.terminal pre {
-  color: #1e344f;
-}
-.terminal .code-write,
-.terminal .hero-typed {
-  color: #1e344f;
-}
-.terminal-bar {
-  background: transparent;
-  border-bottom: 1px solid #e3ebf0;
-  margin: -25px -25px 20px;
-  padding: 12px 16px;
-}
-.terminal-bar span {
-  background: #c3cfd8;
-}
-.terminal-bar span:nth-child(1) {
-  background: #d97a6b;
-}
-.terminal-bar span:nth-child(2) {
-  background: #d9b04c;
-}
-.terminal-bar span:nth-child(3) {
-  background: #7fb07f;
-}
+/* ---- 2) TERMINAL: dead light RESTYLE removed — winner is the REVERT2 dark
+      matte block below (bg #12293a). Kept here as a pointer, no rules. ----- */
 /* ---- 3) CARDS: flat white + top accent strip + soft shadow. --------------- */
 .card,
 .news-card {
@@ -5730,7 +5725,7 @@ details.faq summary {
   padding: 10px 14px;
   border: 1px solid var(--border);
   border-radius: 10px;
-  background: #fff;
+  background: var(--surface);
   color: var(--text);
   font: inherit;
   font-size: 0.88rem;
@@ -5751,7 +5746,7 @@ details.faq summary {
 .pcu-cmd {
   margin: 16px 0;
   padding: 18px 20px;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius);
 }
@@ -5892,7 +5887,7 @@ details.faq summary {
   width: min(760px, calc(100vw - 40px));
   max-height: min(88vh, 900px);
   overflow: auto;
-  background: #fff;
+  background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   padding: clamp(20px, 4vw, 36px);
@@ -5911,7 +5906,7 @@ details.faq summary {
   font-size: 0.85rem;
   font-weight: 600;
   cursor: pointer;
-  background: #fff;
+  background: var(--surface);
   color: var(--blue);
   border: 1px solid var(--border);
   transition:
@@ -6309,5 +6304,240 @@ html[data-theme="dark"] .terminal-bar .copy-btn:hover {
   .terminal-bar .copy-btn,
   .suggestions ul a {
     transition: none !important;
+  }
+}
+
+/* ==========================================================================
+   UI-LANE (designer append-block): content-modal hide, pcu dark vars,
+   wiki top-drawer <=760px, bspwm placeholder. Appends only.
+   ========================================================================== */
+/* ---- U1. DARK: pcu light surfaces map to dark tokens (light untouched). -- */
+html[data-theme="dark"] .pcu-search input {
+  background: #1c3243;
+  border-color: #2b4356;
+  color: #d7e5ed;
+}
+html[data-theme="dark"] .pcu-search input::placeholder {
+  color: #7b93a3;
+}
+html[data-theme="dark"] .pcu-cmd {
+  background: #162836;
+  border-color: #2b4356;
+}
+html[data-theme="dark"] .pcu-dialog {
+  background: #162836;
+  border-color: #2b4356;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+}
+html[data-theme="dark"] .pcu-dialog-close {
+  background: #1c3243;
+  border-color: #2b4356;
+  color: #c4dde9;
+}
+html[data-theme="dark"] .pcu-dialog-close:hover {
+  background: #244052;
+  border-color: #4aa8cf;
+}
+html[data-theme="dark"] .content-modal {
+  background: rgba(6, 18, 26, 0.6);
+}
+/* ---- U2. CONTENT-MODAL reduced motion (mirrors .pcu-modal guard). -------- */
+@media (prefers-reduced-motion: reduce) {
+  .content-modal,
+  .content-modal.open,
+  .content-dialog,
+  .news-dialog {
+    transition: none !important;
+  }
+}
+/* ---- U3. WIKI DRAWER: mini-button hidden on desktop. --------------------- */
+.wiki-drawer-toggle {
+  display: none;
+}
+@media (max-width: 760px) {
+  /* Drawer button: small pill pinned under the fixed topbar. */
+  .wiki-drawer-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: sticky;
+    top: 72px;
+    z-index: 95;
+    margin: 0 0 12px;
+    padding: 8px 14px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    background: var(--surface);
+    color: var(--blue);
+    font: inherit;
+    font-size: 0.8rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 8px 22px rgba(16, 35, 50, 0.1);
+    transition:
+      background 0.22s var(--ease),
+      border-color 0.22s var(--ease),
+      transform 0.22s var(--ease);
+  }
+  .wiki-drawer-toggle:hover {
+    background: var(--blue-soft);
+    border-color: var(--blue);
+  }
+  .wiki-drawer-toggle:active {
+    transform: scale(0.97);
+  }
+  .wiki-drawer-toggle .wiki-drawer-icon {
+    transition: transform 0.25s var(--ease);
+  }
+  .wiki-drawer-toggle[aria-expanded="true"] .wiki-drawer-icon {
+    transform: rotate(180deg);
+  }
+  /* Sidebar becomes a near-fullscreen top drawer sheet under the topbar.
+     The toggle (z-index 95) stays above the sheet (z-index 90) so it can
+     always close it. Height budget uses the dvh viewport with vh fallback. */
+  .content-layout .sidebar {
+    position: fixed;
+    top: 76px;
+    left: 8px;
+    right: 8px;
+    z-index: 90;
+    max-height: min(92vh, calc(100vh - 88px));
+    max-height: min(92dvh, calc(100dvh - 88px));
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    margin: 0;
+    padding: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: 0 24px 55px rgba(16, 35, 50, 0.22);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    pointer-events: none;
+    transition:
+      opacity 0.26s var(--ease),
+      transform 0.26s var(--ease),
+      visibility 0s linear 0.26s;
+  }
+  .content-layout .sidebar.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    pointer-events: auto;
+    transition:
+      opacity 0.26s var(--ease),
+      transform 0.26s var(--ease),
+      visibility 0s;
+  }
+}
+/* ---- U4. BSPWM placeholder: grey 16:9 box + caption. --------------------- */
+.bspwm-shot {
+  margin: 22px 0;
+}
+.bspwm-shot-box {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: linear-gradient(135deg, #e6edf1 0%, #d3dde3 60%, #c3cfd8 100%);
+  box-shadow: 0 10px 28px rgba(30, 85, 113, 0.08);
+}
+.bspwm-shot-box img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.bspwm-shot-label {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 10px 14px;
+  background: rgba(13, 36, 51, 0.55);
+  color: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+.bspwm-shot figcaption {
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+html[data-theme="dark"] .bspwm-shot-box {
+  background: linear-gradient(135deg, #1c3243 0%, #162836 70%);
+  border-color: #2b4356;
+}
+/* ---- U6. SIDEBAR JUMP-MENU scroll correction (NOT the article .toc) ------
+   The jump-menu tree itself scrolls ONLY when its items overflow the box:
+   overflow-y auto (never scroll) shows no bar and reserves no gutter space
+   when everything fits. Sticky top 105px pairs with max-height 100vh-129px
+   (105 top + 24 margin). overflow-x hidden kills the stray horizontal bar
+   from the 3px hover glide. Thin custom scrollbar + dark (P7-4 palette)
+   appears only during actual overflow. Edge gestures chain into the page:
+   overscroll-behavior auto lets wheel/swipe at the first/last item
+   continue scrolling the wiki article instead of trapping. */
+.content-layout .sidebar,
+#wiki-sidebar {
+  position: sticky;
+  top: 105px;
+  max-height: calc(100vh - 129px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #9db4c2 transparent;
+}
+.content-layout .sidebar::-webkit-scrollbar,
+#wiki-sidebar::-webkit-scrollbar {
+  width: 8px;
+}
+.content-layout .sidebar::-webkit-scrollbar-track,
+#wiki-sidebar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.content-layout .sidebar::-webkit-scrollbar-thumb,
+#wiki-sidebar::-webkit-scrollbar-thumb {
+  background: #b9d4e0;
+  border-radius: 999px;
+}
+.content-layout .sidebar::-webkit-scrollbar-thumb:hover,
+#wiki-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #8fb0c2;
+}
+html[data-theme="dark"] .content-layout .sidebar,
+html[data-theme="dark"] #wiki-sidebar {
+  scrollbar-color: #3d5a72 transparent;
+}
+html[data-theme="dark"] .content-layout .sidebar::-webkit-scrollbar-thumb,
+html[data-theme="dark"] #wiki-sidebar::-webkit-scrollbar-thumb {
+  background: #2b4356;
+}
+html[data-theme="dark"] .content-layout .sidebar::-webkit-scrollbar-thumb:hover,
+html[data-theme="dark"] #wiki-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #3d5a72;
+}
+@media (max-width: 760px) {
+  /* Drawer: near-fullscreen fixed overlay sheet; when expanded, the list
+     scrolls inside (finger swipe moves items, the box stays fixed), and
+     edge swipes chain into page scroll (overscroll auto, like desktop).
+     Geometry mirrors the U3 drawer rule (also covers #wiki-sidebar);
+     visuals/transition still owned by U3. */
+  .content-layout .sidebar,
+  #wiki-sidebar {
+    position: fixed;
+    top: 76px;
+    left: 8px;
+    right: 8px;
+    max-height: min(92vh, calc(100vh - 88px));
+    max-height: min(92dvh, calc(100dvh - 88px));
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: auto;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
   }
 }

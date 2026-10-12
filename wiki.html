@@ -338,7 +338,16 @@
         <section class="content">
           <div class="page">
             <div class="content-layout">
-              <aside class="sidebar">
+              <button
+                class="wiki-drawer-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="wiki-sidebar"
+              >
+                <span class="wiki-drawer-icon" aria-hidden="true">▾</span
+                ><span>Contents</span>
+              </button>
+              <aside class="sidebar" id="wiki-sidebar">
                 <ul class="tree-l1">
                   <tree-item
                     v-for="node in tree"
@@ -594,14 +603,30 @@ trusted = true</pre>
                   Pick a variant in the boot menu. Snapshots keep each variant's
                   configuration separate.
                 </p>
+                <figure class="bspwm-shot">
+                  <div class="bspwm-shot-box">
+                    <img
+                      src="assets/images/bspwm-placeholder.svg"
+                      alt="bspwm desktop preview (placeholder)"
+                      loading="lazy"
+                      onerror="this.hidden = true"
+                    />
+                    <span class="bspwm-shot-label" aria-hidden="true"
+                      >bspwm · preview coming soon</span
+                    >
+                  </div>
+                  <figcaption>bspwm</figcaption>
+                </figure>
                 <h2 id="faq" data-i18n="wiki.secFaq">FAQ</h2>
                 <details class="faq">
                   <summary data-i18n="wiki.faq1q">
                     Is Summit Linux ready for daily use?
                   </summary>
                   <p data-i18n="wiki.faq1a">
-                    The project is a working concept with a staged
-                    implementation plan; follow the News page for releases.
+                    Not yet — there is no installable release. The site itself
+                    is under active development (see the News and Changelog
+                    pages); the base system, picu and the signed mirror are
+                    still on the roadmap.
                   </p>
                 </details>
                 <details class="faq">
@@ -618,7 +643,7 @@ trusted = true</pre>
                     Which init system does Summit use?
                   </summary>
                   <p data-i18n="wiki.faq3a">
-                    OpenRC / sysvinit with an optional runit setup.
+                    Openrc / SysVinit / Runit. (OpenRC by default)
                   </p>
                 </details>
                 <details class="faq">
@@ -626,8 +651,10 @@ trusted = true</pre>
                     How do I verify downloads?
                   </summary>
                   <p data-i18n="wiki.faq4a">
-                    Releases will be checksummed and repository indexes will be
-                    signed; see the Download page for details.
+                    There is nothing to download yet — the Download page
+                    describes the planned configuration. When releases appear
+                    they will carry checksums and repository indexes will be
+                    signed; the Status page tracks readiness.
                   </p>
                 </details>
                 <details class="faq">
@@ -664,7 +691,8 @@ trusted = true</pre>
                     <code>picu update</code>, <code>picu find</code> and
                     <code>picu info</code> for daily work;
                     <code>picu cook</code> and <code>picu cut</code> for source
-                    builds; <code>picu trust</code> for key management.
+                    builds; <code>picu rebase</code> to switch release;
+                    <code>picu trust</code> for key management.
                   </p>
                 </details>
                 <details class="faq">
@@ -692,15 +720,6 @@ trusted = true</pre>
                   <li>
                     <a href="download.html" data-i18n="wiki.linksDownload"
                       >Download Summit Linux</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://github.com/Summit-picu/Markdown-files-and-info"
-                      target="_blank"
-                      rel="noopener"
-                      data-i18n="wiki.linksDocs"
-                      >Markdown-files-and-info docs repo</a
                     >
                   </li>
                 </ul>

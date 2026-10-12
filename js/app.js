@@ -476,9 +476,10 @@
 		},
 		{
 			id: "rebase",
-			usage: "picu rebase <release>",
-			example: "picu rebase stable",
-			output: "[ OK ] mirror verified\n[ OK ] release pinned: stable",
+			usage: "picu rebase",
+			example: "picu rebase",
+			output:
+				"[ ! ] rebuild core packages in isolated sysroot\n[ .. ] live system untouched\n[ OK ] switched in a single commit",
 			related: ["sync", "update"],
 			since: "0.2.0",
 		},
@@ -492,7 +493,7 @@
 		},
 		{
 			id: "info",
-			usage: "picu info <pkg>",
+			usage: "picu info <pkg|flag>",
 			example: "picu info Vim",
 			output: "Version: 23.12\nMirror: Summit Official\nRecipe: vim.picu",
 			related: ["find", "add"],
@@ -508,9 +509,10 @@
 		},
 		{
 			id: "trust",
-			usage: "picu trust [--rotate]",
-			example: "picu trust --rotate",
-			output: "[ OK ] new key accepted\n[ OK ] old key retired",
+			usage: "picu trust <list|add|revoke|rotate>",
+			example: "picu trust list",
+			output:
+				"ROOT SHA256:1234... trusted\nMIRROR SHA256:9f2a... trusted\nCOMMUNITY SHA256:7b1e... trusted by user",
 			related: ["sync", "rebase"],
 			since: "0.3.0",
 			unKey: "pc.cmd.trust.un",
@@ -767,10 +769,10 @@
 						// picu features (picu-new.html / picu.html only).
 						cmdQuery: "",
 						openCmd: null,
-						verTab: "stable",
+						verTab: "planned",
 						cheatOpen: false,
 						cheatReturnFocus: null,
-						ver: { stable: "0.3.0", unstable: "0.4.0-dev" },
+						ver: { planned: "planned-2026-10-12-133325" },
 						picuCmds: PICU_COMMANDS,
 						// 404: site search query.
 						errSearch: "",
@@ -790,24 +792,29 @@
 						if (this.crumbRoot) return this.t(this.crumbRoot);
 						return "";
 					},
-					// picu: live command filter (name + usage, code only).
+					// picu: live command filter (id + usage + desc + example + output).
 					filteredCmds: function () {
 						var q = String(this.cmdQuery || "")
 							.trim()
 							.toLowerCase();
 						if (!q) return this.picuCmds;
+						var self = this;
 						return this.picuCmds.filter(function (c) {
-							return (
-								String(c.id).toLowerCase().indexOf(q) !== -1 ||
-								String(c.usage).toLowerCase().indexOf(q) !== -1
-							);
+							var hay = [
+								c.id,
+								c.usage,
+								c.example,
+								c.output,
+								self.t("pc.cmd." + c.id + ".desc"),
+							]
+								.join("\n")
+								.toLowerCase();
+							return hay.indexOf(q) !== -1;
 						});
 					},
-					// picu: version tab label with the loaded numbers.
+					// picu: single planned version label (no stable/unstable).
 					verTabLabel: function () {
-						return this.verTab === "stable"
-							? this.t("pc.verStable") + " " + this.ver.stable
-							: this.t("pc.verUnstable") + " " + this.ver.unstable;
+						return this.ver.planned;
 					},
 					// 404: site-wide search across every tree page.
 					siteResults: function () {
@@ -849,9 +856,10 @@
 						this.cmdQuery = id;
 						this.openCmd = id;
 					},
-					// picu: version tabs.
+					// picu: version tabs removed (single planned version).
+					// Kept harmless: pins verTab to "planned", no-ops otherwise.
 					setVerTab: function (tab) {
-						if (tab === "stable" || tab === "unstable") this.verTab = tab;
+						this.verTab = "planned";
 					},
 					// picu: cheatsheet modal (focus trap like news dialog).
 					openCheat: function () {
@@ -959,14 +967,9 @@
 									return res.json();
 								})
 								.then(function (json) {
-									if (
-										json &&
-										json.picu &&
-										(json.picu.stable || json.picu.unstable)
-									) {
+									if (json && json.picu && json.picu.planned) {
 										self.ver = {
-											stable: json.picu.stable || self.ver.stable,
-											unstable: json.picu.unstable || self.ver.unstable,
+											planned: json.picu.planned,
 										};
 									}
 								})
@@ -1001,7 +1004,7 @@
 					page: { type: String, default: "" },
 				},
 				data: function () {
-					return { open: defaultTreeOpen(this.item, this.page) };
+					return { open: defaultTreeOpen(this.item, this.page), auto: false };
 				},
 				computed: {
 					hasChildren: function () {
@@ -1023,17 +1026,23 @@
 					},
 				},
 				// Scrollspy: when the current section changes (scroll or hash),
-				// open the ancestor branch and persist it. Runs only on change,
-				// so a user-collapsed branch stays shut until its section
-				// becomes current again — clicks never force it open.
+				// auto-open the ancestor branch and auto-close branches that
+				// are no longer ancestors. Only auto-opened branches collapse
+				// on their own — user-opened ones are left alone, and a
+				// user-collapsed branch stays shut until its section becomes
+				// current again. Every change persists to summit-tree-<page>.
 				watch: {
 					"$root.activeHref": function (href) {
-						if (!href) return;
-						if (
-							!this.open &&
-							(href === this.item.href || subtreeHas(this.item, href))
-						) {
-							this.open = true;
+						if (!href || !this.hasChildren) return;
+						if (href === this.item.href || subtreeHas(this.item, href)) {
+							if (!this.open) {
+								this.open = true;
+								this.auto = true;
+								this.persist();
+							}
+						} else if (this.open && this.auto) {
+							this.open = false;
+							this.auto = false;
 							this.persist();
 						}
 					},
@@ -1044,6 +1053,7 @@
 					},
 					toggle: function () {
 						this.open = !this.open;
+						this.auto = false;
 						this.persist();
 					},
 					// Keyboard toggling: Enter/Space click natively;
@@ -1053,12 +1063,14 @@
 							if (!this.open) {
 								ev.preventDefault();
 								this.open = true;
+								this.auto = false;
 								this.persist();
 							}
 						} else if (ev.key === "ArrowLeft" || ev.key === "ArrowUp") {
 							if (this.open) {
 								ev.preventDefault();
 								this.open = false;
+								this.auto = false;
 								this.persist();
 							}
 						}
@@ -1081,6 +1093,7 @@
 						subtreeHas(this.item, r.activeHref)
 					) {
 						this.open = true;
+						this.auto = true;
 					}
 				},
 			});
@@ -1157,8 +1170,9 @@
  * via html.anchor-smooth (never on page load with #hash).
  * On change the root activeHref updates (same path as hash sync, so
  * highlight + aria-current reuse existing logic) and the TreeItem watcher
- * opens + persists the ancestor branch. No collapsing: user-opened
- * branches stay as the user left them. No hash writes. Reduced-motion
+ * auto-opens the ancestor branch (+ persists) and auto-closes branches
+ * that are no longer ancestors (only auto-opened ones; user-opened
+ * branches stay as the user left them). No hash writes. Reduced-motion
  * keeps instant behavior (dwell bypassed). No-ops without
  * IntersectionObserver or anchors.
  * ========================================================================== */
